@@ -111,7 +111,16 @@ def chart_svg(hist, w=1080, h=400, months=3):
     return f"<svg width='{w}' height='{h}' viewBox='0 0 {w} {h}'>{''.join(o)}</svg>"
 
 
-def cover_html(date, hist, snapshot, headlines, n_stories):
+WORD = "RIPPLE"
+POST_ORDER = WORD[::-1]          # posts go up oldest-first, so E, L, P, P, I, R puts R top-left on the grid
+
+
+def letter_for(post_index):
+    """Letter for the post_index-th post (0-based) of the RIPPLE cycle."""
+    return POST_ORDER[post_index % len(POST_ORDER)]
+
+
+def cover_html(date, hist, snapshot, headlines, n_stories, letter="R"):
     e = H.escape
     last = hist[-1][1] if hist else None
     rets = returns(hist)
@@ -127,7 +136,7 @@ def cover_html(date, hist, snapshot, headlines, n_stories):
     return f"""<!doctype html><html><head><meta charset='utf-8'><style>{FONT}
 *{{box-sizing:border-box;margin:0}}
 html,body{{width:1080px;height:1350px;background:{BG};color:{INK};overflow:hidden;font-family:'Hanken Grotesk',sans-serif}}
-.wm{{position:absolute;right:-30px;top:110px;font:380px/1 'Archivo Black',sans-serif;color:transparent;-webkit-text-stroke:3px #1D1F26;letter-spacing:-.06em}}
+.wm{{position:absolute;right:70px;top:100px;width:320px;text-align:right;font:360px/1 'Archivo Black',sans-serif;color:transparent;-webkit-text-stroke:4px #3A3558}}
 .pad{{padding:0 84px}}
 .top{{padding-top:56px;display:flex;justify-content:space-between;align-items:center;font:500 24px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:{MUT}}}
 .logo{{display:flex;align-items:center;gap:16px;color:{INK}}}
@@ -153,7 +162,7 @@ li{{display:flex;gap:22px;align-items:baseline}}li span{{font:500 23px 'JetBrain
 li p{{font:500 34px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .foot{{position:absolute;left:84px;right:84px;bottom:50px;display:flex;justify-content:space-between;font:400 22px 'JetBrains Mono',monospace;color:{DIM}}}.foot b{{font-weight:400;color:{ACC}}}
 </style></head><body>
-<div class='wm'>R.</div>
+<div class='wm'>{e(letter)}</div>
 <div class='pad'>
  <div class='top'><span class='logo'><i>R<b>.</b></i>Ripple</span><span>Daily market brief</span></div>
  <div class='dt'><p class='dd'>{date.day:02d}</p><div class='dm'><p class='wd'>{date.strftime('%A').upper()}</p><p>{date.strftime('%B')}</p><p class='yr'>{date.year}</p></div></div>

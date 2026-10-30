@@ -5,8 +5,13 @@ Renders the real Ripple page headless with its database fed from local JSON
 dumps (same as capture.py), reads each top Feed card's content from the page
 (headline, summary, why it matters, tone, Who moves / Moves this month), then
 lays each story out again on a fixed 1080x1350 Instagram template with large
-type, so every slide has the same scale. Slide 1 is a cover: date, the day's
-mood line and the top headlines. Stories are numbered 1..N with no gaps.
+type, so every slide has the same scale. Stories are numbered 1..N with no gaps.
+
+Slide 1 is the cover from cover.py: big date, Nifty 50 close and 3-month chart
+(Yahoo Finance ^NSEI daily closes before today; falls back to the Feed's own
+snapshots if Yahoo fails or disagrees with the Feed by > 1%), returns row,
+market strip, top 3 stories, and one background letter of R-I-P-P-L-E chosen by
+how many posts have gone up since 31 Oct 2026 (counted from <posted_dir>).
 
 Writes:
   <out>/ig/slide_00.jpg            cover
@@ -14,7 +19,7 @@ Writes:
   <out>/manifest.json              feedDate, date, cards[{n, title, short, source, block, file}]
   <out>/caption.txt                Instagram caption (<= 2,200 chars), numbered 1..N like the slides
 
-usage: python3 ig_cards.py <page.html> <db_dir> <out_dir> [stories=9]
+usage: python3 ig_cards.py <page.html> <db_dir> <out_dir> [stories=9] [posted_dir]
 db_dir layout: <db_dir>/<collection>/<doc_id>.json  (ArtifactData out_dir format)
 """
 import json, os, sys, glob, re, html as H, http.server, threading, functools, datetime
@@ -23,6 +28,10 @@ from playwright.sync_api import sync_playwright
 page_html, db_dir, out_dir = sys.argv[1], sys.argv[2], sys.argv[3]
 COUNT = int(sys.argv[4]) if len(sys.argv) > 4 else 9
 HANDLE = "@ripple__stories"
+POSTED_DIR = sys.argv[5] if len(sys.argv) > 5 else None
+RIPPLE_START = "2026-10-31"          # first post of the R-I-P-P-L-E letter cycle
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import cover, subprocess, tempfile
 
 # ---- load the db dump -------------------------------------------------------
 db = {}
@@ -217,19 +226,38 @@ def story_html(n, N, s, nsent):
 <footer><span class='src'>Source: {esc(source_name(s['src']))}</span><span class='go'>{go}</span></footer>
 </div>"""), ("who" if show else "calendar" if s["cals"] else "none")
 
-def cover_html(N, k_items):
-    items = "".join(f"<li><span>{i}</span>{esc(short(s['title']))}</li>" for i, s in enumerate(stories[:k_items], 1))
-    more = f"<p class='more'>+ {N - k_items} more stories inside</p>" if N > k_items else ""
-    return page(f"""<div class='slide'>
-<div class='top'><span class='brand'>Ripple</span><span>Daily market brief</span></div>
-<main id='m' style='justify-content:flex-start;padding-top:40px'>
- <div><p class='wd'>{date.strftime('%A')}</p><p class='date'>{DSTR}</p></div>
- <p class='mood'>{esc(mood)}</p>
- <div><p class='eyebrow'>Today's top {N}</p><ol>{items}</ol></div>
- {more}
-</main>
-<footer><span class='src'>Summaries of published reports · Not advice</span><span class='go'>Swipe →</span></footer>
-</div>""")
+# ---- cover data -------------------------------------------------------------------
+WARN = []
+def yahoo_history(before):
+    with tempfile.TemporaryDirectory() as td:
+        f = os.path.join(td, "nsei.json")
+        r = subprocess.run(["curl", "-s", "-m", "25", "-A", "Mozilla/5.0", "-o", f,
+                            "https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI?range=2y&interval=1d"])
+        if r.returncode: raise RuntimeError("curl failed")
+        y = json.load(open(f))["chart"]["result"][0]
+    ist = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
+    return [(datetime.datetime.fromtimestamp(t, ist).date(), c)
+            for t, c in zip(y["timestamp"], y["indicators"]["quote"][0]["close"]) if c and datetime.datetime.fromtimestamp(t, ist).date() < before]
+
+day_docs = [v.get("data", v) for k, v in db.items() if k.startswith("days/")]
+snap = dd.get("snapshot", [])
+feed_nifty = cover.num(next((x["value"] for x in snap if x.get("label", "").startswith("Nifty 50")), None))
+try:
+    hist = yahoo_history(date)
+    if len(hist) < 60 or (date - hist[-1][0]).days > 6: raise RuntimeError("Yahoo history too short or stale")
+    if feed_nifty and abs(hist[-1][1] / feed_nifty - 1) > .01: raise RuntimeError(f"Yahoo {hist[-1][1]:.2f} vs Feed {feed_nifty:.2f}")
+    hist_src = "yahoo"
+except Exception as ex:
+    WARN.append(f"Nifty history from Feed snapshots ({ex})")
+    hist, hist_src = cover.feed_history([d for d in day_docs if d.get("date", "") <= dd["date"]]), "feed"
+post_index = 0
+if POSTED_DIR and os.path.isdir(POSTED_DIR):
+    post_index = sum(1 for f in os.listdir(POSTED_DIR) if re.fullmatch(r"\d{4}-\d{2}-\d{2}\.json", f)
+                     and RIPPLE_START <= f[:10] < dd["date"])
+else:
+    WARN.append("no posted_dir: letter cycle assumed to start today")
+LETTER = cover.letter_for(post_index)
+COVER_FIT = "() => document.documentElement.scrollHeight <= 1350"
 
 FIT = "() => { const m=document.getElementById('m'); return m.scrollHeight <= m.clientHeight + 1; }"
 os.makedirs(os.path.join(out_dir, "ig"), exist_ok=True)
@@ -247,10 +275,11 @@ with sync_playwright() as p:
             return False
         pg.screenshot(path=os.path.join(out_dir, "ig", name), type="jpeg", quality=92)
         return True
-    for kk in (5, 4, 3):
-        if shot(cover_html(N, min(kk, N)), "slide_00.jpg"): break
-    else:
+    pg.set_content(cover.cover_html(date, hist, snap, [short(x["title"]) for x in stories[:3]], N, LETTER), wait_until="networkidle")
+    pg.evaluate("document.fonts.ready")
+    if not pg.evaluate(COVER_FIT):
         sys.exit("cover does not fit")
+    pg.screenshot(path=os.path.join(out_dir, "ig", "slide_00.jpg"), type="jpeg", quality=92)
     for n, s in enumerate(stories, 1):
         ok = False
         for nsent in (2, 1):
@@ -263,8 +292,11 @@ with sync_playwright() as p:
     b.close()
 
 with open(os.path.join(out_dir, "manifest.json"), "w") as fh:
-    json.dump({"feedDate": day, "date": dd["date"], "cover": "slide_00.jpg", "cards": cards}, fh, indent=2, ensure_ascii=False)
-print(json.dumps({"feedDate": day, "n": N, "blocks": {c["n"]: c["block"] for c in cards}}))
+    json.dump({"feedDate": day, "date": dd["date"], "cover": "slide_00.jpg", "letter": LETTER, "postIndex": post_index,
+               "niftyHistory": hist_src, "niftyLast": hist[-1][1] if hist else None, "warnings": WARN, "cards": cards},
+              fh, indent=2, ensure_ascii=False)
+print(json.dumps({"feedDate": day, "n": N, "letter": LETTER, "niftyHistory": hist_src, "warnings": WARN,
+                  "blocks": {c["n"]: c["block"] for c in cards}}))
 
 # ---- caption: same 1..N numbering as the slides ------------------------------
 HEAD = f"Ripple · Today's top {N} market stories · {DSTR}\n\n"
