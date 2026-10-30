@@ -1,10 +1,32 @@
 {
   "date": "2026-10-30",
-  "postedAt": "2026-10-30T03:20:52+00:00",
-  "mediaId": "17864870265695315",
-  "imageCount": 9,
-  "omittedRanks": [
-    8
+  "postedAt": "2026-10-30T07:31:22+00:00",
+  "mediaId": "17914272237517590",
+  "imageCount": 10,
+  "stories": 9,
+  "letter": "E",
+  "cover": "watchlist",
+  "watchlist": [
+    "INFY",
+    "HDFCBANK",
+    "BPCL",
+    "INDIGO"
   ],
-  "caption": "Ripple · Today's top market stories · 30 Oct 2026\n\n1. Alphabet sinks about 10% on its first miss in four years as capex jumps; Microsoft rises and offers buyouts — CappNotes; Tradingkey; NewsCord\n2. Sensex jumps 905 points as the Fed holds and talk of a capital gains tax cut draws foreign buyers — HDFC Sky; 5paisa; ANI\n3. Amazon falls more than 7% after hours on an EPS miss as trailing free cash flow turns negative $42 billion; AWS grows 39% — NewsCord (Quartz, CNBC, FactSet)\n4. Trent's Q2 profit rises 25% to ₹468 crore and operating EBITDA 37% as Zudio passes 1,000 stores — Business Today; Upstox; Aerohaber\n5. IndiGo's Q2 loss narrows to ₹1,879 crore as fares rise 34%, but fuel cost per seat jumps 69% — Business Today; Upstox; Aerohaber\n6. Oil slips as Vance reaches out to Iran, while Washington warns Gulf states of strikes after the midterms — Reuters via Euronext; HDFC Sky\n7. US PCE inflation runs at 3.6% as GDP beats; December rate-hike odds climb above 85% — CappNotes; Yahoo Finance\n9. PSU banks jump 2.2% and Kotak 4.3% as Nifty Bank rises 1.2%; Bank of Baroda reports Friday — Yahoo Finance; Kotak Neo; Zee Business\n10. Intel beats on data-centre revenue up 78% but falls about 15% after hours as its Q4 forecast misses — Tradingkey\n\nSwipe for each story's numbers, tone and who moves. Summaries of published reports; sources named on each card. Not investment advice.\n\n#StockMarketIndia #Nifty50 #Sensex #MarketNews #IndianStocks #Investing #Ripple"
+  "fallbacks": {
+    "4": "chart",
+    "8": "chart"
+  },
+  "images": "cards/2026-10-30/v2/",
+  "caption": "Ripple · Today's top 9 market stories · 30 Oct 2026\n\n1. Alphabet sinks about 10% on its first miss in four years as capex jumps; Microsoft rises and offers buyouts — CappNotes; Tradingkey; NewsCord\n2. Sensex jumps 905 points as the Fed holds and talk of a capital gains tax cut draws foreign buyers — HDFC Sky; 5paisa; ANI\n3. Amazon falls more than 7% after hours on an EPS miss as trailing free cash flow turns negative $42 billion; AWS grows 39% — NewsCord (Quartz, CNBC, FactSet)\n4. Trent's Q2 profit rises 25% to ₹468 crore and operating EBITDA 37% as Zudio passes 1,000 stores — Business Today; Upstox; Aerohaber\n5. IndiGo's Q2 loss narrows to ₹1,879 crore as fares rise 34%, but fuel cost per seat jumps 69% — Business Today; Upstox; Aerohaber\n6. Oil slips as Vance reaches out to Iran, while Washington warns Gulf states of strikes after the midterms — Reuters via Euronext; HDFC Sky\n7. US PCE inflation runs at 3.6% as GDP beats; December rate-hike odds climb above 85% — CappNotes; Yahoo Finance\n8. Rupee firms 3 paise to 95.25 as crude eases and Jefferies says an LTCG cut could bring foreign money back — Telangana Today (PTI); CappNotes; 5paisa\n9. PSU banks jump 2.2% and Kotak 4.3% as Nifty Bank rises 1.2%; Bank of Baroda reports Friday — Yahoo Finance; Kotak Neo; Zee Business\n\nSwipe for each story's numbers, tone and who moves. Summaries of published reports; sources named on each card. Not investment advice.\n\n#StockMarketIndia #Nifty50 #Sensex #MarketNews #IndianStocks #Investing #Ripple",
+  "replaced": {
+    "date": "2026-10-30",
+    "postedAt": "2026-10-30T03:20:52+00:00",
+    "mediaId": "17864870265695315",
+    "imageCount": 9,
+    "omittedRanks": [
+      8
+    ],
+    "caption": "Ripple · Today's top market stories · 30 Oct 2026\n\n1. Alphabet sinks about 10% on its first miss in four years as capex jumps; Microsoft rises and offers buyouts — CappNotes; Tradingkey; NewsCord\n2. Sensex jumps 905 points as the Fed holds and talk of a capital gains tax cut draws foreign buyers — HDFC Sky; 5paisa; ANI\n3. Amazon falls more than 7% after hours on an EPS miss as trailing free cash flow turns negative $42 billion; AWS grows 39% — NewsCord (Quartz, CNBC, FactSet)\n4. Trent's Q2 profit rises 25% to ₹468 crore and operating EBITDA 37% as Zudio passes 1,000 stores — Business Today; Upstox; Aerohaber\n5. IndiGo's Q2 loss narrows to ₹1,879 crore as fares rise 34%, but fuel cost per seat jumps 69% — Business Today; Upstox; Aerohaber\n6. Oil slips as Vance reaches out to Iran, while Washington warns Gulf states of strikes after the midterms — Reuters via Euronext; HDFC Sky\n7. US PCE inflation runs at 3.6% as GDP beats; December rate-hike odds climb above 85% — CappNotes; Yahoo Finance\n9. PSU banks jump 2.2% and Kotak 4.3% as Nifty Bank rises 1.2%; Bank of Baroda reports Friday — Yahoo Finance; Kotak Neo; Zee Business\n10. Intel beats on data-centre revenue up 78% but falls about 15% after hours as its Q4 forecast misses — Tradingkey\n\nSwipe for each story's numbers, tone and who moves. Summaries of published reports; sources named on each card. Not investment advice.\n\n#StockMarketIndia #Nifty50 #Sensex #MarketNews #IndianStocks #Investing #Ripple",
+    "note": "first-format post; to be deleted/archived manually in the Instagram app"
+  }
 }
