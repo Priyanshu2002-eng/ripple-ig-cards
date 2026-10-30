@@ -284,7 +284,7 @@ for rnd in (0, 1):                                     # one per story first, th
         c["hist"] = h; picked.append(c); seen_ids.add(c["id"]); seen_stories.add(c["story"])
 picked.sort(key=lambda c: c["story"])
 close_date = max((c["hist"][-1][0] for c in picked), default=hist[-1][0] if hist else None)
-COVER_STYLE = os.environ.get("RIPPLE_COVER", "nifty")   # "watchlist" once approved
+COVER_STYLE = os.environ.get("RIPPLE_COVER", "watchlist")   # approved 30 Oct 2026; "nifty" = old chart cover
 COVER_KIND = "watchlist" if COVER_STYLE == "watchlist" and len(picked) >= 2 else "nifty"
 if COVER_STYLE == "watchlist" and COVER_KIND == "nifty":
     WARN.append(f"only {len(picked)} watchlist stocks with prices: used the Nifty chart cover")
