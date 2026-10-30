@@ -29,7 +29,7 @@ page_html, db_dir, out_dir = sys.argv[1], sys.argv[2], sys.argv[3]
 COUNT = int(sys.argv[4]) if len(sys.argv) > 4 else 9
 HANDLE = "@ripple__stories"
 POSTED_DIR = sys.argv[5] if len(sys.argv) > 5 else None
-RIPPLE_START = "2026-10-31"          # first post of the R-I-P-P-L-E letter cycle
+RIPPLE_START = "2026-10-30"          # first post of the R-I-P-P-L-E letter cycle (the 30 Oct repost, letter E)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cover, subprocess, tempfile
 

@@ -10,7 +10,7 @@ Daily Ripple Feed cards, hosted publicly so Instagram's API can fetch them for @
     line at the last close, and the news push (headwind/tailwind). All prices are labelled with their close date. Below that sit a market
     strip and the top 3 stories. If fewer than 2 stocks have prices, it falls back to the Nifty 3-month chart cover. Each post's cover carries one background
     letter: posts go up E, L, P, P, I, R, so six posts in a row read RIP / PLE on the profile grid. The letter is picked
-    by counting `posted/*.json` from 2026-10-31 on, so a skipped day doesn't break the word.
+    by counting `posted/*.json` from 2026-10-30 on (the 30 Oct repost is E), so a skipped day doesn't break the word.
   - If a story has no "Who moves", its slide shows an "In focus" price chart instead. For market stories (rupee, oil, rates) that's the
     matching market, using Ripple's own snapshot figures so it agrees with the story (Yahoo only if those are too short). For other
     stories it's the story's own NSE stock (Yahoo .NS closes), and the Nifty 50 if nothing else is available. Upcoming events are added

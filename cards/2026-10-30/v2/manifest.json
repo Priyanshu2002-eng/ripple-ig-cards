@@ -1,0 +1,119 @@
+{
+  "feedDate": "Today · Friday, 30 October 2026",
+  "date": "2026-10-30",
+  "cover": "slide_00.jpg",
+  "letter": "E",
+  "postIndex": 0,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "Infosys",
+      "ticker": "INFY",
+      "push": -18,
+      "story": 1,
+      "lastClose": 1146.5,
+      "closeDate": "2026-10-29"
+    },
+    {
+      "name": "HDFC Bank",
+      "ticker": "HDFCBANK",
+      "push": 3,
+      "story": 2,
+      "lastClose": 683.2999877929688,
+      "closeDate": "2026-10-29"
+    },
+    {
+      "name": "BPCL",
+      "ticker": "BPCL",
+      "push": -4,
+      "story": 5,
+      "lastClose": 289.20001220703125,
+      "closeDate": "2026-10-29"
+    },
+    {
+      "name": "IndiGo",
+      "ticker": "INDIGO",
+      "push": -18,
+      "story": 6,
+      "lastClose": 4690.0,
+      "closeDate": "2026-10-28"
+    }
+  ],
+  "niftyHistory": "yahoo",
+  "niftyLast": 22936.75,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Alphabet sinks about 10% on its first miss in four years as capex jumps; Microsoft rises and offers buyouts",
+      "short": "Alphabet sinks about 10% on its first miss in four years",
+      "source": "CappNotes; Tradingkey; NewsCord",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Sensex jumps 905 points as the Fed holds and talk of a capital gains tax cut draws foreign buyers",
+      "short": "Sensex jumps 905 points",
+      "source": "HDFC Sky; 5paisa; ANI",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Amazon falls more than 7% after hours on an EPS miss as trailing free cash flow turns negative $42 billion; AWS grows 39%",
+      "short": "Amazon falls more than 7% after hours on an EPS miss",
+      "source": "NewsCord (Quartz, CNBC, FactSet)",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Trent's Q2 profit rises 25% to ₹468 crore and operating EBITDA 37% as Zudio passes 1,000 stores",
+      "short": "Trent's Q2 profit rises 25% to ₹468 crore and operating EBITDA 37%",
+      "source": "Business Today; Upstox; Aerohaber",
+      "block": "chart",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "IndiGo's Q2 loss narrows to ₹1,879 crore as fares rise 34%, but fuel cost per seat jumps 69%",
+      "short": "IndiGo's Q2 loss narrows to ₹1,879 crore",
+      "source": "Business Today; Upstox; Aerohaber",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Oil slips as Vance reaches out to Iran, while Washington warns Gulf states of strikes after the midterms",
+      "short": "Oil slips",
+      "source": "Reuters via Euronext; HDFC Sky",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "US PCE inflation runs at 3.6% as GDP beats; December rate-hike odds climb above 85%",
+      "short": "US PCE inflation runs at 3.6% as GDP beats",
+      "source": "CappNotes; Yahoo Finance",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Rupee firms 3 paise to 95.25 as crude eases and Jefferies says an LTCG cut could bring foreign money back",
+      "short": "Rupee firms 3 paise to 95.25",
+      "source": "Telangana Today (PTI); CappNotes; 5paisa",
+      "block": "chart",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "PSU banks jump 2.2% and Kotak 4.3% as Nifty Bank rises 1.2%; Bank of Baroda reports Friday",
+      "short": "PSU banks jump 2.2% and Kotak 4.3% as Nifty Bank rises 1.2%",
+      "source": "Yahoo Finance; Kotak Neo; Zee Business",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
