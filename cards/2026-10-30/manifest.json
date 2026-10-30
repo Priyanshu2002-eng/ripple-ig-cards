@@ -1,0 +1,135 @@
+{
+  "feedDate": "Today · Friday, 30 October 2026",
+  "cards": [
+    {
+      "rank": 1,
+      "title": "Alphabet sinks about 10% on its first miss in four years as capex jumps; Microsoft rises and offers buyouts",
+      "meta": "#1USTech & AICappNotes; Tradingkey; NewsCord · 29 Oct 2026",
+      "sourceLine": "CappNotes; Tradingkey; NewsCord · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_01.png",
+      "ig": "card_01.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 2,
+      "title": "Sensex jumps 905 points as the Fed holds and talk of a capital gains tax cut draws foreign buyers",
+      "meta": "#2IndiaMarketsHDFC Sky; 5paisa; ANI · 29 Oct 2026",
+      "sourceLine": "HDFC Sky; 5paisa; ANI · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_02.png",
+      "ig": "card_02.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 3,
+      "title": "Amazon falls more than 7% after hours on an EPS miss as trailing free cash flow turns negative $42 billion; AWS grows 39%",
+      "meta": "#3USTech & AINewsCord (Quartz, CNBC, FactSet) · 29 Oct 2026",
+      "sourceLine": "NewsCord (Quartz, CNBC, FactSet) · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_03.png",
+      "ig": "card_03.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 4,
+      "title": "Trent's Q2 profit rises 25% to ₹468 crore and operating EBITDA 37% as Zudio passes 1,000 stores",
+      "meta": "#4IndiaEarningsBusiness Today; Upstox; Aerohaber · 29 Oct 2026",
+      "sourceLine": "Business Today; Upstox; Aerohaber · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_04.png",
+      "ig": "card_04.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 5,
+      "title": "IndiGo's Q2 loss narrows to ₹1,879 crore as fares rise 34%, but fuel cost per seat jumps 69%",
+      "meta": "#5IndiaEarningsBusiness Today; Upstox; Aerohaber · 29 Oct 2026",
+      "sourceLine": "Business Today; Upstox; Aerohaber · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_05.png",
+      "ig": "card_05.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 6,
+      "title": "Oil slips as Vance reaches out to Iran, while Washington warns Gulf states of strikes after the midterms",
+      "meta": "#6Middle EastCommoditiesReuters via Euronext; HDFC Sky · 29 Oct 2026",
+      "sourceLine": "Reuters via Euronext; HDFC Sky · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_06.png",
+      "ig": "card_06.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 7,
+      "title": "US PCE inflation runs at 3.6% as GDP beats; December rate-hike odds climb above 85%",
+      "meta": "#7USPolicyCappNotes; Yahoo Finance · 29 Oct 2026",
+      "sourceLine": "CappNotes; Yahoo Finance · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_07.png",
+      "ig": "card_07.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 8,
+      "title": "Rupee firms 3 paise to 95.25 as crude eases and Jefferies says an LTCG cut could bring foreign money back",
+      "meta": "#8IndiaMacroTelangana Today (PTI); CappNotes; 5paisa · 29 Oct 2026",
+      "sourceLine": "Telangana Today (PTI); CappNotes; 5paisa · 29 Oct 2026",
+      "hasWhoMoves": false,
+      "raw": "card_08.png",
+      "ig": "card_08.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 9,
+      "title": "PSU banks jump 2.2% and Kotak 4.3% as Nifty Bank rises 1.2%; Bank of Baroda reports Friday",
+      "meta": "#9IndiaMarketsYahoo Finance; Kotak Neo; Zee Business · 29 Oct 2026",
+      "sourceLine": "Yahoo Finance; Kotak Neo; Zee Business · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_09.png",
+      "ig": "card_09.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    },
+    {
+      "rank": 10,
+      "title": "Intel beats on data-centre revenue up 78% but falls about 15% after hours as its Q4 forecast misses",
+      "meta": "#10USTech & AITradingkey · 29 Oct 2026",
+      "sourceLine": "Tradingkey · 29 Oct 2026",
+      "hasWhoMoves": true,
+      "raw": "card_10.png",
+      "ig": "card_10.jpg",
+      "igSize": [
+        1080,
+        1350
+      ]
+    }
+  ]
+}
