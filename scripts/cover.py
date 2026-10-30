@@ -1,20 +1,25 @@
-"""Ripple cover slide: date-led market snapshot.
+"""Ripple cover slide (v3): see more, read less.
 
-Layout (1080 x 1350): wordmark with a line-art ripple, the date, the Nifty 50
-close with the day's move, a crisp line chart of recent Nifty closes (each
-session's segment green when it rose and red when it fell), a strip of other
-markets, the top 3 headlines, and a swipe cue.
+1080 x 1350, dark. From top to bottom:
+  * "R." mark + RIPPLE, and a huge bold date (day number + weekday/month/year)
+  * hero chart: recent Nifty 50 closes as a smooth line, each session green
+    (up) or red (down), regular dashed guide lines at round levels, a dashed
+    5-session average, and a bubble with the last close and the day's move
+  * five line-art tiles (Sensex, Brent, USD/INR, US 10-yr, Gold) with value and move
+  * a mood gauge (average tone of the day's stories, -1 to +1) next to the #1 story
+A large outline "R." sits in the background as line art.
 
-Data comes only from the Ripple Feed: each `days/<date>` doc has a `snapshot`
-list ({label, value, change}) with the previous session's close. History is
-rebuilt from those docs (consecutive duplicates = no new session, dropped).
+Data comes only from the Ripple Feed: `days/<date>.snapshot` ({label, value,
+change}, previous session's close); history = those docs with consecutive
+duplicates dropped (no new session).
 """
-import html as H, re
+import html as H, math, re
 
 BG, INK, MUT, DIM, LINE, ACC = "#0F1013", "#E9E9EC", "#A3A6AF", "#6B6E78", "#2A2C33", "#9085e9"
-UP, DOWN = "#2FBF71", "#E5484D"
-FONT = ("@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600"
-        "&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');")
+UP, DOWN, FLAT = "#2FBF71", "#E5484D", "#A3A6AF"
+FONT = ("@import url('https://fonts.googleapis.com/css2?family=Archivo+Black"
+        "&family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700"
+        "&family=JetBrains+Mono:wght@400;500&display=swap');")
 
 
 def num(s):
@@ -27,109 +32,165 @@ def sign(ch):
     return 0 if v is None or v == 0 else (1 if v > 0 else -1)
 
 
+def col(sg): return UP if sg > 0 else DOWN if sg < 0 else FLAT
+def arrow(sg): return "▲" if sg > 0 else "▼" if sg < 0 else "■"
+def short_label(s): return re.sub(r"\s*\(.*\)", "", s)
+
+
 def nifty_series(day_docs, max_points=22):
-    """day_docs: list of day-doc dicts (any order). Returns [(value, change_str)] oldest first."""
+    """Nifty 50 closes, oldest first, from Feed day docs (consecutive duplicates dropped)."""
     pts, last = [], None
     for d in sorted(day_docs, key=lambda x: x.get("date", "")):
         n = next((s for s in d.get("snapshot", []) if s.get("label", "").startswith("Nifty 50")), None)
         v = num(n["value"]) if n else None
         if v is None or v == last: continue
-        pts.append((v, n.get("change", ""))); last = v
+        pts.append(v); last = v
     return pts[-max_points:]
 
 
-def chart_svg(pts, w=912, h=360):
-    if len(pts) < 2: return ""
-    vals = [p[0] for p in pts]; lo, hi = min(vals), max(vals); pad = (hi - lo) * .12 or 1
-    lo2, hi2 = lo - pad, hi + pad
-    X = lambda i: 6 + i * (w - 150) / (len(pts) - 1)
-    Yv = lambda v: 14 + (hi2 - v) / (hi2 - lo2) * (h - 52)
-    grid = "".join(f"<line x1='0' x2='{w-130}' y1='{Yv(v):.1f}' y2='{Yv(v):.1f}' stroke='{LINE}' stroke-width='2' stroke-dasharray='4 8'/>"
-                   f"<text x='{w}' y='{Yv(v)+8:.1f}' text-anchor='end' fill='{DIM}' font-family='JetBrains Mono' font-size='22'>{t} {v:,.0f}</text>"
-                   for v, t in ((hi, "H"), (lo, "L")))
-    area = f"M{X(0):.1f},{h-38} " + " ".join(f"L{X(i):.1f},{Yv(v):.1f}" for i, v in enumerate(vals)) + f" L{X(len(vals)-1):.1f},{h-38} Z"
-    tot = vals[-1] - vals[0]; tc = UP if tot >= 0 else DOWN
-    segs = "".join(f"<line x1='{X(i-1):.1f}' y1='{Yv(vals[i-1]):.1f}' x2='{X(i):.1f}' y2='{Yv(vals[i]):.1f}' "
-                   f"stroke='{UP if vals[i] >= vals[i-1] else DOWN}' stroke-width='5' stroke-linecap='round'/>"
-                   for i in range(1, len(vals)))
-    lx, ly = X(len(vals) - 1), Yv(vals[-1])
-    return (f"<svg width='{w}' height='{h}' viewBox='0 0 {w} {h}'>"
-            f"<defs><linearGradient id='a' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='{tc}' stop-opacity='.22'/>"
-            f"<stop offset='1' stop-color='{tc}' stop-opacity='0'/></linearGradient></defs>{grid}"
-            f"<path d='{area}' fill='url(#a)'/>{segs}"
-            f"<circle cx='{lx:.1f}' cy='{ly:.1f}' r='16' fill='{tc}' opacity='.25'/><circle cx='{lx:.1f}' cy='{ly:.1f}' r='8' fill='{tc}'/>"
-            f"<text x='0' y='{h-4}' fill='{DIM}' font-family='JetBrains Mono' font-size='22'>{len(vals)} sessions ago</text>"
-            f"<text x='{w-130}' y='{h-4}' text-anchor='end' fill='{DIM}' font-family='JetBrains Mono' font-size='22'>last close</text></svg>")
+# ---- hero chart ----------------------------------------------------------------
+def _nice_step(span):
+    raw = span / 4
+    mag = 10 ** math.floor(math.log10(raw))
+    return next(m * mag for m in (1, 2, 2.5, 5, 10) if m * mag >= raw)
 
 
-def short_label(s):
-    return re.sub(r"\s*\(.*\)", "", s)
+def chart_svg(vals, day_change, w=912, h=400):
+    if len(vals) < 2: return ""
+    lo, hi = min(vals), max(vals)
+    step = _nice_step(hi - lo or 1)
+    g0, g1 = math.floor(lo / step) * step, math.ceil(hi / step) * step
+    if g1 == g0: g1 = g0 + step
+    L, R, T, B = 0, w - 120, 30, h - 40
+    X = lambda i: L + 8 + i * (R - L - 16) / (len(vals) - 1)
+    Y = lambda v: T + (g1 - v) / (g1 - g0) * (B - T)
+    out = []
+    v = g0
+    while v <= g1 + 1e-9:                                   # regular dashed guide lines at round levels
+        out.append(f"<line x1='{L}' x2='{R}' y1='{Y(v):.1f}' y2='{Y(v):.1f}' stroke='#30333C' stroke-width='2' stroke-dasharray='6 10'/>"
+                   f"<text x='{w}' y='{Y(v)+8:.1f}' text-anchor='end' fill='{DIM}' font-family='JetBrains Mono' font-size='22'>{v:,.0f}</text>")
+        v += step
+    P = [(X(i), Y(v)) for i, v in enumerate(vals)]
+    n = len(P)                                              # monotone cubic (Fritsch-Carlson): no overshoot
+    d = [(P[i + 1][1] - P[i][1]) / (P[i + 1][0] - P[i][0]) for i in range(n - 1)]
+    m = [d[0]] + [0 if d[i - 1] * d[i] <= 0 else (d[i - 1] + d[i]) / 2 for i in range(1, n - 1)] + [d[-1]]
+    for i in range(n - 1):
+        if d[i] == 0: m[i] = m[i + 1] = 0; continue
+        a, b = m[i] / d[i], m[i + 1] / d[i]
+        if a * a + b * b > 9:
+            t = 3 / math.sqrt(a * a + b * b); m[i], m[i + 1] = t * a * d[i], t * b * d[i]
+    def seg(i):
+        (x1, y1), (x2, y2) = P[i - 1], P[i]; dx = (x2 - x1) / 3
+        return f"C{x1+dx:.1f},{y1+m[i-1]*dx:.1f} {x2-dx:.1f},{y2-m[i]*dx:.1f} {x2:.1f},{y2:.1f}"
+    tc = UP if vals[-1] >= vals[0] else DOWN
+    area = f"M{P[0][0]:.1f},{B} L{P[0][0]:.1f},{P[0][1]:.1f} " + " ".join(seg(i) for i in range(1, len(P))) + f" L{P[-1][0]:.1f},{B} Z"
+    out.append(f"<defs><linearGradient id='a' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='{tc}' stop-opacity='.20'/>"
+               f"<stop offset='1' stop-color='{tc}' stop-opacity='0'/></linearGradient></defs><path d='{area}' fill='url(#a)'/>")
+    k = 5                                                   # dashed 5-session average
+    if len(vals) > k:
+        ma = [(X(i), Y(sum(vals[i - k + 1:i + 1]) / k)) for i in range(k - 1, len(vals))]
+        out.append(f"<polyline points='{' '.join(f'{x:.1f},{y:.1f}' for x, y in ma)}' fill='none' stroke='{ACC}' stroke-width='3' stroke-dasharray='12 10' opacity='.9'/>")
+    for i in range(1, len(P)):
+        out.append(f"<path d='M{P[i-1][0]:.1f},{P[i-1][1]:.1f} {seg(i)}' fill='none' stroke='{UP if vals[i] >= vals[i-1] else DOWN}' stroke-width='6' stroke-linecap='round'/>")
+    lx, ly = P[-1]; dc = col(sign(day_change))
+    out.append(f"<line x1='{lx:.1f}' x2='{lx:.1f}' y1='{ly:.1f}' y2='{B}' stroke='{dc}' stroke-width='2' stroke-dasharray='3 6'/>"
+               f"<circle cx='{lx:.1f}' cy='{ly:.1f}' r='20' fill='{dc}' opacity='.22'/><circle cx='{lx:.1f}' cy='{ly:.1f}' r='9' fill='{dc}'/>")
+    out.append(f"<text x='{L}' y='{h-4}' fill='{DIM}' font-family='JetBrains Mono' font-size='21'>{len(vals)} sessions ago</text>"
+               f"<line x1='{R-300}' x2='{R-250}' y1='{h-12}' y2='{h-12}' stroke='{ACC}' stroke-width='3' stroke-dasharray='12 10'/>"
+               f"<text x='{R-238}' y='{h-4}' fill='{DIM}' font-family='JetBrains Mono' font-size='21'>5-session avg</text>")
+    return f"<svg width='{w}' height='{h}' viewBox='0 0 {w} {h}'>{''.join(out)}</svg>"
 
 
-def ripple_mark(size=46):
-    rings = "".join(f"<circle cx='50' cy='50' r='{r}' fill='none' stroke='{ACC}' stroke-width='5' opacity='{o}'/>" for r, o in ((20, 1), (33, .6), (46, .3)))
-    return f"<svg width='{size}' height='{size}' viewBox='0 0 100 100'><circle cx='50' cy='50' r='8' fill='{ACC}'/>{rings}</svg>"
+# ---- line-art icons (stroke only, 64 x 64) ---------------------------------------
+def icon(label, c):
+    s = f"fill='none' stroke='{c}' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'"
+    l = label.lower()
+    if "brent" in l or "crude" in l or "oil" in l:
+        body = f"<path {s} d='M32 8 C32 8 14 30 14 42 a18 18 0 0 0 36 0 C50 30 32 8 32 8Z'/><path {s} d='M24 44 a8 8 0 0 0 8 8'/>"
+    elif "inr" in l or "rupee" in l:
+        body = f"<circle {s} cx='32' cy='32' r='24'/><path {s} d='M23 21h18M23 29h18M28 21c10 0 10 14 0 14h-4l14 12'/>"
+    elif "10-yr" in l or "yield" in l or "treasury" in l:
+        body = f"<rect {s} x='12' y='10' width='40' height='46' rx='5'/><path {s} d='M22 44 L42 24'/><circle {s} cx='24' cy='26' r='3'/><circle {s} cx='40' cy='42' r='3'/>"
+    elif "gold" in l:
+        body = f"<path {s} d='M10 48 L18 30 H46 L54 48 Z'/><path {s} d='M22 30 L27 18 H37 L42 30'/>"
+    else:   # index: candles
+        body = (f"<path {s} d='M16 12v40M32 8v44M48 16v36'/><rect {s} x='11' y='22' width='10' height='16' rx='2'/>"
+                f"<rect {s} x='27' y='16' width='10' height='24' rx='2'/><rect {s} x='43' y='26' width='10' height='14' rx='2'/>")
+    return f"<svg width='58' height='58' viewBox='0 0 64 64'>{body}</svg>"
 
 
-def cover_html(date, snapshot, series, headlines, n_stories):
+# ---- mood gauge ----------------------------------------------------------------
+def gauge_svg(t, w=250):
+    """t in [-1, 1]: average tone of the day's stories."""
+    t = max(-1.0, min(1.0, t)); cx, cy, r = w / 2, 128, 100
+    def pt(a, rr=r): return cx + rr * math.cos(a), cy - rr * math.sin(a)
+    arcs = []
+    for a0, a1, c in ((math.pi, math.pi * .62, DOWN), (math.pi * .6, math.pi * .4, FLAT), (math.pi * .38, 0, UP)):
+        (x0, y0), (x1, y1) = pt(a0), pt(a1)
+        arcs.append(f"<path d='M{x0:.1f},{y0:.1f} A{r},{r} 0 0 1 {x1:.1f},{y1:.1f}' fill='none' stroke='{c}' stroke-width='14' stroke-linecap='round' opacity='.85'/>")
+    a = math.pi * (1 - (t + 1) / 2); nx, ny = pt(a, r - 26)
+    word = "Upbeat" if t > .25 else "Mildly positive" if t > .05 else "Downbeat" if t < -.25 else "Mildly negative" if t < -.05 else "Mixed"
+    return (f"<svg width='{w}' height='190' viewBox='0 0 {w} 190'>{''.join(arcs)}"
+            f"<line x1='{cx}' y1='{cy}' x2='{nx:.1f}' y2='{ny:.1f}' stroke='{INK}' stroke-width='6' stroke-linecap='round'/>"
+            f"<circle cx='{cx}' cy='{cy}' r='11' fill='{INK}'/>"
+            f"<text x='{cx}' y='178' text-anchor='middle' fill='{INK}' font-family='Hanken Grotesk' font-weight='600' font-size='27'>{word}</text></svg>"), word
+
+
+def cover_html(date, snapshot, series, top_headline, tone_avg, n_stories):
     e = H.escape
     nif = next((s for s in snapshot if s.get("label", "").startswith("Nifty 50")), None)
     others = [s for s in snapshot if not s.get("label", "").startswith("Nifty 50")][:5]
-    big = ""
-    if nif:
-        sg = sign(nif["change"]); c = UP if sg > 0 else DOWN if sg < 0 else MUT
-        arrow = "▲" if sg > 0 else "▼" if sg < 0 else "■"
-        span = ""
-        if len(series) >= 2:
-            pc = (series[-1][0] / series[0][0] - 1) * 100
-            span = f"<span class='sp'>{len(series)} sessions <b style='color:{UP if pc >= 0 else DOWN}'>{'+' if pc >= 0 else '−'}{abs(pc):.1f}%</b></span>"
-        big = (f"<div class='nf'><div><p class='lab'>{e(nif['label'])}</p><p class='val'>{e(nif['value'])}</p></div>"
-               f"<div class='chg'><span class='pill' style='color:{c};border-color:{c}55;background:{c}14'>{arrow} {e(nif['change'])}</span>{span}</div></div>")
-    strip = "".join(
-        f"<div class='m'><p class='ml'>{e(short_label(s['label']))}</p><p class='mv'>{e(s['value'])}</p>"
-        f"<p class='mc' style='color:{UP if sign(s['change']) > 0 else DOWN if sign(s['change']) < 0 else MUT}'>"
-        f"{'▲' if sign(s['change']) > 0 else '▼' if sign(s['change']) < 0 else '■'} {e(s['change'])}</p></div>" for s in others)
-    hl = "".join(f"<li><span>{i}</span><p>{e(h)}</p></li>" for i, h in enumerate(headlines[:3], 1))
-    arcs = "".join(f"<circle cx='1080' cy='0' r='{r}' fill='none' stroke='{ACC}' stroke-width='2' opacity='{o}'/>"
-                   for r, o in ((180, .22), (260, .16), (340, .11), (420, .07), (500, .04)))
+    dch = nif["change"] if nif else ""
+    sg = sign(dch)
+    span = ""
+    if len(series) >= 2:
+        pc = (series[-1] / series[0] - 1) * 100
+        span = f"{len(series)} sessions <b style='color:{col(1 if pc > 0 else -1 if pc < 0 else 0)}'>{'+' if pc >= 0 else '−'}{abs(pc):.1f}%</b>"
+    tiles = "".join(
+        f"<div class='t'>{icon(s['label'], col(sign(s['change'])))}<p class='tl'>{e(short_label(s['label']))}</p>"
+        f"<p class='tv'>{e(s['value'])}</p><p class='tc' style='color:{col(sign(s['change']))}'>{arrow(sign(s['change']))} {e(s['change'])}</p></div>"
+        for s in others)
+    g, _ = gauge_svg(tone_avg)
     return f"""<!doctype html><html><head><meta charset='utf-8'><style>{FONT}
 *{{box-sizing:border-box;margin:0}}
 html,body{{width:1080px;height:1350px;background:{BG};color:{INK};overflow:hidden;font-family:'Hanken Grotesk',sans-serif}}
-.bg{{position:absolute;inset:0}}
-.wrap{{position:absolute;inset:0;padding:64px 84px 60px;display:flex;flex-direction:column}}
-.top{{display:flex;justify-content:space-between;align-items:center;font:500 25px 'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:{MUT}}}
-.brand{{display:flex;align-items:center;gap:16px;color:{INK}}}
-.wd{{margin-top:44px;font:500 26px 'JetBrains Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:{ACC}}}
-.date{{font:600 82px/1.02 'Newsreader',serif;letter-spacing:-.01em;margin-top:8px}}
-.nf{{margin-top:40px;display:flex;justify-content:space-between;align-items:flex-end}}
-.lab{{font:500 24px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:{MUT}}}
-.val{{font:700 74px/1 'Hanken Grotesk',sans-serif;letter-spacing:-.02em;margin-top:8px}}
-.chg{{display:flex;flex-direction:column;align-items:flex-end;gap:10px}}
-.pill{{font:500 32px 'JetBrains Mono',monospace;border:2px solid;border-radius:999px;padding:8px 22px}}
-.sp{{font:400 22px 'JetBrains Mono',monospace;color:{DIM}}}
-.chart{{margin-top:22px}}
-.strip{{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid {LINE};border-bottom:2px solid {LINE};margin-top:14px}}
-.m{{padding:16px 0 16px 14px;border-left:2px solid {LINE}}}.m:first-child{{border-left:0;padding-left:0}}
-.ml{{font:500 19px 'JetBrains Mono',monospace;color:{DIM};text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}}
-.mv{{font:600 27px 'Hanken Grotesk',sans-serif;margin-top:6px;white-space:nowrap}}
-.mc{{font:400 20px 'JetBrains Mono',monospace;margin-top:4px;white-space:nowrap}}
-ol{{list-style:none;padding:0;margin-top:14px;display:flex;flex-direction:column;gap:16px}}
-li{{display:flex;gap:22px;align-items:baseline}}
-li span{{font:500 24px 'JetBrains Mono',monospace;color:{ACC};min-width:30px}}
-li p{{font:500 33px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-.eb{{margin-top:30px;font:500 22px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:{ACC}}}
-.foot{{margin-top:auto;display:flex;justify-content:space-between;font:400 23px 'JetBrains Mono',monospace;color:{DIM}}}
-.foot b{{font-weight:400;color:{ACC}}}
+.wm{{position:absolute;right:-30px;top:-70px;font:600px/1 'Archivo Black',sans-serif;color:transparent;-webkit-text-stroke:3px #1E2027;letter-spacing:-.06em}}
+.wrap{{position:absolute;inset:0;padding:56px 84px 54px;display:flex;flex-direction:column}}
+.top{{display:flex;justify-content:space-between;align-items:center;font:500 24px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:{MUT}}}
+.logo{{display:flex;align-items:center;gap:16px;color:{INK}}}
+.logo i{{font:normal 46px/1 'Archivo Black',sans-serif;letter-spacing:-.02em;color:{INK}}}.logo i b{{color:{ACC};font-weight:normal}}
+.dt{{display:flex;align-items:flex-end;gap:30px;margin-top:22px}}
+.dd{{font:250px/.8 'Archivo Black',sans-serif;letter-spacing:-.05em}}
+.dm p{{font:62px/.95 'Archivo Black',sans-serif;letter-spacing:-.01em;text-transform:uppercase}}
+.dm .wd{{font:500 26px 'JetBrains Mono',monospace;letter-spacing:.22em;color:{ACC};margin-bottom:12px}}
+.dm .yr{{color:{DIM}}}
+.nf{{display:flex;justify-content:space-between;align-items:flex-end;margin-top:40px}}
+.nl{{font:500 23px 'JetBrains Mono',monospace;letter-spacing:.16em;color:{MUT}}}
+.nv{{font:700 64px/1 'Hanken Grotesk',sans-serif;letter-spacing:-.02em;margin-top:8px}}
+.nc{{text-align:right}}
+.pill{{display:inline-block;font:500 32px 'JetBrains Mono',monospace;border:2px solid;border-radius:999px;padding:6px 22px}}
+.sp{{font:400 22px 'JetBrains Mono',monospace;color:{DIM};margin-top:10px}}
+.chart{{margin-top:8px}}
+.tiles{{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:20px}}
+.t{{border:2px solid {LINE};border-radius:22px;padding:16px 10px 14px;display:flex;flex-direction:column;align-items:center;background:#14151A}}
+.tl{{font:500 18px 'JetBrains Mono',monospace;color:{DIM};letter-spacing:.06em;text-transform:uppercase;margin-top:8px;white-space:nowrap}}
+.tv{{font:600 25px 'Hanken Grotesk',sans-serif;margin-top:4px;white-space:nowrap}}
+.tc{{font:400 19px 'JetBrains Mono',monospace;margin-top:2px;white-space:nowrap}}
+.low{{margin-top:auto;display:flex;gap:30px;align-items:center;border-top:2px solid {LINE};padding-top:22px}}
+.ml{{font:500 19px 'JetBrains Mono',monospace;color:{DIM};letter-spacing:.12em;text-transform:uppercase;text-align:center;margin-bottom:-6px}}
+.hl{{flex:1}}
+.k{{font:500 22px 'JetBrains Mono',monospace;letter-spacing:.18em;color:{ACC}}}
+.h{{font:600 40px/1.15 'Newsreader',serif;margin-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
+.s{{margin-top:14px;display:flex;justify-content:space-between;font:400 22px 'JetBrains Mono',monospace;color:{DIM}}}.s b{{font-weight:400;color:{ACC}}}
 </style></head><body>
-<svg class='bg' width='1080' height='1350'>{arcs}</svg>
+<div class='wm'>R.</div>
 <div class='wrap'>
- <div class='top'><span class='brand'>{ripple_mark()}Ripple</span><span>Daily market brief</span></div>
- <p class='wd'>{date.strftime('%A')}</p>
- <p class='date'>{date.day} {date.strftime('%B %Y')}</p>
- {big}
- <div class='chart'>{chart_svg(series)}</div>
- <div class='strip'>{strip}</div>
- <p class='eb'>Top stories today</p>
- <ol>{hl}</ol>
- <div class='foot'><span>{n_stories} stories inside · not investment advice</span><b>Swipe →</b></div>
+ <div class='top'><span class='logo'><i>R<b>.</b></i>Ripple</span><span>Daily market brief</span></div>
+ <div class='dt'><p class='dd'>{date.day:02d}</p><div class='dm'><p class='wd'>{date.strftime('%A').upper()}</p><p>{date.strftime('%B')}</p><p class='yr'>{date.year}</p></div></div>
+ <div class='nf'><div><p class='nl'>NIFTY 50</p><p class='nv'>{e(nif['value']) if nif else '—'}</p></div>
+  <div class='nc'><span class='pill' style='color:{col(sg)};border-color:{col(sg)}66;background:{col(sg)}18'>{arrow(sg)} {e(dch)}</span><p class='sp'>{span}</p></div></div>
+ <div class='chart'>{chart_svg(series, dch)}</div>
+ <div class='tiles'>{tiles}</div>
+ <div class='low'><div><p class='ml'>Story mood</p>{g}</div>
+  <div class='hl'><p class='k'>TODAY'S #1</p><p class='h'>{e(top_headline)}</p><p class='s'><span>{n_stories} stories inside</span><b>Swipe →</b></p></div></div>
 </div></body></html>"""
