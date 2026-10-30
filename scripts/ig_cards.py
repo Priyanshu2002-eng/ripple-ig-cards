@@ -99,7 +99,7 @@ EXTRACT = r"""el => {
   const who = blk(/who moves/i), cal = blk(/moves this month/i);
   const chips = who ? [...who.querySelectorAll('.chip')].map(c => {
       const m = c.querySelector('.mono');
-      return m ? {name: txt(c.firstChild), val: txt(m), color: m.style.color} : {more: txt(c)};
+      return m ? {name: txt(c.firstChild), val: txt(m), color: m.style.color, node: c.dataset.node || ''} : {more: txt(c)};
   }) : [];
   const cals = cal ? [...cal.querySelectorAll('.chip')].map(c => {
       const m = c.querySelector('.mono'), mu = c.querySelector('.muted');
@@ -228,11 +228,11 @@ def story_html(n, N, s, nsent):
 
 # ---- cover data -------------------------------------------------------------------
 WARN = []
-def yahoo_history(before):
+def yahoo_history(before, symbol="%5ENSEI", rng="2y"):
     with tempfile.TemporaryDirectory() as td:
-        f = os.path.join(td, "nsei.json")
+        f = os.path.join(td, "y.json")
         r = subprocess.run(["curl", "-s", "-m", "25", "-A", "Mozilla/5.0", "-o", f,
-                            "https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI?range=2y&interval=1d"])
+                            f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={rng}&interval=1d"])
         if r.returncode: raise RuntimeError("curl failed")
         y = json.load(open(f))["chart"]["result"][0]
     ist = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
@@ -257,6 +257,37 @@ if POSTED_DIR and os.path.isdir(POSTED_DIR):
 else:
     WARN.append("no posted_dir: letter cycle assumed to start today")
 LETTER = cover.letter_for(post_index)
+
+# ---- today's watchlist: Indian listed stocks from the stories' "Who moves" ------------
+cat = db.get("config/catalog", {}); cat = cat.get("data", cat)
+LISTED = {c["id"]: c for c in cat.get("companies", [])
+          if c.get("country") == "India" and c.get("ticker") and c["ticker"] != "Unlisted"}
+cands = []
+for n, s_ in enumerate(stories, 1):
+    for ch in s_["chips"]:
+        v = cover.num(ch.get("val")) if "name" in ch else None
+        if v and ch.get("node") in LISTED:
+            c = LISTED[ch["node"]]
+            cands.append({"id": c["id"], "name": re.sub(r"\s*\(.*\)", "", c["name"]), "ticker": c["ticker"], "push": int(v), "story": n})
+cands.sort(key=lambda c: -abs(c["push"]))
+picked, seen_ids, seen_stories = [], set(), set()
+for rnd in (0, 1):                                     # one per story first, then fill
+    for c in cands:
+        if len(picked) >= 4: break
+        if c["id"] in seen_ids or (rnd == 0 and c["story"] in seen_stories): continue
+        try:
+            h = yahoo_history(date, c["ticker"] + ".NS", "3mo")
+        except Exception as ex:
+            WARN.append(f"no prices for {c['ticker']} ({ex})"); seen_ids.add(c["id"]); continue
+        if len(h) < 10 or (date - h[-1][0]).days > 6:
+            WARN.append(f"stale prices for {c['ticker']}"); seen_ids.add(c["id"]); continue
+        c["hist"] = h; picked.append(c); seen_ids.add(c["id"]); seen_stories.add(c["story"])
+picked.sort(key=lambda c: c["story"])
+close_date = max((c["hist"][-1][0] for c in picked), default=hist[-1][0] if hist else None)
+COVER_STYLE = os.environ.get("RIPPLE_COVER", "nifty")   # "watchlist" once approved
+COVER_KIND = "watchlist" if COVER_STYLE == "watchlist" and len(picked) >= 2 else "nifty"
+if COVER_STYLE == "watchlist" and COVER_KIND == "nifty":
+    WARN.append(f"only {len(picked)} watchlist stocks with prices: used the Nifty chart cover")
 COVER_FIT = "() => document.documentElement.scrollHeight <= 1350"
 
 FIT = "() => { const m=document.getElementById('m'); return m.scrollHeight <= m.clientHeight + 1; }"
@@ -275,7 +306,12 @@ with sync_playwright() as p:
             return False
         pg.screenshot(path=os.path.join(out_dir, "ig", name), type="jpeg", quality=92)
         return True
-    pg.set_content(cover.cover_html(date, hist, snap, [short(x["title"]) for x in stories[:3]], N, LETTER), wait_until="networkidle")
+    heads = [short(x["title"]) for x in stories[:3]]
+    if COVER_KIND == "watchlist":
+        chtml = cover.watch_cover_html(date, picked, close_date, snap, heads, N, LETTER)
+    else:
+        chtml = cover.cover_html(date, hist, snap, heads, N, LETTER)
+    pg.set_content(chtml, wait_until="networkidle")
     pg.evaluate("document.fonts.ready")
     if not pg.evaluate(COVER_FIT):
         sys.exit("cover does not fit")
@@ -292,10 +328,11 @@ with sync_playwright() as p:
     b.close()
 
 with open(os.path.join(out_dir, "manifest.json"), "w") as fh:
-    json.dump({"feedDate": day, "date": dd["date"], "cover": "slide_00.jpg", "letter": LETTER, "postIndex": post_index,
+    json.dump({"feedDate": day, "date": dd["date"], "cover": "slide_00.jpg", "letter": LETTER, "postIndex": post_index, "coverKind": COVER_KIND,
+               "watchlist": [{k: c[k] for k in ("name", "ticker", "push", "story")} | {"lastClose": c["hist"][-1][1], "closeDate": str(c["hist"][-1][0])} for c in picked],
                "niftyHistory": hist_src, "niftyLast": hist[-1][1] if hist else None, "warnings": WARN, "cards": cards},
               fh, indent=2, ensure_ascii=False)
-print(json.dumps({"feedDate": day, "n": N, "letter": LETTER, "niftyHistory": hist_src, "warnings": WARN,
+print(json.dumps({"feedDate": day, "n": N, "letter": LETTER, "cover": COVER_KIND, "watchlist": [c["ticker"] for c in picked], "niftyHistory": hist_src, "warnings": WARN,
                   "blocks": {c["n"]: c["block"] for c in cards}}))
 
 # ---- caption: same 1..N numbering as the slides ------------------------------

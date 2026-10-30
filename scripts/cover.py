@@ -177,3 +177,103 @@ li p{{font:500 34px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
 </div>
 <div class='foot'><span>{n_stories} stories inside · not investment advice</span><b>Swipe →</b></div>
 </body></html>"""
+
+
+# =================================================================================
+# v5 cover: TODAY'S WATCHLIST (replaces the Nifty chart; v4 cover_html above is the fallback)
+# =================================================================================
+# The date on the cover is today, but every price is the previous session's close.
+# So prices are always labelled with their close date, and the hero is a
+# watchlist: the Indian stocks that today's stories are expected to move (Ripple's
+# "Who moves" estimate), each with its recent closes as a solid line, a dotted line
+# at the last close running on to the tile's edge ("where it ended"), and the size
+# and direction of the news pressure. It's Ripple's estimate, not a forecast or advice.
+
+def spark_svg(hist, w=388, h=112, n=22):
+    pts = [c for _, c in hist][-n:]
+    if len(pts) < 2: return ""
+    lo, hi = min(pts), max(pts); pad = (hi - lo) * .12 or 1; lo -= pad; hi += pad
+    R = w - 64
+    X = lambda i: 4 + i * (R - 4) / (len(pts) - 1)
+    Y = lambda v: 8 + (hi - v) / (hi - lo) * (h - 16)
+    c = UP if pts[-1] >= pts[0] else DOWN
+    line = " ".join(f"{X(i):.1f},{Y(v):.1f}" for i, v in enumerate(pts))
+    lx, ly = X(len(pts) - 1), Y(pts[-1])
+    gid = f"g{abs(hash(line)) % 99999}"
+    return (f"<svg width='{w}' height='{h}' viewBox='0 0 {w} {h}'>"
+            f"<defs><linearGradient id='{gid}' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='{c}' stop-opacity='.28'/>"
+            f"<stop offset='1' stop-color='{c}' stop-opacity='0'/></linearGradient></defs>"
+            f"<polygon points='4,{h} {line} {lx:.1f},{h}' fill='url(#{gid})'/>"
+            f"<polyline points='{line}' fill='none' stroke='{c}' stroke-width='3.5' stroke-linejoin='round'/>"
+            f"<line x1='{lx:.1f}' x2='{w-8}' y1='{ly:.1f}' y2='{ly:.1f}' stroke='{INK}' stroke-width='3' stroke-dasharray='2 9' stroke-linecap='round'/>"
+            f"<circle cx='{lx:.1f}' cy='{ly:.1f}' r='6' fill='{c}'/>"
+            f"<circle cx='{w-9}' cy='{ly:.1f}' r='7' fill='{BG}' stroke='{INK}' stroke-width='3'/></svg>")
+
+
+def watch_tile(t):
+    """t: {name, ticker, hist[(date, close)], push (int, signed), story}"""
+    e = H.escape
+    c_last = t["hist"][-1][1]; c_prev = t["hist"][-2][1] if len(t["hist"]) > 1 else None
+    d1 = pct(c_last, c_prev); s1 = 0 if d1 is None else (1 if d1 > 0 else -1 if d1 < 0 else 0)
+    p = t["push"]; ps = 1 if p > 0 else -1 if p < 0 else 0
+    lvl = "Strong" if abs(p) >= 15 else "Moderate" if abs(p) >= 6 else "Mild"
+    return (f"<div class='w'><div class='wh'><p class='wn'>{e(t['name'])}</p><p class='wt'>NSE · {e(t['ticker'])}</p></div>"
+            f"<p class='wp'>₹{c_last:,.2f} <span style='color:{col(s1)}'>{arrow(s1)} {'' if d1 is None else f'{abs(d1):.2f}%'}</span></p>"
+            f"{spark_svg(t['hist'])}"
+            f"<p class='ws'><b style='color:{col(ps)}'>{arrow(ps)} {lvl} {'tailwind' if ps > 0 else 'headwind' if ps < 0 else 'news'}</b>"
+            f"<span>Story #{t['story']}</span></p></div>")
+
+
+def watch_cover_html(date, watch, close_date, snapshot, headlines, n_stories, letter="R"):
+    e = H.escape
+    cd = f"{close_date.strftime('%a')} {close_date.day} {close_date.strftime('%b')}" if close_date else "previous session"
+    order = ["Nifty 50", "Sensex", "Brent", "USD/INR", "US 10-yr", "Gold"]
+    snap = sorted(snapshot, key=lambda s: next((i for i, k in enumerate(order) if s.get("label", "").startswith(k)), 9))[:6]
+    strip = "".join(f"<div><p class='sl'>{e(short_label(s['label']))}</p><p class='sv'>{e(s['value'])}</p>"
+                    f"<p class='sc' style='color:{col(sign(s['change']))}'>{arrow(sign(s['change']))} {e(s['change'].lstrip('+−-'))}</p></div>" for s in snap)
+    tiles = "".join(watch_tile(t) for t in watch[:4])
+    hl = "".join(f"<li><span>{i}</span><p>{e(h)}</p></li>" for i, h in enumerate(headlines[:3], 1))
+    return f"""<!doctype html><html><head><meta charset='utf-8'><style>{FONT}
+*{{box-sizing:border-box;margin:0}}
+html,body{{width:1080px;height:1350px;background:{BG};color:{INK};overflow:hidden;font-family:'Hanken Grotesk',sans-serif}}
+.wm{{position:absolute;right:76px;top:92px;width:300px;text-align:right;font:270px/1 'Archivo Black',sans-serif;color:transparent;-webkit-text-stroke:4px #3A3558}}
+.pad{{position:relative;padding:0 84px}}
+.top{{padding-top:56px;display:flex;justify-content:space-between;align-items:center;font:500 24px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:{MUT}}}
+.logo{{display:flex;align-items:center;gap:16px;color:{INK}}}
+.logo i{{font:normal 46px/1 'Archivo Black',sans-serif;color:{INK}}}.logo i b{{color:{ACC};font-weight:normal}}
+.dt{{display:flex;align-items:flex-end;gap:28px;margin-top:20px}}
+.dd{{font:210px/.8 'Archivo Black',sans-serif;letter-spacing:-.05em}}
+.dm p{{font:54px/.95 'Archivo Black',sans-serif;text-transform:uppercase}}
+.dm .wd{{font:500 25px 'JetBrains Mono',monospace;letter-spacing:.22em;color:{ACC};margin-bottom:12px}}
+.dm .yr{{color:{DIM}}}
+.eh{{margin-top:44px;display:flex;justify-content:space-between;align-items:baseline}}
+.eh b{{font:28px 'Archivo Black',sans-serif;letter-spacing:.04em;text-transform:uppercase;font-weight:normal}}
+.eh span{{font:400 20px 'JetBrains Mono',monospace;color:{DIM}}}
+.grid{{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}}
+.w{{border:2px solid {LINE};border-radius:24px;padding:18px 20px 16px;background:#14151A}}
+.wh{{display:flex;justify-content:space-between;align-items:baseline;gap:10px}}
+.wn{{font:700 30px 'Hanken Grotesk',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.wt{{font:500 17px 'JetBrains Mono',monospace;color:{DIM};white-space:nowrap}}
+.wp{{font:600 25px 'Hanken Grotesk',sans-serif;margin:4px 0 6px}}.wp span{{font:500 20px 'JetBrains Mono',monospace;margin-left:6px}}
+.ws{{display:flex;justify-content:space-between;margin-top:8px;font:500 19px 'JetBrains Mono',monospace;color:{DIM}}}
+.ws b{{font-weight:500}}
+.strip{{display:grid;grid-template-columns:repeat(6,1fr);margin-top:22px;border-top:2px solid {LINE};border-bottom:2px solid {LINE};padding:12px 0}}
+.sl{{font:500 16px 'JetBrains Mono',monospace;color:{DIM};text-transform:uppercase;white-space:nowrap}}
+.sv{{font:600 21px 'Hanken Grotesk',sans-serif;margin-top:2px;white-space:nowrap}}.sc{{font:400 17px 'JetBrains Mono',monospace;white-space:nowrap}}
+.eb{{margin-top:22px;font:500 21px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:{ACC}}}
+ol{{list-style:none;padding:0;margin-top:8px;display:flex;flex-direction:column;gap:6px}}
+li{{display:flex;gap:20px;align-items:baseline}}li span{{font:500 22px 'JetBrains Mono',monospace;color:{ACC};min-width:26px}}
+li p{{font:500 31px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.foot{{position:absolute;left:84px;right:84px;bottom:44px;display:flex;justify-content:space-between;font:400 20px 'JetBrains Mono',monospace;color:{DIM}}}.foot b{{font-weight:400;color:{ACC}}}
+</style></head><body>
+<div class='wm'>{e(letter)}</div>
+<div class='pad'>
+ <div class='top'><span class='logo'><i>R<b>.</b></i>Ripple</span><span>Daily market brief</span></div>
+ <div class='dt'><p class='dd'>{date.day:02d}</p><div class='dm'><p class='wd'>{date.strftime('%A').upper()}</p><p>{date.strftime('%B')}</p><p class='yr'>{date.year}</p></div></div>
+ <div class='eh'><b>Today's watchlist</b><span>prices at {e(cd)} close ┄○</span></div>
+ <div class='grid'>{tiles}</div>
+ <div class='strip'>{strip}</div>
+ <p class='eb'>Top stories today</p><ol>{hl}</ol>
+</div>
+<div class='foot'><span>Watchlist = Ripple's read of today's news, not advice</span><b>Swipe →</b></div>
+</body></html>"""
