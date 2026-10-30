@@ -173,6 +173,10 @@ h1{font-family:'Newsreader',serif;font-weight:600;font-size:calc(64px*var(--k));
 .chip .mono{margin-left:12px}
 .cal{font-size:calc(31px*var(--k));line-height:1.35;color:var(--ink);display:flex;gap:14px;margin-top:10px}
 .cal .note{color:var(--muted)}
+.fx{display:flex;align-items:center;justify-content:space-between;gap:24px;border:2px solid var(--line);background:var(--panel);border-radius:24px;padding:18px 24px}
+.fn{font-size:34px;font-weight:700}.ft{font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--dim);margin-top:2px}
+.fp{font-size:32px;font-weight:600;margin-top:10px}.fc{font-family:'JetBrains Mono',monospace;font-size:24px}
+.fd{font-family:'JetBrains Mono',monospace;font-size:19px;color:var(--dim);margin-top:6px}
 footer{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;font-family:'JetBrains Mono',monospace;font-size:24px;color:var(--dim);border-top:2px solid var(--line);padding-top:26px}
 footer .src{max-width:780px;line-height:1.35}
 footer .go{color:var(--accent);white-space:nowrap}
@@ -189,7 +193,7 @@ ol li span{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:
 def page(body): return f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}</style></head><body>{body}</body></html>"
 DSTR = f"{date.day} {date.strftime('%b %Y')}"
 
-def story_html(n, N, s, nsent):
+def story_html(n, N, s, nsent, with_cal=True):
     sents, summ = sentences(s["summary"]), ""
     for x in sents[:nsent]:
         if summ and len((summ + " " + x).split()) > 42: break
@@ -206,6 +210,18 @@ def story_html(n, N, s, nsent):
         chips = "".join(f"<span class='chip'>{esc(c['name'])}<span class='mono' style='color:{c['color']}'>{esc(c['val'])}</span></span>" for c in show)
         if extra: chips += f"<span class='chip' style='color:var(--muted)'>+{extra} more</span>"
         block = f"<div><p class='eyebrow'>Who moves</p><div class='chips'>{chips}</div></div>"
+    elif FOCUS.get(n):
+        f = FOCUS[n]; h = f["hist"]; last = h[-1][1]; d1 = cover.pct(last, h[-2][1]); sg = 0 if not d1 else (1 if d1 > 0 else -1)
+        cd = h[-1][0]
+        cal = ""
+        if s["cals"] and with_cal:
+            c = s["cals"][0]
+            cal = f"<div class='cal'><span class='mono' style='color:{c['color']}'>{esc(c['arrow'])}</span><span>{esc(c['label'])}<span class='note'> — {esc(c['note'])}</span></span></div>"
+        block = (f"<div><p class='eyebrow'>In focus</p><div class='fx'><div class='fl'><p class='fn'>{esc(f['name'])}</p>"
+                 f"<p class='ft'>{esc(f['tag'])}</p><p class='fp'>{esc(f['fmt'].format(last))}</p>"
+                 f"<p class='fc' style='color:{cover.col(sg)}'>{cover.arrow(sg)} {'' if d1 is None else f'{abs(d1):.2f}%'}</p>"
+                 f"<p class='fd'>{cd.strftime('%a')} {cd.day} {cd.strftime('%b')} close ┄○</p></div>"
+                 f"{cover.spark_svg(h, w=500, h=150)}</div>{cal}</div>")
     elif s["cals"]:
         rows = "".join(f"<div class='cal'><span class='mono' style='color:{c['color']}'>{esc(c['arrow'])}</span><span>{esc(c['label'])}<span class='note'> — {esc(c['note'])}</span></span></div>" for c in s["cals"][:2])
         block = f"<div><p class='eyebrow'>On the calendar</p>{rows}</div>"
@@ -224,10 +240,11 @@ def story_html(n, N, s, nsent):
  {block}
 </main>
 <footer><span class='src'>Source: {esc(source_name(s['src']))}</span><span class='go'>{go}</span></footer>
-</div>"""), ("who" if show else "calendar" if s["cals"] else "none")
+</div>"""), ("who" if show else "chart" if FOCUS.get(n) else "calendar" if s["cals"] else "none")
 
 # ---- cover data -------------------------------------------------------------------
 WARN = []
+YNAME = {}
 def yahoo_history(before, symbol="%5ENSEI", rng="2y"):
     with tempfile.TemporaryDirectory() as td:
         f = os.path.join(td, "y.json")
@@ -235,6 +252,7 @@ def yahoo_history(before, symbol="%5ENSEI", rng="2y"):
                             f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={rng}&interval=1d"])
         if r.returncode: raise RuntimeError("curl failed")
         y = json.load(open(f))["chart"]["result"][0]
+    YNAME[symbol] = (y.get("meta", {}).get("shortName") or y.get("meta", {}).get("longName") or "").strip()
     ist = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
     return [(datetime.datetime.fromtimestamp(t, ist).date(), c)
             for t, c in zip(y["timestamp"], y["indicators"]["quote"][0]["close"]) if c and datetime.datetime.fromtimestamp(t, ist).date() < before]
@@ -284,6 +302,49 @@ for rnd in (0, 1):                                     # one per story first, th
         c["hist"] = h; picked.append(c); seen_ids.add(c["id"]); seen_stories.add(c["story"])
 picked.sort(key=lambda c: c["story"])
 close_date = max((c["hist"][-1][0] for c in picked), default=hist[-1][0] if hist else None)
+# ---- "In focus" chart for stories with no Who moves ------------------------------------
+# (yahoo symbol, display name, tag, value format, Feed snapshot label prefix)
+MACRO = {"T_INR": ("INR=X", "USD/INR", "Rupee per dollar", "₹{:.2f}", "USD/INR"),
+         "T_OIL": ("BZ=F", "Brent crude", "Futures · Brent", "${:,.2f}", "Brent"),
+         "T_RATES": ("%5ETNX", "US 10-yr yield", "Bond yield · US 10Y", "{:.3f}%", "US 10-yr")}
+NIFTY = ("%5ENSEI", "Nifty 50", "Index · NSE", "{:,.2f}", "Nifty 50")
+REF_CLOSE = hist[-1][0] if hist else date - datetime.timedelta(days=1)   # date of the previous session's close
+
+def feed_series(prefix):
+    """Ripple's own previous-session values for a snapshot label, oldest first (consecutive repeats dropped)."""
+    vals, last = [], None
+    for d in sorted(day_docs, key=lambda x: x.get("date", "")):
+        if d.get("date", "") > dd["date"]: continue
+        x = next((s for s in d.get("snapshot", []) if s.get("label", "").startswith(prefix)), None)
+        v = cover.num(x["value"]) if x else None
+        if v is None or v == last: continue
+        vals.append(v); last = v
+    return [(REF_CLOSE - datetime.timedelta(days=len(vals) - 1 - i), v) for i, v in enumerate(vals)]
+
+def tidy(name):
+    name = re.sub(r"\s+(LTD|LIMITED|Ltd\.?|Limited)$", "", name.strip())
+    return " ".join(w if (len(w) <= 4 and w.isupper() and w not in ("BANK", "LIFE", "INDIA")) else w.capitalize() for w in name.split()) if name.isupper() else name
+items_by_title = {i.get("title", "").strip(): i for i in dd.get("items", [])}
+FOCUS = {}
+for n, s_ in enumerate(stories, 1):
+    if any("name" in c for c in s_["chips"]): continue
+    it = items_by_title.get(s_["title"].strip(), {})
+    syms = [x.get("symbol") for x in it.get("nse", []) if x.get("symbol")]
+    macro = next((MACRO[t["id"]] for t in it.get("themes", []) if t.get("id") in MACRO), None)
+    macro_story = it.get("category") in ("Macro", "Commodities", "Policy") or any(k in (it.get("type") or "") for k in ("Currency", "Oil", "Macro"))
+    order = ([macro] if macro and macro_story else []) + [(sym + ".NS", None, "NSE · " + sym, "₹{:,.2f}", None) for sym in syms[:2]] + ([macro] if macro else []) + [NIFTY]
+    for sym, name, tag, fmt, feed_label in order:
+        h = feed_series(feed_label) if feed_label else []
+        src = "feed"
+        if len(h) < 8:
+            try:
+                h, src = yahoo_history(date, sym, "3mo"), "yahoo"
+            except Exception as ex:
+                WARN.append(f"story {n}: no prices for {sym} ({ex})"); continue
+            if len(h) < 10 or (date - h[-1][0]).days > 6: continue
+        FOCUS[n] = {"name": name or tidy(YNAME.get(sym, "")) or tag.split(" · ")[-1], "tag": tag, "fmt": fmt, "hist": h, "symbol": sym, "src": src}
+        break
+
 COVER_STYLE = os.environ.get("RIPPLE_COVER", "watchlist")   # approved 30 Oct 2026; "nifty" = old chart cover
 COVER_KIND = "watchlist" if COVER_STYLE == "watchlist" and len(picked) >= 2 else "nifty"
 if COVER_STYLE == "watchlist" and COVER_KIND == "nifty":
@@ -297,7 +358,11 @@ cards = []
 with sync_playwright() as p:
     b = p.chromium.launch()
     pg = b.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
+    BANNED = ("not in the graph", "not in the catalog", "undefined", "nan%", ">null<", "[object")
     def shot(html, name, ks=(1, .95, .9, .86)):
+        low = html.lower()
+        bad = next((b for b in BANNED if b in low), None)
+        if bad: sys.exit(f"{name}: internal text '{bad}' would appear on the slide")
         for k in ks:
             pg.set_content(html.replace("--k:1", f"--k:{k}"), wait_until="networkidle")
             pg.evaluate("document.fonts.ready")
@@ -311,6 +376,8 @@ with sync_playwright() as p:
         chtml = cover.watch_cover_html(date, picked, close_date, snap, heads, N, LETTER)
     else:
         chtml = cover.cover_html(date, hist, snap, heads, N, LETTER)
+    bad = next((b for b in BANNED if b in chtml.lower()), None)
+    if bad: sys.exit(f"cover: internal text '{bad}' would appear on the slide")
     pg.set_content(chtml, wait_until="networkidle")
     pg.evaluate("document.fonts.ready")
     if not pg.evaluate(COVER_FIT):
@@ -318,8 +385,8 @@ with sync_playwright() as p:
     pg.screenshot(path=os.path.join(out_dir, "ig", "slide_00.jpg"), type="jpeg", quality=92)
     for n, s in enumerate(stories, 1):
         ok = False
-        for nsent in (2, 1):
-            html, block = story_html(n, N, s, nsent)
+        for nsent, wc in ((2, True), (1, True), (2, False), (1, False)):
+            html, block = story_html(n, N, s, nsent, wc)
             if shot(html, f"slide_{n:02d}.jpg"): ok = True; break
         if not ok:
             sys.exit(f"story {n} does not fit")
