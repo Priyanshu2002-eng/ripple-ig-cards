@@ -171,6 +171,14 @@ h1{font-family:'Newsreader',serif;font-weight:600;font-size:calc(64px*var(--k));
 .chips{display:flex;flex-wrap:wrap;gap:14px}
 .chip{font-size:calc(33px*var(--k));border:2px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 24px;white-space:nowrap}
 .chip .mono{margin-left:12px}
+.chip{display:inline-flex;align-items:center}
+.chip i{display:inline-block;width:20px;height:20px;border-radius:50%;margin-right:16px;flex:0 0 20px}
+.chip.up{border-color:#22AB94;background:rgba(34,171,148,.16)}.chip.up i{background:#22AB94}
+.chip.down{border-color:#F23645;background:rgba(242,54,69,.15)}.chip.down i{background:#F23645}
+.chip.wait{border-color:#3A3D46;color:#C9CBD1}.chip.wait i{border:3px solid #8A8D97}
+.eyerow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}.eyerow .eyebrow{margin-bottom:0}
+.legend{font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--dim);display:flex;gap:22px;align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:9px}.legend i{display:inline-block;width:14px;height:14px;border-radius:50%}
 .cal{font-size:calc(31px*var(--k));line-height:1.35;color:var(--ink);display:flex;gap:14px;margin-top:10px}
 .cal .note{color:var(--muted)}
 .fx{display:flex;align-items:center;justify-content:space-between;gap:24px;border:2px solid var(--line);background:var(--panel);border-radius:24px;padding:18px 24px}
@@ -193,6 +201,15 @@ ol li span{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:
 def page(body): return f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}</style></head><body>{body}</body></html>"
 DSTR = f"{date.day} {date.strftime('%b %Y')}"
 
+CUT = float(os.environ.get("RIPPLE_CUT", "10"))
+def colour_code(v):
+    # Instagram colour cut: score >= +10 green, <= -10 red, otherwise grey (Watch). Chosen 30 Oct 2026 from a 19-session backtest: ±20 was no more accurate than ±10 and greyed out most chips.
+    x = cover.num(v) or 0
+    return "up" if x >= CUT else "down" if x <= -CUT else "wait"
+LEGEND = ("<div class='legend'><span><i style='background:#22AB94'></i>Up</span>"
+          "<span><i style='background:#F23645'></i>Down</span>"
+          "<span><i style='border:3px solid #8A8D97'></i>Watch</span></div>")
+
 def story_html(n, N, s, nsent, with_cal=True):
     sents, summ = sentences(s["summary"]), ""
     for x in sents[:nsent]:
@@ -207,9 +224,9 @@ def story_html(n, N, s, nsent, with_cal=True):
     extra = sum(int(re.sub(r"\D", "", c["more"]) or 0) for c in s["chips"] if "more" in c)
     show = named[:4]; extra += len(named) - len(show)
     if show:
-        chips = "".join(f"<span class='chip'>{esc(c['name'])}<span class='mono' style='color:{c['color']}'>{esc(c['val'])}</span></span>" for c in show)
+        chips = "".join(f"<span class='chip {colour_code(c['val'])}'><i></i>{esc(c['name'])}</span>" for c in show)
         if extra: chips += f"<span class='chip' style='color:var(--muted)'>+{extra} more</span>"
-        block = f"<div><p class='eyebrow'>Who moves</p><div class='chips'>{chips}</div></div>"
+        block = f"<div><div class='eyerow'><p class='eyebrow'>Who moves today</p>{LEGEND}</div><div class='chips'>{chips}</div></div>"
     elif FOCUS.get(n):
         f = FOCUS[n]; h = f["hist"]; last = h[-1][1]; d1 = cover.pct(last, h[-2][1]); sg = 0 if not d1 else (1 if d1 > 0 else -1)
         cd = h[-1][0]
@@ -404,7 +421,7 @@ print(json.dumps({"feedDate": day, "n": N, "letter": LETTER, "cover": COVER_KIND
 
 # ---- caption: same 1..N numbering as the slides ------------------------------
 HEAD = f"Ripple · Today's top {N} market stories · {DSTR}\n\n"
-TAIL = ("\n\nSwipe for each story's numbers, tone and who moves. Summaries of published reports; "
+TAIL = ("\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; "
         "sources named on each card. Not investment advice.\n\n"
         "#StockMarketIndia #Nifty50 #Sensex #MarketNews #IndianStocks #Investing #Ripple")
 cap = HEAD + "\n".join(f"{c['n']}. {c['title']} — {c['source']}" for c in cards) + TAIL

@@ -17,7 +17,7 @@ three covers side by side on the profile grid read as one strip.
 History: list of (date, close) oldest first, previous sessions only (from Yahoo
 Finance ^NSEI daily; the caller falls back to the Feed's snapshots).
 """
-import datetime as dt, html as H, math, re
+import datetime as dt, html as H, math, re, os
 
 BG, INK, MUT, DIM, LINE, ACC = "#0F1013", "#E9E9EC", "#A3A6AF", "#6B6E78", "#2A2C33", "#9085e9"
 UP, DOWN, FLAT = "#22AB94", "#F23645", "#A3A6AF"          # TradingView-like green / red
@@ -217,10 +217,12 @@ def watch_tile(t):
     d1 = pct(c_last, c_prev); s1 = 0 if d1 is None else (1 if d1 > 0 else -1 if d1 < 0 else 0)
     p = t["push"]; ps = 1 if p > 0 else -1 if p < 0 else 0
     lvl = "Strong" if abs(p) >= 15 else "Moderate" if abs(p) >= 6 else "Mild"
+    cut = float(os.environ.get("RIPPLE_CUT", "10"))
+    cc, lab = (UP, "● Up today") if p >= cut else (DOWN, "● Down today") if p <= -cut else (FLAT, "○ Watch")
     return (f"<div class='w'><div class='wh'><p class='wn'>{e(t['name'])}</p><p class='wt'>NSE · {e(t['ticker'])}</p></div>"
             f"<p class='wp'>₹{c_last:,.2f} <span style='color:{col(s1)}'>{arrow(s1)} {'' if d1 is None else f'{abs(d1):.2f}%'}</span></p>"
             f"{spark_svg(t['hist'])}"
-            f"<p class='ws'><b style='color:{col(ps)}'>{arrow(ps)} {lvl} {'tailwind' if ps > 0 else 'headwind' if ps < 0 else 'news'}</b>"
+            f"<p class='ws'><b style='color:{cc}'>{lab}</b>"
             f"<span>Story #{t['story']}</span></p></div>")
 
 
@@ -275,5 +277,5 @@ li p{{font:500 31px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
  <div class='strip'>{strip}</div>
  <p class='eb'>Top stories today</p><ol>{hl}</ol>
 </div>
-<div class='foot'><span>Watchlist = Ripple's read of today's news, not advice</span><b>Swipe →</b></div>
+<div class='foot'><span><b style='color:{UP}'>●</b> Up <b style='color:{DOWN}'>●</b> Down <b style='color:{FLAT}'>○</b> Watch = Ripple's read of today's news, not advice</span><b>Swipe →</b></div>
 </body></html>"""
