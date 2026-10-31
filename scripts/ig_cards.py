@@ -141,7 +141,7 @@ def esc(s): return H.escape(s or "")
 def sentences(s): return re.split(r"(?<=[.!?])\s+(?=[A-Z₹$\"'(])", s.strip())
 def short(t):
     t = t.split("; ")[0]
-    for cut in (" as ", ", but ", " while ", " after ", " even as "):
+    for cut in (" as ", ", but ", " while ", " after ", " even as ", ", on "):
         if len(t) > 62 and cut in t: t = t.split(cut)[0]
     return t.rstrip(" ,.;")
 def source_name(s): return s.split(" · ")[0].strip()
