@@ -137,6 +137,19 @@ dd = db[days[-1]]; dd = dd.get("data", dd)
 date = datetime.date.fromisoformat(dd["date"])
 mood = dd.get("mood", "")
 
+# ---- trading day or not? ------------------------------------------------------
+# NSE is shut on Saturdays, Sundays and exchange holidays. On those days "today" makes no
+# sense on a watchlist, so labels name the next session instead ("Monday's watchlist").
+# Holidays: add dates here (or pass RIPPLE_CLOSED="YYYY-MM-DD,..."); weekends are automatic.
+NSE_HOLIDAYS = set(x.strip() for x in os.environ.get("RIPPLE_CLOSED", "").split(",") if x.strip())
+def is_session(d): return d.weekday() < 5 and d.isoformat() not in NSE_HOLIDAYS
+MARKET_OPEN = is_session(date)
+nxt = date
+while not is_session(nxt): nxt += datetime.timedelta(days=1)
+WHEN = "today" if MARKET_OPEN else nxt.strftime("%A")
+cover.WHEN = WHEN
+cover.STORIES_EB = "Top stories today" if MARKET_OPEN else ("This weekend's top stories" if date.weekday() >= 5 else "Top stories · market closed today")
+
 def esc(s): return H.escape(s or "")
 def sentences(s): return re.split(r"(?<=[.!?])\s+(?=[A-Z₹$\"'(])", s.strip())
 def short(t):
@@ -243,7 +256,7 @@ def story_html(n, N, s, nsent, with_cal=True, tight=False):
     if show:
         chips = "".join(f"<span class='chip {colour_code(c['val'])}'><i></i>{esc(c['name'])}</span>" for c in show)
         if extra: chips += f"<span class='chip' style='color:var(--muted)'>+{extra} more</span>"
-        block = f"<div><div class='eyerow'><p class='eyebrow'>Who moves today</p>{LEGEND}</div><div class='chips'>{chips}</div></div>"
+        block = f"<div><div class='eyerow'><p class='eyebrow'>Who moves {WHEN if MARKET_OPEN else 'on ' + WHEN}</p>{LEGEND}</div><div class='chips'>{chips}</div></div>"
     elif FOCUS.get(n):
         f = FOCUS[n]; h = f["hist"]; last = h[-1][1]; d1 = cover.pct(last, h[-2][1]); sg = 0 if not d1 else (1 if d1 > 0 else -1)
         cd = h[-1][0]
@@ -443,7 +456,7 @@ print(json.dumps({"feedDate": day, "n": N, "letter": LETTER, "cover": COVER_KIND
 
 # ---- caption: same 1..N numbering as the slides ------------------------------
 HEAD = f"Ripple · Today's top {N} market stories · {DSTR}\n\n"
-TAIL = ("\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; "
+TAIL = ("\n\nSwipe for each story's numbers, tone and who moves " + ("today" if MARKET_OPEN else f"on {WHEN}") + ": green = the news points up, red = the news points down, grey = watch. Summaries of published reports; "
         "sources named on each card. Not investment advice.\n\n"
         "#StockMarketIndia #Nifty50 #Sensex #MarketNews #IndianStocks #Investing #Ripple")
 cap = HEAD + "\n".join(f"{c['n']}. {c['title']} — {c['source']}" for c in cards) + TAIL

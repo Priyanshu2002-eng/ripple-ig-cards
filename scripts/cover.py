@@ -173,7 +173,7 @@ li p{{font:500 34px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
 <div class='pad'>
  <div class='rets'>{rrow}</div>
  <div class='strip'>{strip}</div>
- <p class='eb'>Top stories today</p><ol>{hl}</ol>
+ <p class='eb'>{e(STORIES_EB)}</p><ol>{hl}</ol>
 </div>
 <div class='foot'><span>{n_stories} stories inside · not investment advice</span><b>Swipe →</b></div>
 </body></html>"""
@@ -188,6 +188,14 @@ li p{{font:500 34px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
 # "Who moves" estimate), each with its recent closes as a solid line, a dotted line
 # at the last close running on to the tile's edge ("where it ended"), and the size
 # and direction of the news pressure. It's Ripple's estimate, not a forecast or advice.
+
+# Session wording. ig_cards.py sets these: on a trading day WHEN = "today"; on a weekend or
+# market holiday WHEN = the next session's weekday (e.g. "Monday"), so the cover reads
+# "Monday's watchlist" / "● Up Monday" instead of a "today" that has no session.
+WHEN = "today"
+STORIES_EB = "Top stories today"
+def watch_title(): return "Today's watchlist" if WHEN == "today" else f"{WHEN}'s watchlist"
+
 
 def spark_svg(hist, w=388, h=112, n=22):
     pts = [c for _, c in hist][-n:]
@@ -218,7 +226,7 @@ def watch_tile(t):
     p = t["push"]; ps = 1 if p > 0 else -1 if p < 0 else 0
     lvl = "Strong" if abs(p) >= 15 else "Moderate" if abs(p) >= 6 else "Mild"
     cut = float(os.environ.get("RIPPLE_CUT", "10"))
-    cc, lab = (UP, "● Up today") if p >= cut else (DOWN, "● Down today") if p <= -cut else (FLAT, "○ Watch")
+    cc, lab = (UP, f"● Up {WHEN}") if p >= cut else (DOWN, f"● Down {WHEN}") if p <= -cut else (FLAT, "○ Watch")
     return (f"<div class='w'><div class='wh'><p class='wn'>{e(t['name'])}</p><p class='wt'>NSE · {e(t['ticker'])}</p></div>"
             f"<p class='wp'>₹{c_last:,.2f} <span style='color:{col(s1)}'>{arrow(s1)} {'' if d1 is None else f'{abs(d1):.2f}%'}</span></p>"
             f"{spark_svg(t['hist'])}"
@@ -272,10 +280,10 @@ li p{{font:500 31px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
 <div class='pad'>
  <div class='top'><span class='logo'><i>R<b>.</b></i>Ripple</span><span>Daily market brief</span></div>
  <div class='dt'><p class='dd'>{date.day:02d}</p><div class='dm'><p class='wd'>{date.strftime('%A').upper()}</p><p>{date.strftime('%B')}</p><p class='yr'>{date.year}</p></div></div>
- <div class='eh'><b>Today's watchlist</b><span>prices at {e(cd)} close ┄○</span></div>
+ <div class='eh'><b>{e(watch_title())}</b><span>prices at {e(cd)} close ┄○</span></div>
  <div class='grid'>{tiles}</div>
  <div class='strip'>{strip}</div>
- <p class='eb'>Top stories today</p><ol>{hl}</ol>
+ <p class='eb'>{e(STORIES_EB)}</p><ol>{hl}</ol>
 </div>
 <div class='foot'><span><b style='color:{UP}'>●</b> Up <b style='color:{DOWN}'>●</b> Down <b style='color:{FLAT}'>○</b> Watch = Ripple's read of today's news, not advice</span><b>Swipe →</b></div>
 </body></html>"""
