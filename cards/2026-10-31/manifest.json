@@ -1,0 +1,119 @@
+{
+  "feedDate": "Today · Saturday, 31 October 2026",
+  "date": "2026-10-31",
+  "cover": "slide_00.jpg",
+  "letter": "L",
+  "postIndex": 1,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "IndiGo",
+      "ticker": "INDIGO",
+      "push": -45,
+      "story": 2,
+      "lastClose": 4877.60009765625,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "Reliance Industries",
+      "ticker": "RELIANCE",
+      "push": 34,
+      "story": 3,
+      "lastClose": 1164.9000244140625,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "Infosys",
+      "ticker": "INFY",
+      "push": 11,
+      "story": 4,
+      "lastClose": 1185.0,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "BPCL",
+      "ticker": "BPCL",
+      "push": 5,
+      "story": 7,
+      "lastClose": 284.8999938964844,
+      "closeDate": "2026-10-30"
+    }
+  ],
+  "niftyHistory": "yahoo",
+  "niftyLast": 23053.099609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nasdaq sinks 2.9% as Intel has its worst day since 1974 and AI spending fears hit chips",
+      "short": "Nasdaq sinks 2.9%",
+      "source": "Reuters via Investing.com; Reuters via WHTC; TheStreet",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Brent hits a six-month high above $113 after a limpet-mine strike in Hormuz and Houthi missiles at Riyadh",
+      "short": "Brent hits a six-month high above $113",
+      "source": "Reuters via Press News Agency; CBS News; Gulf News",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Reliance posts a record Q2 profit of ₹29,550 crore, up 34%, on a 68% jump in refining earnings",
+      "short": "Reliance posts a record Q2 profit of ₹29,550 crore, up 34%",
+      "source": "Mint via TradingView; Whalesbook",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Nifty rises 0.5% to 23,053 for a second gain as IT jumps 2.3% and FIIs turn buyers",
+      "short": "Nifty rises 0.5% to 23,053 for a second gain",
+      "source": "5paisa; Kotak Neo; NewsBytes",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Amazon's AWS growth speeds up to 39%, but $220 billion of capex and negative free cash flow worry investors",
+      "short": "Amazon's AWS growth speeds up to 39%",
+      "source": "StockTitan; Reuters via Investing.com",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Bank of Baroda's Q2 profit jumps 36% to ₹6,532 crore as gross NPAs fall to 1.78%",
+      "short": "Bank of Baroda's Q2 profit jumps 36% to ₹6,532 crore",
+      "source": "Indian Masterminds; BusinessToday",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Indian Oil's Q2 profit nearly triples to ₹21,630 crore on refining margins",
+      "short": "Indian Oil's Q2 profit nearly triples to ₹21,630 crore on refining margins",
+      "source": "Free Press Journal",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Fed hike odds near 80% after 3.6% PCE as the 10-year yield drops to 4.93% on the tech rout",
+      "short": "Fed hike odds near 80% after 3.6% PCE",
+      "source": "Fox Business; Rallies.ai; Newsquawk",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "Rupee jumps 33 paise to 94.93 per dollar on a weaker dollar and RBI intervention",
+      "short": "Rupee jumps 33 paise to 94.93 per dollar on a weaker dollar and RBI intervention",
+      "source": "PTI via Whalesbook; CNBC-TV18 via TradingView",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
