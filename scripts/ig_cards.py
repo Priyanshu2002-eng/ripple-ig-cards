@@ -210,11 +210,28 @@ LEGEND = ("<div class='legend'><span><i style='background:#22AB94'></i>Up</span>
           "<span><i style='background:#F23645'></i>Down</span>"
           "<span><i style='border:3px solid #8A8D97'></i>Watch</span></div>")
 
-def story_html(n, N, s, nsent, with_cal=True):
+def trim_words(t, maxw):
+    # Last-resort shortening for slides that still overflow: cut at a clause boundary
+    # (never mid-number), end with a full stop; hard word cut with an ellipsis only if no clause fits.
+    t = (t or "").strip()
+    if len(t.split()) <= maxw: return t
+    best = ""
+    for m in re.finditer(r"(?:, | as | while | after | but | even as |; | — )", t):
+        head = t[:m.start()].rstrip(" ,;—")
+        if len(head.split()) > maxw: break
+        if len(head.split()) >= 8: best = head
+    if best: return best.rstrip(".") + "."
+    return " ".join(t.split()[:maxw]).rstrip(" ,;:—") + "…"
+
+def story_html(n, N, s, nsent, with_cal=True, tight=False):
     sents, summ = sentences(s["summary"]), ""
     for x in sents[:nsent]:
         if summ and len((summ + " " + x).split()) > 42: break
         summ = (summ + " " + x).strip()
+    why = s["why"]
+    if tight:
+        summ = trim_words(summ, 32)
+        why = trim_words(sentences(why)[0] if why else why, 28)
     tone_v = s["tone"].replace("−", "-")
     try: tv = float(tone_v)
     except ValueError: tv = 0.0
@@ -252,7 +269,7 @@ def story_html(n, N, s, nsent, with_cal=True):
  <div class='meta'><span class='rank'>#{n}</span>{tags}</div>
  <h1>{esc(s['title'])}</h1>
  <p class='sum'>{esc(summ)}</p>
- <p class='why'><b>Why it matters:</b> {esc(s['why'])}</p>
+ <p class='why'><b>Why it matters:</b> {esc(why)}</p>
  <div class='tone'><span>Tone</span><span class='bar'>{bar}</span><span class='mono' style='color:{s['toneColor']}'>{esc(s['tone'])}</span></div>
  {block}
 </main>
@@ -376,7 +393,7 @@ with sync_playwright() as p:
     b = p.chromium.launch()
     pg = b.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
     BANNED = ("not in the graph", "not in the catalog", "undefined", "nan%", ">null<", "[object")
-    def shot(html, name, ks=(1, .95, .9, .86)):
+    def shot(html, name, ks=(1, .95, .9, .86, .82, .78)):
         low = html.lower()
         bad = next((b for b in BANNED if b in low), None)
         if bad: sys.exit(f"{name}: internal text '{bad}' would appear on the slide")
@@ -402,9 +419,14 @@ with sync_playwright() as p:
     pg.screenshot(path=os.path.join(out_dir, "ig", "slide_00.jpg"), type="jpeg", quality=92)
     for n, s in enumerate(stories, 1):
         ok = False
-        for nsent, wc in ((2, True), (1, True), (2, False), (1, False)):
-            html, block = story_html(n, N, s, nsent, wc)
-            if shot(html, f"slide_{n:02d}.jpg"): ok = True; break
+        # Long stories: shrink type (down to 78%), then drop the second sentence / calendar line,
+        # then as a last resort trim the summary and Why-it-matters at a clause boundary.
+        for nsent, wc, tight in ((2, True, False), (1, True, False), (2, False, False), (1, False, False), (1, False, True)):
+            html, block = story_html(n, N, s, nsent, wc, tight)
+            if shot(html, f"slide_{n:02d}.jpg"):
+                ok = True
+                if tight: WARN.append(f"story {n}: summary trimmed to fit")
+                break
         if not ok:
             sys.exit(f"story {n} does not fit")
         cards.append({"n": n, "title": s["title"], "short": short(s["title"]), "source": source_name(s["src"]),
