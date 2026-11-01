@@ -1,0 +1,119 @@
+{
+  "feedDate": "Today · Sunday, 1 November 2026",
+  "date": "2026-11-01",
+  "cover": "slide_00.jpg",
+  "letter": "P",
+  "postIndex": 2,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "Reliance Industries",
+      "ticker": "RELIANCE",
+      "push": 34,
+      "story": 2,
+      "lastClose": 1164.9000244140625,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "IndiGo",
+      "ticker": "INDIGO",
+      "push": 20,
+      "story": 3,
+      "lastClose": 4877.60009765625,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "ONGC",
+      "ticker": "ONGC",
+      "push": 7,
+      "story": 4,
+      "lastClose": 225.38999938964844,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "NTPC",
+      "ticker": "NTPC",
+      "push": 19,
+      "story": 7,
+      "lastClose": 316.25,
+      "closeDate": "2026-10-30"
+    }
+  ],
+  "niftyHistory": "yahoo",
+  "niftyLast": 23053.099609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nasdaq sinks 2.9% to end October as Intel has its worst day since 1974 and AI spending fears hit chips",
+      "short": "Nasdaq sinks 2.9% to end October",
+      "source": "Reuters via Investing.com; Reuters via WHTC; TheStreet",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Reliance's record ₹29,550 crore Q2 profit meets the market on Monday after a 68% jump in refining earnings",
+      "short": "Reliance's record ₹29,550 crore Q2 profit meets the market on Monday",
+      "source": "Mint via TradingView; Whalesbook",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Iran offers a two-day plan to reopen Hormuz as Trump's pre-midterm pause on strikes runs out Tuesday",
+      "short": "Iran offers a two-day plan to reopen Hormuz",
+      "source": "Al Jazeera; House of Saud",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "OPEC+ meets today with Saudi output 2.1 million barrels a day below quota and the strait still closed",
+      "short": "OPEC+ meets today with Saudi output 2.1 million barrels a day below quota and the strait still closed",
+      "source": "House of Saud; CNBC",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Nifty gains about 2% for the week and mid and small caps jump as FIIs buy ₹13,213 crore in October's last week",
+      "short": "Nifty gains about 2% for the week and mid and small caps jump",
+      "source": "Outlook Money; Upstox",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Week ahead: US midterms Tuesday, India and US PMIs, and US payrolls Friday",
+      "short": "Week ahead: US midterms Tuesday, India and US PMIs, and US payrolls Friday",
+      "source": "Outlook Money; Moneycontrol via TradingView",
+      "block": "chart",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "NTPC's Q2 profit jumps 39% to ₹7,030 crore on 21% revenue growth; ₹3 interim dividend",
+      "short": "NTPC's Q2 profit jumps 39% to ₹7,030 crore on 21% revenue growth",
+      "source": "ANI",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Fed hike odds near 80% after 3.6% PCE as the 10-year yield drops to 4.93% on the tech rout",
+      "short": "Fed hike odds near 80% after 3.6% PCE",
+      "source": "Fox Business; Rallies.ai; Newsquawk",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "Apple reports Monday with the Street at about $113 billion of revenue and $1.98 a share in John Ternus's first call as CEO",
+      "short": "Apple reports Monday with the Street at about $113 billion of revenue and $1.98 a share in John Ternus's first call",
+      "source": "If You Spent; StockTitan",
+      "block": "chart",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
