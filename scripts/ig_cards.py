@@ -452,16 +452,50 @@ with open(os.path.join(out_dir, "manifest.json"), "w") as fh:
                "watchlist": [{k: c[k] for k in ("name", "ticker", "push", "story")} | {"lastClose": c["hist"][-1][1], "closeDate": str(c["hist"][-1][0])} for c in picked],
                "session": str(SESSION), "marketOpenToday": MARKET_OPEN_TODAY, "niftyHistory": hist_src, "niftyLast": hist[-1][1] if hist else None, "warnings": WARN, "cards": cards},
               fh, indent=2, ensure_ascii=False)
+# ---- hashtags: Instagram allows at most 5 per post (cap phased in from Dec 2025) ---------------
+# 2 fixed niche tags (India market audience + news intent) + up to 3 picked from today's stories:
+# the strongest topic tags (weighted by story rank) and the #1 watchlist stock's own tag.
+FIXED_TAGS = ["#StockMarketIndia", "#StockMarketNews"]
+def results_tag(d):
+    q = {1: "Q3", 2: "Q3", 4: "Q4", 5: "Q4", 7: "Q1", 8: "Q1", 10: "Q2", 11: "Q2"}.get(d.month)
+    return f"#{q}Results" if q else "#EarningsSeason"
+def story_topics(it):
+    cat, reg = it.get("category") or "", it.get("region") or ""
+    th = {t.get("id") for t in it.get("themes", [])}
+    out = []
+    if cat == "Earnings": out.append(results_tag(date) if reg == "India" else "#EarningsSeason")
+    if cat == "IPO": out.append("#IPO")
+    if "T_OIL" in th or cat == "Commodities": out.append("#CrudeOil")
+    if "T_INR" in th: out.append("#Rupee")
+    if "T_RATES" in th or cat == "Policy": out.append("#RBI" if reg == "India" else "#FederalReserve")
+    if "T_AI" in th or cat == "Tech & AI": out.append("#AIStocks")
+    if cat == "Markets": out.append("#Nifty50" if reg == "India" else "#WallStreet")
+    if cat == "Macro" and reg == "India": out.append("#IndianEconomy")
+    return out
+score = {}
+for n, s_ in enumerate(stories, 1):
+    for t in story_topics(items_by_title.get(s_["title"].strip(), {})):
+        score[t] = score.get(t, 0) + (len(stories) + 1 - n)
+topic_tags = [t for t, _ in sorted(score.items(), key=lambda kv: -kv[1])]
+lead = min(picked, key=lambda c: c["story"]) if picked else None
+stock_tag = ("#" + re.sub(r"[^A-Za-z0-9]", "", tidy(lead["name"]))) if lead else None
+dyn = topic_tags[:2] + ([stock_tag] if stock_tag else []) + topic_tags[2:] + ["#Nifty50", "#Sensex", "#IndianStocks"]
+HASHTAGS = list(FIXED_TAGS)
+for t in dyn:
+    if len(HASHTAGS) >= 5: break
+    if t and t.lower() not in {h.lower() for h in HASHTAGS}: HASHTAGS.append(t)
+
 if date.year not in NSE_HOLIDAYS: WARN.append(f"no NSE holiday list for {date.year}: only weekends treated as closed")
-print(json.dumps({"feedDate": day, "session": str(SESSION), "n": N, "letter": LETTER, "cover": COVER_KIND, "watchlist": [c["ticker"] for c in picked], "niftyHistory": hist_src, "warnings": WARN,
+print(json.dumps({"feedDate": day, "session": str(SESSION), "n": N, "letter": LETTER, "cover": COVER_KIND, "watchlist": [c["ticker"] for c in picked], "hashtags": HASHTAGS, "niftyHistory": hist_src, "warnings": WARN,
                   "blocks": {c["n"]: c["block"] for c in cards}}))
 
 # ---- caption: same 1..N numbering as the slides ------------------------------
-HEAD = f"Ripple · Today's top {N} market stories · {DSTR}\n" + ("" if MARKET_OPEN_TODAY else
+HEAD = f"Indian stock market news today · Ripple's top {N} stories · {DSTR}\n" + ("" if MARKET_OPEN_TODAY else
        f"Indian markets are shut today; the watchlist and colour codes are for the next session, {WHEN} {SESSION.day} {SESSION.strftime('%b')}.\n") + "\n"
 TAIL = (f"\n\nSwipe for each story's numbers, tone and who moves {WHEN}: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; "
         "sources named on each card. Not investment advice.\n\n"
-        "#StockMarketIndia #Nifty50 #Sensex #MarketNews #IndianStocks #Investing #Ripple")
+        f"Save this for {'the open' if MARKET_OPEN_TODAY else WHEN + chr(39) + 's open'}, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n"
+        + " ".join(HASHTAGS))
 cap = HEAD + "\n".join(f"{c['n']}. {c['title']} — {c['source']}" for c in cards) + TAIL
 if len(cap) > 2200:
     cap = HEAD + "\n".join(f"{c['n']}. {c['short']} — {c['source']}" for c in cards) + TAIL
