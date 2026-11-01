@@ -210,7 +210,7 @@ def spark_svg(hist, w=388, h=112, n=22):
             f"<circle cx='{w-9}' cy='{ly:.1f}' r='7' fill='{BG}' stroke='{INK}' stroke-width='3'/></svg>")
 
 
-def watch_tile(t):
+def watch_tile(t, when="today"):
     """t: {name, ticker, hist[(date, close)], push (int, signed), story}"""
     e = H.escape
     c_last = t["hist"][-1][1]; c_prev = t["hist"][-2][1] if len(t["hist"]) > 1 else None
@@ -218,7 +218,7 @@ def watch_tile(t):
     p = t["push"]; ps = 1 if p > 0 else -1 if p < 0 else 0
     lvl = "Strong" if abs(p) >= 15 else "Moderate" if abs(p) >= 6 else "Mild"
     cut = float(os.environ.get("RIPPLE_CUT", "10"))
-    cc, lab = (UP, "● Up today") if p >= cut else (DOWN, "● Down today") if p <= -cut else (FLAT, "○ Watch")
+    cc, lab = (UP, f"● Up {when}") if p >= cut else (DOWN, f"● Down {when}") if p <= -cut else (FLAT, "○ Watch")
     return (f"<div class='w'><div class='wh'><p class='wn'>{e(t['name'])}</p><p class='wt'>NSE · {e(t['ticker'])}</p></div>"
             f"<p class='wp'>₹{c_last:,.2f} <span style='color:{col(s1)}'>{arrow(s1)} {'' if d1 is None else f'{abs(d1):.2f}%'}</span></p>"
             f"{spark_svg(t['hist'])}"
@@ -226,14 +226,14 @@ def watch_tile(t):
             f"<span>Story #{t['story']}</span></p></div>")
 
 
-def watch_cover_html(date, watch, close_date, snapshot, headlines, n_stories, letter="R"):
+def watch_cover_html(date, watch, close_date, snapshot, headlines, n_stories, letter="R", when="today"):
     e = H.escape
     cd = f"{close_date.strftime('%a')} {close_date.day} {close_date.strftime('%b')}" if close_date else "previous session"
     order = ["Nifty 50", "Sensex", "Brent", "USD/INR", "US 10-yr", "Gold"]
     snap = sorted(snapshot, key=lambda s: next((i for i, k in enumerate(order) if s.get("label", "").startswith(k)), 9))[:6]
     strip = "".join(f"<div><p class='sl'>{e(short_label(s['label']))}</p><p class='sv'>{e(s['value'])}</p>"
                     f"<p class='sc' style='color:{col(sign(s['change']))}'>{arrow(sign(s['change']))} {e(s['change'].lstrip('+−-'))}</p></div>" for s in snap)
-    tiles = "".join(watch_tile(t) for t in watch[:4])
+    tiles = "".join(watch_tile(t, when) for t in watch[:4])
     hl = "".join(f"<li><span>{i}</span><p>{e(h)}</p></li>" for i, h in enumerate(headlines[:3], 1))
     return f"""<!doctype html><html><head><meta charset='utf-8'><style>{FONT}
 *{{box-sizing:border-box;margin:0}}
@@ -272,7 +272,7 @@ li p{{font:500 31px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
 <div class='pad'>
  <div class='top'><span class='logo'><i>R<b>.</b></i>Ripple</span><span>Daily market brief</span></div>
  <div class='dt'><p class='dd'>{date.day:02d}</p><div class='dm'><p class='wd'>{date.strftime('%A').upper()}</p><p>{date.strftime('%B')}</p><p class='yr'>{date.year}</p></div></div>
- <div class='eh'><b>Today's watchlist</b><span>prices at {e(cd)} close ┄○</span></div>
+ <div class='eh'><b>{'Today' if when == 'today' else e(when)}'s watchlist</b><span>prices at {e(cd)} close ┄○</span></div>
  <div class='grid'>{tiles}</div>
  <div class='strip'>{strip}</div>
  <p class='eb'>Top stories today</p><ol>{hl}</ol>

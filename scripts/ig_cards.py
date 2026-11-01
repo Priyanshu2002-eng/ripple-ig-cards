@@ -137,6 +137,20 @@ dd = db[days[-1]]; dd = dd.get("data", dd)
 date = datetime.date.fromisoformat(dd["date"])
 mood = dd.get("mood", "")
 
+# ---- next NSE session: on weekends / exchange holidays the watchlist is for the next session, not "today"
+# NSE equity holidays (weekdays only), 2026 list as published by NSE. Add each new year's list here.
+NSE_HOLIDAYS = {
+    2026: {"2026-01-26", "2026-03-03", "2026-03-26", "2026-03-31", "2026-04-03", "2026-04-14", "2026-05-01",
+           "2026-05-28", "2026-06-26", "2026-09-14", "2026-10-02", "2026-10-20", "2026-11-10", "2026-11-24", "2026-12-25"},
+}
+def next_session(d):
+    while d.weekday() >= 5 or d.isoformat() in NSE_HOLIDAYS.get(d.year, set()):
+        d += datetime.timedelta(days=1)
+    return d
+SESSION = next_session(date)
+MARKET_OPEN_TODAY = SESSION == date
+WHEN = "today" if MARKET_OPEN_TODAY else SESSION.strftime("%A")        # e.g. "Monday"
+
 def esc(s): return H.escape(s or "")
 def sentences(s): return re.split(r"(?<=[.!?])\s+(?=[A-Z₹$\"'(])", s.strip())
 def short(t):
@@ -243,7 +257,7 @@ def story_html(n, N, s, nsent, with_cal=True, tight=False):
     if show:
         chips = "".join(f"<span class='chip {colour_code(c['val'])}'><i></i>{esc(c['name'])}</span>" for c in show)
         if extra: chips += f"<span class='chip' style='color:var(--muted)'>+{extra} more</span>"
-        block = f"<div><div class='eyerow'><p class='eyebrow'>Who moves today</p>{LEGEND}</div><div class='chips'>{chips}</div></div>"
+        block = f"<div><div class='eyerow'><p class='eyebrow'>Who moves {WHEN}</p>{LEGEND}</div><div class='chips'>{chips}</div></div>"
     elif FOCUS.get(n):
         f = FOCUS[n]; h = f["hist"]; last = h[-1][1]; d1 = cover.pct(last, h[-2][1]); sg = 0 if not d1 else (1 if d1 > 0 else -1)
         cd = h[-1][0]
@@ -407,7 +421,7 @@ with sync_playwright() as p:
         return True
     heads = [short(x["title"]) for x in stories[:3]]
     if COVER_KIND == "watchlist":
-        chtml = cover.watch_cover_html(date, picked, close_date, snap, heads, N, LETTER)
+        chtml = cover.watch_cover_html(date, picked, close_date, snap, heads, N, LETTER, when=WHEN)
     else:
         chtml = cover.cover_html(date, hist, snap, heads, N, LETTER)
     bad = next((b for b in BANNED if b in chtml.lower()), None)
@@ -436,14 +450,16 @@ with sync_playwright() as p:
 with open(os.path.join(out_dir, "manifest.json"), "w") as fh:
     json.dump({"feedDate": day, "date": dd["date"], "cover": "slide_00.jpg", "letter": LETTER, "postIndex": post_index, "coverKind": COVER_KIND,
                "watchlist": [{k: c[k] for k in ("name", "ticker", "push", "story")} | {"lastClose": c["hist"][-1][1], "closeDate": str(c["hist"][-1][0])} for c in picked],
-               "niftyHistory": hist_src, "niftyLast": hist[-1][1] if hist else None, "warnings": WARN, "cards": cards},
+               "session": str(SESSION), "marketOpenToday": MARKET_OPEN_TODAY, "niftyHistory": hist_src, "niftyLast": hist[-1][1] if hist else None, "warnings": WARN, "cards": cards},
               fh, indent=2, ensure_ascii=False)
-print(json.dumps({"feedDate": day, "n": N, "letter": LETTER, "cover": COVER_KIND, "watchlist": [c["ticker"] for c in picked], "niftyHistory": hist_src, "warnings": WARN,
+if date.year not in NSE_HOLIDAYS: WARN.append(f"no NSE holiday list for {date.year}: only weekends treated as closed")
+print(json.dumps({"feedDate": day, "session": str(SESSION), "n": N, "letter": LETTER, "cover": COVER_KIND, "watchlist": [c["ticker"] for c in picked], "niftyHistory": hist_src, "warnings": WARN,
                   "blocks": {c["n"]: c["block"] for c in cards}}))
 
 # ---- caption: same 1..N numbering as the slides ------------------------------
-HEAD = f"Ripple · Today's top {N} market stories · {DSTR}\n\n"
-TAIL = ("\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; "
+HEAD = f"Ripple · Today's top {N} market stories · {DSTR}\n" + ("" if MARKET_OPEN_TODAY else
+       f"Indian markets are shut today; the watchlist and colour codes are for the next session, {WHEN} {SESSION.day} {SESSION.strftime('%b')}.\n") + "\n"
+TAIL = (f"\n\nSwipe for each story's numbers, tone and who moves {WHEN}: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; "
         "sources named on each card. Not investment advice.\n\n"
         "#StockMarketIndia #Nifty50 #Sensex #MarketNews #IndianStocks #Investing #Ripple")
 cap = HEAD + "\n".join(f"{c['n']}. {c['title']} — {c['source']}" for c in cards) + TAIL
