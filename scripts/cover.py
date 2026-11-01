@@ -279,3 +279,40 @@ li p{{font:500 31px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
 </div>
 <div class='foot'><span><b style='color:{UP}'>●</b> Up <b style='color:{DOWN}'>●</b> Down <b style='color:{FLAT}'>○</b> Watch = Ripple's read of today's news, not advice</span><b>Swipe →</b></div>
 </body></html>"""
+
+
+# =================================================================================
+# Daily Instagram Story (1080 x 1920): the watchlist, posted right after the carousel.
+# Same stocks and colours as the cover; links people to the feed post. No interactive
+# stickers (the publishing API cannot add them), so the call to action is plain text.
+# =================================================================================
+def story_watch_html(session_label, title, sub, watch, close_label, n_stories, when="today"):
+    e = H.escape
+    cut = float(os.environ.get("RIPPLE_CUT", "10"))
+    def pill(p):
+        if p >= cut: return f"<span class='pill' style='color:{UP};border-color:{UP}'>● Up {e(when)}</span>"
+        if p <= -cut: return f"<span class='pill' style='color:{DOWN};border-color:{DOWN}'>● Down {e(when)}</span>"
+        return f"<span class='pill' style='color:{FLAT};border-color:#3a3c44'>○ Watch</span>"
+    fs = min(150, int(900 / (0.69 * max(len(w) for w in title.split()))))
+    rows = "".join(f"<div class='row'><div><p class='nm'>{e(t['name'])}</p><p class='tk'>NSE · {e(t['ticker'])} · ₹{t['hist'][-1][1]:,.2f} {e(close_label)} close</p></div>{pill(t['push'])}</div>" for t in watch[:4])
+    return f"""<!doctype html><html><head><meta charset='utf-8'><style>{FONT}*{{box-sizing:border-box;margin:0}}
+html,body{{width:1080px;height:1920px;background:{BG};color:{INK};overflow:hidden;font-family:'Hanken Grotesk',sans-serif}}
+.pad{{padding:200px 84px 0;position:relative;height:100%}}
+.top{{display:flex;justify-content:space-between;font:500 26px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:{MUT}}}
+.logo{{display:flex;gap:16px;align-items:center;color:{INK}}}.logo i{{font:normal 50px/1 'Archivo Black';font-style:normal}}.logo b{{color:{ACC};font-weight:normal}}
+.big{{font:150px/.85 'Archivo Black';letter-spacing:-.04em;margin-top:60px;text-transform:uppercase}}
+.sub{{font:500 30px 'JetBrains Mono',monospace;letter-spacing:.2em;color:{ACC};margin-top:26px;text-transform:uppercase}}
+.row{{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:2px solid {LINE};padding:30px 0}}
+.nm{{font:700 44px 'Hanken Grotesk';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:560px}}
+.tk{{font:500 24px 'JetBrains Mono',monospace;color:{DIM};margin-top:6px;white-space:nowrap}}
+.pill{{font:600 34px 'Hanken Grotesk';padding:14px 30px;border-radius:999px;border:3px solid;white-space:nowrap}}
+.note{{font:400 26px 'JetBrains Mono',monospace;color:{DIM};margin-top:30px}}
+.cta{{position:absolute;left:84px;right:84px;bottom:230px;border:3px solid {ACC};border-radius:32px;padding:34px 40px;font:600 40px/1.3 'Hanken Grotesk'}}
+.cta span{{display:block;font:500 26px 'JetBrains Mono',monospace;color:{ACC};margin-top:10px;letter-spacing:.06em}}
+</style></head><body><div class='pad'>
+<div class='top'><span class='logo'><i>R<b>.</b></i>Ripple</span><span>{e(session_label)}</span></div>
+<p class='big' style='font-size:{fs}px'>{e(title).replace(' ', '<br>', 1)}</p><p class='sub'>{e(sub)}</p>
+<div style='margin-top:60px'>{rows}</div>
+<p class='note'>Ripple's read of the news, not advice</p>
+<div class='cta'>{n_stories} stories behind these calls are on our feed now<span>TAP THE PROFILE → TODAY'S POST</span></div>
+</div></body></html>"""

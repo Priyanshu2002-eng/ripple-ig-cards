@@ -445,12 +445,40 @@ with sync_playwright() as p:
             sys.exit(f"story {n} does not fit")
         cards.append({"n": n, "title": s["title"], "short": short(s["title"]), "source": source_name(s["src"]),
                       "block": block, "file": f"slide_{n:02d}.jpg"})
+    # ---- daily Story: the watchlist (only when the watchlist cover was used) ----
+    STORY = None
+    if COVER_KIND == "watchlist":
+        cl = f"{close_date.strftime('%a')} {close_date.day} {close_date.strftime('%b')}" if close_date else "last"
+        sl = (f"Today · " if MARKET_OPEN_TODAY else "") + f"{SESSION.strftime('%a')} {SESSION.day} {SESSION.strftime('%b')}"
+        ttl = ("Today's" if MARKET_OPEN_TODAY else f"{WHEN}'s") + " watchlist"
+        sub = f"{min(len(picked), 4)} stocks the news could move {WHEN}"
+        shtml = cover.story_watch_html(sl, ttl, sub, picked, cl.split(' ')[0], N, WHEN)
+        bad = next((b for b in BANNED if b in shtml.lower()), None)
+        if bad: sys.exit(f"story: internal text '{bad}' would appear")
+        pg.set_viewport_size({"width": 1080, "height": 1920})
+        pg.set_content(shtml, wait_until="networkidle"); pg.evaluate("document.fonts.ready")
+        if pg.evaluate("document.documentElement.scrollHeight > 1920 || document.documentElement.scrollWidth > 1080"): sys.exit("story does not fit")
+        pg.screenshot(path=os.path.join(out_dir, "ig", "story_watchlist.jpg"), type="jpeg", quality=92)
+        STORY = "story_watchlist.jpg"
     b.close()
+
+# ---- one question comment under the carousel (rotates daily; never advice) ----
+_names = [c["name"] for c in picked[:4]]
+_when_lbl = "today" if MARKET_OPEN_TODAY else WHEN
+_q = [
+    (f"Which of {_when_lbl}'s watchlist are you tracking: " + ", ".join(_names[:-1]) + f" or {_names[-1]}? Tell us below.") if len(_names) >= 2 else None,
+    f"Which of these {len(stories)} stories matters most for your portfolio {_when_lbl}? Reply with its number (1-{len(stories)}).",
+    (f"How do you read {_names[0]} {'today' if MARKET_OPEN_TODAY else 'for ' + WHEN}? Up, down or watch: drop your call below.") if _names else None,
+]
+_q = [x for x in _q if x]
+COMMENT = _q[post_index % len(_q)] if _q else None
+if COMMENT:
+    with open(os.path.join(out_dir, "comment.txt"), "w") as fh: fh.write(COMMENT)
 
 with open(os.path.join(out_dir, "manifest.json"), "w") as fh:
     json.dump({"feedDate": day, "date": dd["date"], "cover": "slide_00.jpg", "letter": LETTER, "postIndex": post_index, "coverKind": COVER_KIND,
                "watchlist": [{k: c[k] for k in ("name", "ticker", "push", "story")} | {"lastClose": c["hist"][-1][1], "closeDate": str(c["hist"][-1][0])} for c in picked],
-               "session": str(SESSION), "marketOpenToday": MARKET_OPEN_TODAY, "niftyHistory": hist_src, "niftyLast": hist[-1][1] if hist else None, "warnings": WARN, "cards": cards},
+               "story": STORY, "comment": COMMENT, "session": str(SESSION), "marketOpenToday": MARKET_OPEN_TODAY, "niftyHistory": hist_src, "niftyLast": hist[-1][1] if hist else None, "warnings": WARN, "cards": cards},
               fh, indent=2, ensure_ascii=False)
 # ---- hashtags: Instagram allows at most 5 per post (cap phased in from Dec 2025) ---------------
 # 2 fixed niche tags (India market audience + news intent) + up to 3 picked from today's stories:
@@ -486,7 +514,7 @@ for t in dyn:
     if t and t.lower() not in {h.lower() for h in HASHTAGS}: HASHTAGS.append(t)
 
 if date.year not in NSE_HOLIDAYS: WARN.append(f"no NSE holiday list for {date.year}: only weekends treated as closed")
-print(json.dumps({"feedDate": day, "session": str(SESSION), "n": N, "letter": LETTER, "cover": COVER_KIND, "watchlist": [c["ticker"] for c in picked], "hashtags": HASHTAGS, "niftyHistory": hist_src, "warnings": WARN,
+print(json.dumps({"feedDate": day, "session": str(SESSION), "n": N, "letter": LETTER, "cover": COVER_KIND, "watchlist": [c["ticker"] for c in picked], "hashtags": HASHTAGS, "story": STORY, "comment": COMMENT, "niftyHistory": hist_src, "warnings": WARN,
                   "blocks": {c["n"]: c["block"] for c in cards}}))
 
 # ---- caption: same 1..N numbering as the slides ------------------------------
