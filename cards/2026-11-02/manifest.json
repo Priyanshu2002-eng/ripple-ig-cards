@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Monday, 2 November 2026",
+  "date": "2026-11-02",
+  "cover": "slide_00.jpg",
+  "letter": "P",
+  "postIndex": 3,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "IndiGo",
+      "ticker": "INDIGO",
+      "push": 5,
+      "story": 1,
+      "lastClose": 4877.60009765625,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "Infosys",
+      "ticker": "INFY",
+      "push": 4,
+      "story": 2,
+      "lastClose": 1185.0,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "Bharat Forge",
+      "ticker": "BHARATFORG",
+      "push": 5,
+      "story": 3,
+      "lastClose": 1720.0,
+      "closeDate": "2026-10-30"
+    },
+    {
+      "name": "Dixon Technologies",
+      "ticker": "DIXON",
+      "push": -8,
+      "story": 6,
+      "lastClose": 11000.0,
+      "closeDate": "2026-10-30"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "Which of today's watchlist are you tracking: IndiGo, Infosys, Bharat Forge or Dixon Technologies? Tell us below.",
+  "session": "2026-11-02",
+  "marketOpenToday": true,
+  "niftyHistory": "yahoo",
+  "niftyLast": 23053.099609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Iran says four tankers hit mines in Hormuz as fears grow of US strikes around the midterms",
+      "short": "Iran says four tankers hit mines in Hormuz",
+      "source": "Al Jazeera; Investing.com; Bloomberg via Swissinfo",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Nifty rises 0.5% to 23,053 on an IT rally as Amazon and Intel drag Nasdaq futures down 2.5% before the US midterms",
+      "short": "Nifty rises 0.5% to 23,053 on an IT rally",
+      "source": "5paisa; Tech Insider; Bloomberg via Swissinfo; Tapetide",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Maruti, Tata and Hyundai post record October car sales as festive demand lifts them 16–21%; TVS sales jump 29%",
+      "short": "Maruti, Tata and Hyundai post record October car sales",
+      "source": "Business Today; Equitybulls",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Bank of Baroda's Q2 profit jumps 36% to ₹6,532 crore, beating estimates, as gross NPAs fall to 1.78%",
+      "short": "Bank of Baroda's Q2 profit jumps 36% to ₹6,532 crore, beating estimates",
+      "source": "Whalesbook; Indian Masterminds",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Sun Pharma's Q2 profit falls 36% on a ₹1,269 crore one-time loss as US sales drop 8%",
+      "short": "Sun Pharma's Q2 profit falls 36% on a ₹1,269 crore one-time loss",
+      "source": "Business Standard; TenNews",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Dixon's Q2 profit falls 45% to ₹411 crore even as revenue jumps 47%",
+      "short": "Dixon's Q2 profit falls 45% to ₹411 crore even",
+      "source": "Free Press Journal",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Rupee jumps 33 paise to 94.93 on a weaker dollar and RBI intervention",
+      "short": "Rupee jumps 33 paise to 94.93 on a weaker dollar and RBI intervention",
+      "source": "PTI via Metrovaartha; Tapetide",
+      "block": "chart",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Indian IT jumps 2.3% on Cognizant's results while Nasdaq futures sink on Amazon and Intel",
+      "short": "Indian IT jumps 2.3% on Cognizant's results",
+      "source": "5paisa; Tech Insider",
+      "block": "chart",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "ITC reports Q2 on Monday with the stock near its 52-week low",
+      "short": "ITC reports Q2 on Monday with the stock near its 52-week low",
+      "source": "NiftyTrader",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
