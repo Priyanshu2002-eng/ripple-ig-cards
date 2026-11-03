@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-03",
+  "postedAt": "2026-11-03T02:33:05+00:00",
+  "mediaId": "17916667812495023",
+  "imageCount": 10,
+  "stories": 9,
+  "letter": "I",
+  "cover": "watchlist",
+  "session": "2026-11-03",
+  "watchlist": [
+    "INDIGO",
+    "HDFCBANK",
+    "RELIANCE",
+    "SBIN"
+  ],
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#CrudeOil",
+    "#Q2Results",
+    "#IndiGo"
+  ],
+  "fallbacks": {
+    "7": "chart",
+    "8": "chart",
+    "9": "chart"
+  },
+  "caption": "Indian stock market news today · Ripple's top 9 stories · 3 Nov 2026\n\n1. Brent falls 4% below $110 as Iran–Qatar talks raise hopes of an end to the war — Nation Thailand (Reuters)\n2. Nifty jumps 1.7% to 23,441 for a third straight gain as Reliance soars 11.6% and Brent falls 4% — HDFC Sky / IIFL Securities\n3. Reliance's record ₹29,550 crore profit sends the stock up 11.6%, its biggest gain in years — HDFC Sky / IIFL Securities\n4. Apple posts a record $114.5 billion September quarter and guides to 7–10% growth, but sees margins slipping to 45–46% — MacRumors\n5. Marvell agrees to buy Lumentum in a $115 billion all-stock deal; both shares tumble — Investing.com (Reuters)\n6. SBI reports Q2 on Tuesday; analysts see profit anywhere from flat to up 25% as stake-sale gains help — Business Standard / Trade Brains\n7. ITC's Q2 profit falls 20% to ₹4,137 crore, in line with estimates, as cigarette taxes bite — IndiaIPO / Upstox\n8. Americans vote in the midterms with the 10-year Treasury yield near 4.93% — Yahoo Finance (Bloomberg) / StockTitan\n9. Infosys goes ex-dividend for its ₹26 interim payout after falling 2% as Nasdaq slid — TradingView (Moody's) / Yahoo Finance\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for the open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #CrudeOil #Q2Results #IndiGo",
+  "story": {
+    "mediaId": "18127487419875462"
+  },
+  "comment": {
+    "id": "17902565094389583",
+    "text": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9)."
+  }
+}
