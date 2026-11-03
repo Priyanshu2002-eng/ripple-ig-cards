@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Tuesday, 3 November 2026",
+  "date": "2026-11-03",
+  "cover": "slide_00.jpg",
+  "letter": "I",
+  "postIndex": 4,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "IndiGo",
+      "ticker": "INDIGO",
+      "push": -5,
+      "story": 1,
+      "lastClose": 4919.89990234375,
+      "closeDate": "2026-11-02"
+    },
+    {
+      "name": "HDFC Bank",
+      "ticker": "HDFCBANK",
+      "push": 4,
+      "story": 2,
+      "lastClose": 700.0,
+      "closeDate": "2026-11-02"
+    },
+    {
+      "name": "Reliance Industries",
+      "ticker": "RELIANCE",
+      "push": 15,
+      "story": 3,
+      "lastClose": 1300.0,
+      "closeDate": "2026-11-02"
+    },
+    {
+      "name": "State Bank of India",
+      "ticker": "SBIN",
+      "push": 5,
+      "story": 6,
+      "lastClose": 987.0,
+      "closeDate": "2026-11-02"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9).",
+  "session": "2026-11-03",
+  "marketOpenToday": true,
+  "niftyHistory": "yahoo",
+  "niftyLast": 23440.80078125,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Brent falls 4% below $110 as Iran–Qatar talks raise hopes of an end to the war",
+      "short": "Brent falls 4% below $110",
+      "source": "Nation Thailand (Reuters)",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Nifty jumps 1.7% to 23,441 for a third straight gain as Reliance soars 11.6% and Brent falls 4%",
+      "short": "Nifty jumps 1.7% to 23,441 for a third straight gain",
+      "source": "HDFC Sky / IIFL Securities",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Reliance's record ₹29,550 crore profit sends the stock up 11.6%, its biggest gain in years",
+      "short": "Reliance's record ₹29,550 crore profit sends the stock up 11.6%, its biggest gain in years",
+      "source": "HDFC Sky / IIFL Securities",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Apple posts a record $114.5 billion September quarter and guides to 7–10% growth, but sees margins slipping to 45–46%",
+      "short": "Apple posts a record $114.5 billion September quarter and guides to 7–10% growth",
+      "source": "MacRumors",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Marvell agrees to buy Lumentum in a $115 billion all-stock deal; both shares tumble",
+      "short": "Marvell agrees to buy Lumentum in a $115 billion all-stock deal",
+      "source": "Investing.com (Reuters)",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "SBI reports Q2 on Tuesday; analysts see profit anywhere from flat to up 25% as stake-sale gains help",
+      "short": "SBI reports Q2 on Tuesday",
+      "source": "Business Standard / Trade Brains",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "ITC's Q2 profit falls 20% to ₹4,137 crore, in line with estimates, as cigarette taxes bite",
+      "short": "ITC's Q2 profit falls 20% to ₹4,137 crore, in line with estimates",
+      "source": "IndiaIPO / Upstox",
+      "block": "chart",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Americans vote in the midterms with the 10-year Treasury yield near 4.93%",
+      "short": "Americans vote in the midterms with the 10-year Treasury yield near 4.93%",
+      "source": "Yahoo Finance (Bloomberg) / StockTitan",
+      "block": "chart",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "Infosys goes ex-dividend for its ₹26 interim payout after falling 2% as Nasdaq slid",
+      "short": "Infosys goes ex-dividend for its ₹26 interim payout",
+      "source": "TradingView (Moody's) / Yahoo Finance",
+      "block": "chart",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
