@@ -8,8 +8,8 @@ description: Self-fixer for the daily Ripple → Instagram post (@ripple__storie
 Goal: today's carousel, Story and comment go up as early as possible, with **zero** quality-check failures.
 A late correct post beats a broken post; a broken post is never acceptable.
 
-Repo: `Priyanshu2002-eng/ripple-ig-cards` (main). Ripple app: https://claude.ai/artifact/KTNixhTvgNxw8g21JWZTEQ (read only).
-Approved format, wording, colour cut (±10) and checks are fixed in the scheduled task's prompt. This skill never changes them.
+Repo: `Priyanshu2002-eng/ripple-ig-cards` (main). Ripple news desk (original): https://claude.ai/artifact/KTNixhTvgNxw8g21JWZTEQ (read only). LIVE app since 6 Nov 2026 (post-fix colours): https://claude.ai/artifact/WYbFYvnY9fhoMkWPrBGczm (read only).
+Approved format, wording, colour cut (±20 post-fix since 6 Nov 2026; was ±10 pre-fix) and checks are fixed in the scheduled task's prompt. This skill never changes them.
 
 ## Order of work (fastest path first)
 
@@ -24,8 +24,8 @@ Approved format, wording, colour cut (±10) and checks are fixed in the schedule
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| ArtifactData `out_dir` refused ("Documents that other people may have written are not saved to files") | The tool no longer saves Ripple rows to files (since 4 Nov 2026) | Use `feed/<today>/` from the repo (the 7:23 morning run exports it). If that's missing: read the five docs with ArtifactData `get` (no out_dir): `days/<today>`, `config/catalog`, `config/status`, `config/app`, `calendar/ahead`. Write each one's **data fields only** to `W/db/<collection>/<doc>.json`, copying the text exactly (all 25 items: the page orders stories by its own score, not by rank). Then run `python3 -I scripts/check_db.py W/db <today> --fix`. Only Priyanshu's own scheduled run writes these docs, and he approved this copy on 5 Nov 2026. |
-| `feed/<today>/` exists but its `days` doc differs from the live one (different `generatedAt` or item ids) | Export from an earlier or a manual run | Trust the live doc: rebuild `W/db` from ArtifactData as in the row above. |
+| ArtifactData `out_dir` refused ("Documents that other people may have written are not saved to files") | The tool no longer saves Ripple rows to files (since 4 Nov 2026) | Use `feed-live/<today>/` from the repo (the 7:37 live scoring run exports the post-fix docs there). Never use `feed/<today>/` for the post: it is the 7:23 export and has no post-fix colours. If `feed-live/<today>/` is missing: read the five docs with ArtifactData `get` (no out_dir): LIVE `days/<today>`, LIVE `config/catalog`, LIVE `config/app`, LIVE `calendar/ahead`, ORIGINAL `config/status`. Write each one's **data fields only** to `W/db/<collection>/<doc>.json`, copying the text exactly (all 25 items with their `postfix` rows). Then run `python3 -I scripts/check_db.py W/db <today> --fix`. Only Priyanshu's own scheduled runs write these docs, and he approved this copy on 5 Nov 2026. |
+| `feed-live/<today>/` exists but its `days` doc differs from the LIVE one (different `postfixFiledAt`, `generatedAt` or item ids) | Export from an earlier or a manual run | Trust the live doc: rebuild `W/db` from ArtifactData as in the row above. |
 | Page shows "NO STORIES YET" or `wait_for_selector("article.short")` times out | Docs wrapped as `{"id","data",…}`, or `days/<today>` missing from W/db | `check_db.py --fix` unwraps them; ig_cards.py also accepts both shapes. Check that `days/<today>.json` exists. |
 | `feedDate` doesn't start with "Today" | W/db holds an older day, or the morning run hasn't finished | Make sure `days/<today>.json` is the newest day in W/db and `config/status` says done for today. If it isn't ready, wait 5 minutes and check again (up to 6 times). |
 | Yahoo errors / `niftyHistory: "feed"` warning | Yahoo rate limit | Wait 60 s and re-run once; if it still fails, the Feed-snapshot fallback is acceptable (report it as a warning). |
