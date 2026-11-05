@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Thursday, 5 November 2026",
+  "date": "2026-11-05",
+  "cover": "slide_00.jpg",
+  "letter": "R",
+  "postIndex": 5,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "ONGC",
+      "ticker": "ONGC",
+      "push": -6,
+      "story": 1,
+      "lastClose": 235.0,
+      "closeDate": "2026-11-04"
+    },
+    {
+      "name": "Reliance Industries",
+      "ticker": "RELIANCE",
+      "push": 10,
+      "story": 2,
+      "lastClose": 1311.0,
+      "closeDate": "2026-11-04"
+    },
+    {
+      "name": "TCS",
+      "ticker": "TCS",
+      "push": -12,
+      "story": 3,
+      "lastClose": 2436.0,
+      "closeDate": "2026-11-04"
+    },
+    {
+      "name": "HDFC Bank",
+      "ticker": "HDFCBANK",
+      "push": 6,
+      "story": 6,
+      "lastClose": 736.7000122070312,
+      "closeDate": "2026-11-04"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "How do you read ONGC today? Up, down or watch: drop your call below.",
+  "session": "2026-11-05",
+  "marketOpenToday": true,
+  "niftyHistory": "yahoo",
+  "niftyLast": 23960.599609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Brent slips toward $102 as the Democratic sweep and Trump's 'no new strikes' remark trim the war premium",
+      "short": "Brent slips toward $102",
+      "source": "Rigzone (Bloomberg); Al Jazeera",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Nifty gains for a fifth day to a two-month closing high of 23,961 as Democrats win Congress",
+      "short": "Nifty gains for a fifth day to a two-month closing high of 23,961",
+      "source": "Upstox; HDFC Sky; Kotak Neo",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "IT stocks fall 1.5% as investors weigh what a Democratic Congress means for AI spending",
+      "short": "IT stocks fall 1.5%",
+      "source": "Upstox; Yahoo Finance (Investopedia); TradingKey",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Dow jumps 3% for its best day since April 2025 as Democrats win Congress; Big Tech rallies, chip stocks slide",
+      "short": "Dow jumps 3% for its best day since April 2025",
+      "source": "TheStreet; CappNotes; Yahoo Finance (Investopedia)",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Rupee firms for a fourth day to 94.64 as the dollar slips after the US midterms",
+      "short": "Rupee firms for a fourth day to 94.64",
+      "source": "HDFC Sky; CappNotes; 5paisa",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Treasury yields fall about 5 bp to 4.92% as Democrats sweep Congress",
+      "short": "Treasury yields fall about 5 bp to 4.92%",
+      "source": "CappNotes; Finwire; Seeking Alpha",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Bharti Airtel reports September-quarter results; brokerages expect 14–15% revenue growth and ARPU near ₹268",
+      "short": "Bharti Airtel reports September-quarter results",
+      "source": "Business Standard",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Titan jumps 4.2% ahead of Dhanteras and its September-quarter results on 5 Nov",
+      "short": "Titan jumps 4.2% ahead of Dhanteras and its September-quarter results on 5 Nov",
+      "source": "Upstox; Kotak Neo; Bloomingbit (Reuters)",
+      "block": "chart",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "HDFC Bank extends its run as foreign buying lifts private lenders",
+      "short": "HDFC Bank extends its run",
+      "source": "5paisa; Liquide; Yahoo Finance",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
