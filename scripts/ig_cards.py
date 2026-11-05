@@ -150,6 +150,11 @@ def next_session(d):
 SESSION = next_session(date)
 MARKET_OPEN_TODAY = SESSION == date
 WHEN = "today" if MARKET_OPEN_TODAY else SESSION.strftime("%A")        # e.g. "Monday"
+# RIPPLE_RECAP=1: a missed day posted late as a clearly labelled recap. Wording names the Feed's own
+# weekday ("Wednesday's watchlist", "Who moves Wednesday"), never "today"; no Story and no comment.
+RECAP = os.environ.get("RIPPLE_RECAP") == "1"
+if RECAP:
+    SESSION, MARKET_OPEN_TODAY, WHEN = date, False, date.strftime("%A")
 
 def esc(s): return H.escape(s or "")
 def sentences(s): return re.split(r"(?<=[.!?])\s+(?=[A-Z₹$\"'(])", s.strip())
@@ -323,6 +328,7 @@ if POSTED_DIR and os.path.isdir(POSTED_DIR):
 else:
     WARN.append("no posted_dir: letter cycle assumed to start today")
 LETTER = cover.letter_for(post_index)
+if os.environ.get("RIPPLE_LETTER"): LETTER = os.environ["RIPPLE_LETTER"]   # recap posts: the letter of their grid slot
 
 # ---- today's watchlist: Indian listed stocks from the stories' "Who moves" ------------
 cat = db.get("config/catalog", {}); cat = cat.get("data", cat)
@@ -421,7 +427,7 @@ with sync_playwright() as p:
         return True
     heads = [short(x["title"]) for x in stories[:3]]
     if COVER_KIND == "watchlist":
-        chtml = cover.watch_cover_html(date, picked, close_date, snap, heads, N, LETTER, when=WHEN)
+        chtml = cover.watch_cover_html(date, picked, close_date, snap, heads, N, LETTER, when=WHEN, recap=RECAP)
     else:
         chtml = cover.cover_html(date, hist, snap, heads, N, LETTER)
     bad = next((b for b in BANNED if b in chtml.lower()), None)
@@ -447,7 +453,7 @@ with sync_playwright() as p:
                       "block": block, "file": f"slide_{n:02d}.jpg"})
     # ---- daily Story: the watchlist (only when the watchlist cover was used) ----
     STORY = None
-    if COVER_KIND == "watchlist":
+    if COVER_KIND == "watchlist" and not RECAP:
         cl = f"{close_date.strftime('%a')} {close_date.day} {close_date.strftime('%b')}" if close_date else "last"
         sl = (f"Today · " if MARKET_OPEN_TODAY else "") + f"{SESSION.strftime('%a')} {SESSION.day} {SESSION.strftime('%b')}"
         ttl = ("Today's" if MARKET_OPEN_TODAY else f"{WHEN}'s") + " watchlist"
@@ -471,7 +477,7 @@ _q = [
     (f"How do you read {_names[0]} {'today' if MARKET_OPEN_TODAY else 'for ' + WHEN}? Up, down or watch: drop your call below.") if _names else None,
 ]
 _q = [x for x in _q if x]
-COMMENT = _q[post_index % len(_q)] if _q else None
+COMMENT = (_q[post_index % len(_q)] if _q else None) if not RECAP else None
 if COMMENT:
     with open(os.path.join(out_dir, "comment.txt"), "w") as fh: fh.write(COMMENT)
 
@@ -520,9 +526,13 @@ print(json.dumps({"feedDate": day, "session": str(SESSION), "n": N, "letter": LE
 # ---- caption: same 1..N numbering as the slides ------------------------------
 HEAD = f"Indian stock market news today · Ripple's top {N} stories · {DSTR}\n" + ("" if MARKET_OPEN_TODAY else
        f"Indian markets are shut today; the watchlist and colour codes are for the next session, {WHEN} {SESSION.day} {SESSION.strftime('%b')}.\n") + "\n"
+if RECAP:
+    HEAD = (f"Recap · Ripple's top {N} stories from {date.strftime('%a')} {date.day} {date.strftime('%b')} {date.year}\n"
+            f"Posted late: this is {WHEN}'s brief, for the record. Today's brief is in the post before this one.\n\n")
 TAIL = (f"\n\nSwipe for each story's numbers, tone and who moves {WHEN}: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; "
         "sources named on each card. Not investment advice.\n\n"
-        f"Save this for {'the open' if MARKET_OPEN_TODAY else WHEN + chr(39) + 's open'}, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n"
+        + (f"Save this, send it" if RECAP else f"Save this for {'the open' if MARKET_OPEN_TODAY else WHEN + chr(39) + 's open'}, send it")
+        + f" to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n"
         + " ".join(HASHTAGS))
 cap = HEAD + "\n".join(f"{c['n']}. {c['title']} — {c['source']}" for c in cards) + TAIL
 if len(cap) > 2200:

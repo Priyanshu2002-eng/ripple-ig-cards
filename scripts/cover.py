@@ -226,7 +226,7 @@ def watch_tile(t, when="today"):
             f"<span>Story #{t['story']}</span></p></div>")
 
 
-def watch_cover_html(date, watch, close_date, snapshot, headlines, n_stories, letter="R", when="today"):
+def watch_cover_html(date, watch, close_date, snapshot, headlines, n_stories, letter="R", when="today", recap=False):
     e = H.escape
     cd = f"{close_date.strftime('%a')} {close_date.day} {close_date.strftime('%b')}" if close_date else "previous session"
     order = ["Nifty 50", "Sensex", "Brent", "USD/INR", "US 10-yr", "Gold"]
@@ -275,9 +275,9 @@ li p{{font:500 31px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
  <div class='eh'><b>{'Today' if when == 'today' else e(when)}'s watchlist</b><span>prices at {e(cd)} close ┄○</span></div>
  <div class='grid'>{tiles}</div>
  <div class='strip'>{strip}</div>
- <p class='eb'>Top stories today</p><ol>{hl}</ol>
+ <p class='eb'>{'Recap · top stories' if recap else 'Top stories today'}</p><ol>{hl}</ol>
 </div>
-<div class='foot'><span><b style='color:{UP}'>●</b> Up <b style='color:{DOWN}'>●</b> Down <b style='color:{FLAT}'>○</b> Watch = Ripple's read of today's news, not advice</span><b>Swipe →</b></div>
+<div class='foot'><span><b style='color:{UP}'>●</b> Up <b style='color:{DOWN}'>●</b> Down <b style='color:{FLAT}'>○</b> Watch = Ripple's read of {'that day' if recap else 'today'}'s news, not advice</span><b>Swipe →</b></div>
 </body></html>"""
 
 

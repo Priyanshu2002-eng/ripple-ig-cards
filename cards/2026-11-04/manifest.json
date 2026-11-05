@@ -1,0 +1,123 @@
+{
+  "feedDate": "Wednesday, 4 November 2026",
+  "date": "2026-11-04",
+  "cover": "slide_00.jpg",
+  "letter": "E",
+  "postIndex": 5,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "HDFC Bank",
+      "ticker": "HDFCBANK",
+      "push": 10,
+      "story": 1,
+      "lastClose": 725.5,
+      "closeDate": "2026-11-03"
+    },
+    {
+      "name": "Asian Paints",
+      "ticker": "ASIANPAINT",
+      "push": -4,
+      "story": 2,
+      "lastClose": 2437.800048828125,
+      "closeDate": "2026-11-03"
+    },
+    {
+      "name": "ICICI Bank",
+      "ticker": "ICICIBANK",
+      "push": 8,
+      "story": 5,
+      "lastClose": 1424.5,
+      "closeDate": "2026-11-03"
+    },
+    {
+      "name": "State Bank of India",
+      "ticker": "SBIN",
+      "push": -6,
+      "story": 8,
+      "lastClose": 970.25,
+      "closeDate": "2026-11-03"
+    }
+  ],
+  "story": null,
+  "comment": null,
+  "session": "2026-11-04",
+  "marketOpenToday": false,
+  "niftyHistory": "yahoo",
+  "niftyLast": 23810.849609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nifty rises 1.6% to 23,811 for a fourth straight gain as FMCG and private banks lead",
+      "short": "Nifty rises 1.6% to 23,811 for a fourth straight gain",
+      "source": "IIFL Securities; Business Standard; Reuters via Yahoo Finance",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Brent edges up toward $106 after a US strike on Iran's Qeshm Island as peace hopes fade",
+      "short": "Brent edges up toward $106",
+      "source": "Stock Titan; Reuters via Yahoo Finance",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "US midterm results arrive overnight; Democrats are favoured to win the Senate",
+      "short": "US midterm results arrive overnight",
+      "source": "Reuters via Yahoo Finance",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Indian IT waits on AMD's results and Apple's margin warning after a modest rebound",
+      "short": "Indian IT waits on AMD's results and Apple's margin warning",
+      "source": "AMD 8-K (SEC); Stock Titan; Reuters via Yahoo Finance",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "FIIs buy ₹6,837 crore, the most in a year, as traders bet on an LTCG tax cut",
+      "short": "FIIs buy ₹6,837 crore, the most in a year",
+      "source": "Business Standard",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Solar Industries' profit jumps 79% to ₹617 crore and it expects to beat FY27 guidance",
+      "short": "Solar Industries' profit jumps 79% to ₹617 crore and it expects to beat FY27 guidance",
+      "source": "Upstox",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Rupee gains 13 paise to 94.71 as foreign buyers return",
+      "short": "Rupee gains 13 paise to 94.71 as foreign buyers return",
+      "source": "PTI via HDFC Sky; Business Standard",
+      "block": "chart",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "SBI's profit rises 14% to ₹23,038 crore on one-off gains, but operating profit slips and the stock falls 1.7%",
+      "short": "SBI's profit rises 14% to ₹23,038 crore on one-off gains",
+      "source": "IIFL Securities",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "Asian Paints jumps 4% as cheaper crude eases raw-material costs",
+      "short": "Asian Paints jumps 4%",
+      "source": "IIFL Securities; Stock Titan",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
