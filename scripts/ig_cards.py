@@ -337,6 +337,13 @@ if os.environ.get("RIPPLE_LETTER"): LETTER = os.environ["RIPPLE_LETTER"]   # rec
 cat = db.get("config/catalog", {}); cat = cat.get("data", cat)
 LISTED = {c["id"]: c for c in cat.get("companies", [])
           if c.get("country") == "India" and c.get("ticker") and c["ticker"] != "Unlisted"}
+# Post-fix chips (live logic from 5 Nov 2026) carry no graph node; map them by name to the
+# NSE symbol stored in the day's `postfix` rows (every post-fix mover is an NSE-listed stock).
+PF_SYM = {}
+for it_ in (dd.get("items") or []):
+    for m_ in (it_.get("postfix") or []):
+        if m_.get("symbol") and m_.get("name"):
+            PF_SYM.setdefault(re.sub(r"\s+", " ", m_["name"]).strip().lower(), m_["symbol"])
 cands = []
 for n, s_ in enumerate(stories, 1):
     for ch in s_["chips"]:
@@ -344,6 +351,9 @@ for n, s_ in enumerate(stories, 1):
         if v and ch.get("node") in LISTED:
             c = LISTED[ch["node"]]
             cands.append({"id": c["id"], "name": re.sub(r"\s*\(.*\)", "", c["name"]), "ticker": c["ticker"], "push": int(v), "story": n})
+        elif v and abs(v) >= CUT and not ch.get("node") and ch.get("name", "").strip().lower() in PF_SYM:
+            sym = PF_SYM[ch["name"].strip().lower()]
+            cands.append({"id": sym, "name": re.sub(r"\s*\(.*\)", "", ch["name"].strip()), "ticker": sym, "push": int(v), "story": n})
 cands.sort(key=lambda c: -abs(c["push"]))
 picked, seen_ids, seen_stories = [], set(), set()
 for rnd in (0, 1):                                     # one per story first, then fill
