@@ -26,3 +26,15 @@ Daily Ripple Feed cards, hosted publicly so Instagram's API can fetch them for @
 - `cards/YYYY-MM-DD/`: each day's images. `posted/YYYY-MM-DD.json`: record of each day's post.
 
 Daily post: one carousel at about 7:53 am IST (cover + 9 stories, the 10-image Instagram limit). Maintained by a Claude scheduled task.
+
+## Data path and self-fixing (from 5 Nov 2026)
+
+- Since 4 Nov 2026, ArtifactData no longer saves Ripple rows to files (`out_dir` is refused). The 7:23 am morning run now
+  exports the docs it wrote to `feed/<date>/` (`days/<date>.json`, `config/catalog.json`, `config/status.json`, `config/app.json`,
+  `calendar/ahead.json`; data fields only), and the Instagram run uses that folder as its db dump. If the export is missing,
+  the Instagram run copies the five docs from ArtifactData by hand.
+- `scripts/check_db.py <db_dir> <date> [--fix]`: preflight for the db dump (shape, date, item count, catalog, status).
+  `ig_cards.py` accepts both plain and `{"id","data",…}` wrapped docs.
+- Recap mode: `RIPPLE_RECAP=1 RIPPLE_LETTER=<letter>` renders a missed day as a labelled recap (the weekday named instead of
+  "today", "Recap ·" caption, no Story or comment). Used for 4 Nov 2026, which was posted on 5 Nov.
+- `skills/ripple-ig-selffix/SKILL.md`: the self-fixer runbook the daily run follows when anything fails.

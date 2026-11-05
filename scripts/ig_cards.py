@@ -39,6 +39,9 @@ for f in glob.glob(os.path.join(db_dir, "**", "*.json"), recursive=True):
     rel = os.path.relpath(f, db_dir)[:-5]          # e.g. days/2026-10-29
     with open(f) as fh:
         d = json.load(fh)
+    # accept both shapes: plain data fields, or a {"id", "data", "version", "updatedAt"} wrapper
+    if isinstance(d, dict) and isinstance(d.get("data"), dict) and set(d) <= {"id", "data", "version", "updatedAt"}:
+        d = d["data"]
     d.pop("version", None)
     db[rel.replace(os.sep, "/")] = d
 
