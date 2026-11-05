@@ -1,0 +1,36 @@
+{
+ "date": "2026-11-04",
+ "postedAt": "2026-11-05T06:14:49+00:00",
+ "mediaId": "18009173804814207",
+ "imageCount": 10,
+ "stories": 9,
+ "letter": "E",
+ "cover": "watchlist",
+ "session": "2026-11-04",
+ "recap": true,
+ "watchlist": [
+  "HDFCBANK",
+  "ASIANPAINT",
+  "ICICIBANK",
+  "SBIN"
+ ],
+ "hashtags": [
+  "#StockMarketIndia",
+  "#StockMarketNews",
+  "#Nifty50",
+  "#CrudeOil",
+  "#HDFCBank"
+ ],
+ "fallbacks": {
+  "7": "chart"
+ },
+ "caption": "Recap · Ripple's top 9 stories from Wed 4 Nov 2026\nPosted late: this is Wednesday's brief, for the record. Today's brief is in the post before this one.\n\n1. Nifty rises 1.6% to 23,811 for a fourth straight gain as FMCG and private banks lead — IIFL Securities; Business Standard; Reuters via Yahoo Finance\n2. Brent edges up toward $106 after a US strike on Iran's Qeshm Island as peace hopes fade — Stock Titan; Reuters via Yahoo Finance\n3. US midterm results arrive overnight; Democrats are favoured to win the Senate — Reuters via Yahoo Finance\n4. Indian IT waits on AMD's results and Apple's margin warning after a modest rebound — AMD 8-K (SEC); Stock Titan; Reuters via Yahoo Finance\n5. FIIs buy ₹6,837 crore, the most in a year, as traders bet on an LTCG tax cut — Business Standard\n6. Solar Industries' profit jumps 79% to ₹617 crore and it expects to beat FY27 guidance — Upstox\n7. Rupee gains 13 paise to 94.71 as foreign buyers return — PTI via HDFC Sky; Business Standard\n8. SBI's profit rises 14% to ₹23,038 crore on one-off gains, but operating profit slips and the stock falls 1.7% — IIFL Securities\n9. Asian Paints jumps 4% as cheaper crude eases raw-material costs — IIFL Securities; Stock Titan\n\nSwipe for each story's numbers, tone and who moves Wednesday: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #Nifty50 #CrudeOil #HDFCBank",
+ "story": {
+  "skipped": "recap: no Story (today's Story is 5 Nov's)"
+ },
+ "comment": {
+  "skipped": "recap: no comment",
+  "text": null
+ },
+ "note": "Missed on 4 Nov (ArtifactData out_dir refused). Posted on 5 Nov at 11:44 IST as a labelled recap after the 5 Nov post. Windsor returned 'Application request limit reached' but the carousel had published (confirmed via latest media), so it was not retried."
+}
