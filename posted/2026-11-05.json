@@ -1,0 +1,35 @@
+{
+ "date": "2026-11-05",
+ "postedAt": "2026-11-05T06:08:59+00:00",
+ "mediaId": "18132907642834558",
+ "imageCount": 10,
+ "stories": 9,
+ "letter": "R",
+ "cover": "watchlist",
+ "session": "2026-11-05",
+ "watchlist": [
+  "ONGC",
+  "RELIANCE",
+  "TCS",
+  "HDFCBANK"
+ ],
+ "hashtags": [
+  "#StockMarketIndia",
+  "#StockMarketNews",
+  "#AIStocks",
+  "#CrudeOil",
+  "#ONGC"
+ ],
+ "fallbacks": {
+  "8": "chart"
+ },
+ "caption": "Indian stock market news today · Ripple's top 9 stories · 5 Nov 2026\n\n1. Brent slips toward $102 as the Democratic sweep and Trump's 'no new strikes' remark trim the war premium — Rigzone (Bloomberg); Al Jazeera\n2. Nifty gains for a fifth day to a two-month closing high of 23,961 as Democrats win Congress — Upstox; HDFC Sky; Kotak Neo\n3. IT stocks fall 1.5% as investors weigh what a Democratic Congress means for AI spending — Upstox; Yahoo Finance (Investopedia); TradingKey\n4. Dow jumps 3% for its best day since April 2025 as Democrats win Congress; Big Tech rallies, chip stocks slide — TheStreet; CappNotes; Yahoo Finance (Investopedia)\n5. Rupee firms for a fourth day to 94.64 as the dollar slips after the US midterms — HDFC Sky; CappNotes; 5paisa\n6. Treasury yields fall about 5 bp to 4.92% as Democrats sweep Congress — CappNotes; Finwire; Seeking Alpha\n7. Bharti Airtel reports September-quarter results; brokerages expect 14–15% revenue growth and ARPU near ₹268 — Business Standard\n8. Titan jumps 4.2% ahead of Dhanteras and its September-quarter results on 5 Nov — Upstox; Kotak Neo; Bloomingbit (Reuters)\n9. HDFC Bank extends its run as foreign buying lifts private lenders — 5paisa; Liquide; Yahoo Finance\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for the open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #AIStocks #CrudeOil #ONGC",
+ "story": {
+  "mediaId": "17972592594003145"
+ },
+ "comment": {
+  "id": "18053858309812672",
+  "text": "How do you read ONGC today? Up, down or watch: drop your call below."
+ },
+ "note": "Posted late (about 11:40 IST) after a manual fix: ArtifactData out_dir now refuses to save Ripple rows, so the db docs were copied by hand."
+}
