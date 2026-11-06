@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Friday, 6 November 2026",
+  "date": "2026-11-06",
+  "cover": "slide_00.jpg",
+  "letter": "L",
+  "postIndex": 7,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "Netweb Technologies",
+      "ticker": "NETWEB",
+      "push": -80,
+      "story": 2,
+      "lastClose": 4023.5,
+      "closeDate": "2026-11-05"
+    },
+    {
+      "name": "Bharti Airtel",
+      "ticker": "BHARTIARTL",
+      "push": -80,
+      "story": 3,
+      "lastClose": 2056.9,
+      "closeDate": "2026-11-05"
+    },
+    {
+      "name": "InterGlobe Aviation",
+      "ticker": "INDIGO",
+      "push": -100,
+      "story": 4,
+      "lastClose": 5420.0,
+      "closeDate": "2026-11-05"
+    },
+    {
+      "name": "ONGC",
+      "ticker": "ONGC",
+      "push": 47,
+      "story": 5,
+      "lastClose": 230.0,
+      "closeDate": "2026-11-05"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9).",
+  "session": "2026-11-06",
+  "marketOpenToday": true,
+  "niftyHistory": "yahoo",
+  "niftyLast": 24536.599609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nifty jumps 2.4% to 24,537 for a sixth straight gain as foreign investors buy ₹14,975 crore",
+      "short": "Nifty jumps 2.4% to 24,537 for a sixth straight gain",
+      "source": "Business Today",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Nasdaq plunges 5.52% and chip stocks lose 12% in the worst Wall Street day since April 2025",
+      "short": "Nasdaq plunges 5.52% and chip stocks lose 12% in the worst Wall Street day since April 2025",
+      "source": "Motley Fool",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Bharti Airtel's profit rises 31% to ₹8,888 crore and ARPU climbs to ₹271, but profit misses estimates",
+      "short": "Bharti Airtel's profit rises 31% to ₹8,888 crore and ARPU climbs to ₹271",
+      "source": "Upstox",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Brent rebounds toward $96 after its biggest fall since May as Iran peace remains unconfirmed",
+      "short": "Brent rebounds toward $96 after its biggest fall since May",
+      "source": "Reuters via Yahoo Finance",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "ONGC's standalone profit jumps 57% to ₹15,489 crore; board declares a record ₹8 interim dividend",
+      "short": "ONGC's standalone profit jumps 57% to ₹15,489 crore",
+      "source": "Upstox",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Titan's profit rises 54% to ₹1,722 crore as jewellery sales grow 24%; board approves ₹2,500 crore NCDs",
+      "short": "Titan's profit rises 54% to ₹1,722 crore",
+      "source": "Upstox",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Asian markets slide: Kospi triggers a circuit breaker and Nikkei falls about 6% after the US rout",
+      "short": "Asian markets slide: Kospi triggers a circuit breaker and Nikkei falls about 6%",
+      "source": "Business Today",
+      "block": "chart",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Rupee ends flat at 94.46 as foreign inflows offset a firmer dollar",
+      "short": "Rupee ends flat at 94.46",
+      "source": "HDFC Sky (PTI)",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "US payrolls on Friday are the next test after Treasury yields slide to their lowest since September",
+      "short": "US payrolls on Friday are the next test",
+      "source": "Stock Titan",
+      "block": "chart",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
