@@ -310,8 +310,15 @@ def yahoo_history(before, symbol="%5ENSEI", rng="2y"):
         y = json.load(open(f))["chart"]["result"][0]
     YNAME[symbol] = (y.get("meta", {}).get("shortName") or y.get("meta", {}).get("longName") or "").strip()
     ist = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
+    closes = list(y["indicators"]["quote"][0]["close"])
+    # Yahoo sometimes leaves the newest daily bar's close empty for hours after the session;
+    # fill only that bar from meta.regularMarketPrice when its regularMarketTime is the same IST day.
+    m_ = y.get("meta", {})
+    if closes and closes[-1] is None and m_.get("regularMarketPrice") and m_.get("regularMarketTime") and \
+            datetime.datetime.fromtimestamp(m_["regularMarketTime"], ist).date() == datetime.datetime.fromtimestamp(y["timestamp"][-1], ist).date():
+        closes[-1] = float(m_["regularMarketPrice"])
     return [(datetime.datetime.fromtimestamp(t, ist).date(), c)
-            for t, c in zip(y["timestamp"], y["indicators"]["quote"][0]["close"]) if c and datetime.datetime.fromtimestamp(t, ist).date() < before]
+            for t, c in zip(y["timestamp"], closes) if c and datetime.datetime.fromtimestamp(t, ist).date() < before]
 
 day_docs = [v.get("data", v) for k, v in db.items() if k.startswith("days/")]
 snap = dd.get("snapshot", [])
