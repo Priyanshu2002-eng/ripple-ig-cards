@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Saturday, 7 November 2026",
+  "date": "2026-11-07",
+  "cover": "slide_00.jpg",
+  "letter": "P",
+  "postIndex": 8,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "Dixon Technologies",
+      "ticker": "DIXON",
+      "push": -31,
+      "story": 1,
+      "lastClose": 12625.0,
+      "closeDate": "2026-11-06"
+    },
+    {
+      "name": "HDFC Bank",
+      "ticker": "HDFCBANK",
+      "push": -28,
+      "story": 2,
+      "lastClose": 788.25,
+      "closeDate": "2026-11-06"
+    },
+    {
+      "name": "InterGlobe Aviation",
+      "ticker": "INDIGO",
+      "push": -47,
+      "story": 5,
+      "lastClose": 5476.0,
+      "closeDate": "2026-11-06"
+    },
+    {
+      "name": "HBL Engineering",
+      "ticker": "HBLENGINE",
+      "push": -28,
+      "story": 9,
+      "lastClose": 839.25,
+      "closeDate": "2026-11-06"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "How do you read Dixon Technologies for Monday? Up, down or watch: drop your call below.",
+  "session": "2026-11-09",
+  "marketOpenToday": false,
+  "niftyHistory": "yahoo",
+  "niftyLast": 25030.349609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Asian chip stocks crash on Friday: Kospi halted after an 8% fall, Nikkei drops about 6%, SK Hynix falls 11.7%",
+      "short": "Asian chip stocks crash on Friday: Kospi halted",
+      "source": "Yahoo Finance (Fox Business)",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Sensex and Nifty post their best week since February 2021 as a seven-session rally lifts the Nifty above 25,000",
+      "short": "Sensex and Nifty post their best week since February 2021",
+      "source": "Business Standard",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Foreign investors buy a record ₹45,960 crore of Indian shares in a week as domestic funds sell a record ₹24,197 crore",
+      "short": "Foreign investors buy a record ₹45,960 crore of Indian shares in a week",
+      "source": "Business Standard",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "US payrolls jump 165,000 in October, nearly triple forecasts, lifting December Fed hike odds to about 77–85%",
+      "short": "US payrolls jump 165,000 in October, nearly triple forecasts, lifting December Fed hike odds to about 77–85%",
+      "source": "Yahoo Finance (Reuters)",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Oil posts its biggest weekly drop since 2022 on Iran peace hopes, with Brent settling flat at $98.32",
+      "short": "Oil posts its biggest weekly drop since 2022 on Iran peace hopes, with Brent settling flat at $98.32",
+      "source": "Rigzone (Bloomberg)",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Wall Street steadies on Friday: Nasdaq gains 1.1% as AMD jumps 11%, but the S&P 500 still loses 2.7% for the week",
+      "short": "Wall Street steadies on Friday: Nasdaq gains 1.1%",
+      "source": "Yahoo Finance (AP)",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Rupee logs its biggest one-day gain since 12 October, closing at about 93.9 per dollar",
+      "short": "Rupee logs its biggest one-day gain since 12 October, closing at about 93.9 per dollar",
+      "source": "IANS",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Hindalco's profit jumps 59% to ₹7,533 crore as revenue rises 39% to ₹91,708 crore",
+      "short": "Hindalco's profit jumps 59% to ₹7,533 crore",
+      "source": "Kotak Neo",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "Tata Steel reports delayed September-quarter results on Saturday, alongside Divi's Labs, Tata Chemicals and HBL Engineering",
+      "short": "Tata Steel reports delayed September-quarter results on Saturday, alongside Divi's Labs, Tata Chemicals and HBL Engineering",
+      "source": "PSU Connect",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
