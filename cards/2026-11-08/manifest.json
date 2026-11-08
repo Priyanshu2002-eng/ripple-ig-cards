@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Sunday, 8 November 2026",
+  "date": "2026-11-08",
+  "cover": "slide_00.jpg",
+  "letter": "P",
+  "postIndex": 9,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "Anant Raj",
+      "ticker": "ANANTRAJ",
+      "push": -32,
+      "story": 3,
+      "lastClose": 445.45001220703125,
+      "closeDate": "2026-11-06"
+    },
+    {
+      "name": "InterGlobe Aviation",
+      "ticker": "INDIGO",
+      "push": -29,
+      "story": 4,
+      "lastClose": 5476.0,
+      "closeDate": "2026-11-06"
+    },
+    {
+      "name": "Divi's Laboratories",
+      "ticker": "DIVISLAB",
+      "push": 81,
+      "story": 6,
+      "lastClose": 10320.5,
+      "closeDate": "2026-11-06"
+    },
+    {
+      "name": "HPCL",
+      "ticker": "HINDPETRO",
+      "push": -38,
+      "story": 8,
+      "lastClose": 387.1499938964844,
+      "closeDate": "2026-11-06"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "Which of Monday's watchlist are you tracking: Anant Raj, InterGlobe Aviation, Divi's Laboratories or HPCL? Tell us below.",
+  "session": "2026-11-09",
+  "marketOpenToday": false,
+  "niftyHistory": "yahoo",
+  "niftyLast": 25030.349609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Tata Steel's profit rises 18% to ₹3,666 crore as India margins hit 25%, while the UK still loses money",
+      "short": "Tata Steel's profit rises 18% to ₹3,666 crore",
+      "source": "Business Standard",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Korea suspends its margin-collateral rule for three months after the Kospi's 11.7% weekly plunge",
+      "short": "Korea suspends its margin-collateral rule for three months",
+      "source": "Seoul Economic Daily",
+      "block": "chart",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "US voters back data-centre limits in 40 of 41 local ballots, adding a policy risk to the AI build-out",
+      "short": "US voters back data-centre limits in 40 of 41 local ballots, adding a policy risk to the AI build-out",
+      "source": "AI Weekly",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Qatar floats a plan to reopen Hormuz as Trump confirms 'minor strikes' on Iran's Qeshm Island",
+      "short": "Qatar floats a plan to reopen Hormuz",
+      "source": "The Independent (via Yahoo)",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Muhurat trading runs 2:20–3:30 pm today, the first session of Samvat 2083, after seven straight Nifty gains",
+      "short": "Muhurat trading runs 2:20–3:30 pm today, the first session of Samvat 2083",
+      "source": "Business Today",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Divi's Labs' profit jumps 64% to ₹1,127 crore as revenue rises about 35%",
+      "short": "Divi's Labs' profit jumps 64% to ₹1,127 crore",
+      "source": "Investywise (filing summary)",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "US CPI on Tuesday is the next test after payrolls lift December Fed hike odds above 76%",
+      "short": "US CPI on Tuesday is the next test",
+      "source": "Trading Economics",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Saudi Arabia cuts its Asian crude prices to a six-year low as Gulf shipments resume",
+      "short": "Saudi Arabia cuts its Asian crude prices to a six-year low",
+      "source": "Rigzone",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "Finolex Cables' profit jumps 68% to ₹273 crore as revenue rises 65%",
+      "short": "Finolex Cables' profit jumps 68% to ₹273 crore",
+      "source": "Free Press Journal",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
