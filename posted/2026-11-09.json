@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-09",
+  "postedAt": "2026-11-09T08:12:15+05:30",
+  "mediaId": "18076695815738712",
+  "imageCount": 10,
+  "stories": 9,
+  "letter": "I",
+  "cover": "watchlist",
+  "session": "2026-11-09",
+  "watchlist": [
+    "TATASTEEL",
+    "HINDPETRO",
+    "HINDALCO",
+    "BPCL"
+  ],
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#Nifty50",
+    "#Q2Results",
+    "#TataSteel"
+  ],
+  "logic": "post-fix",
+  "cut": 20,
+  "fallbacks": {
+    "7": "chart"
+  },
+  "caption": "Indian stock market news today · Ripple's top 9 stories · 9 Nov 2026\n\n1. Nifty reclaims 25,000 with a seventh straight gain as banks lead and India shrugs off the US chip rout — 5paisa / INDIA IPO (Mint)\n2. Tata Steel reports September-quarter results on Saturday after record domestic output of 6.21 million tonnes — Business Today\n3. Banks power the rally: Nifty Bank jumps 2.3% to 59,086 as ICICI Bank and HDFC Bank lead for a second day — 5paisa / Kotak Neo\n4. Brent holds near $98 as Gulf tanker attacks keep a floor under oil — Reuters (via Global Banking & Finance)\n5. Hindalco's profit jumps 59% to ₹7,532 crore as revenue rises 39% — Business Today\n6. Foreign investors buy a record ₹45,960 crore of Indian shares in one week while domestic funds sell ₹24,197 crore — Tapetide / INDIA IPO\n7. US payrolls land after the AI rout pushed the 10-year yield to its lowest since September — Cappnotes / The Closing Print\n8. Rupee rallies 52 paise to 93.89, its best day in weeks, as the equity surge draws dollars — Telangana Today (PTI) / Tapetide / Cappnotes\n9. Indian IT lags the rally as Nifty IT rises only 0.4% while money moves into banks — 5paisa / INDIA IPO (Mint) / Cappnotes\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for the open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #Nifty50 #Q2Results #TataSteel",
+  "story": {
+    "mediaId": "17904382242373533"
+  },
+  "comment": {
+    "id": "18154952884537761",
+    "text": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9)."
+  },
+  "selfFixes": []
+}
