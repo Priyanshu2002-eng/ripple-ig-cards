@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Monday, 9 November 2026",
+  "date": "2026-11-09",
+  "cover": "slide_00.jpg",
+  "letter": "I",
+  "postIndex": 10,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "Tata Steel",
+      "ticker": "TATASTEEL",
+      "push": 60,
+      "story": 2,
+      "lastClose": 190.1999969482422,
+      "closeDate": "2026-11-08"
+    },
+    {
+      "name": "HPCL",
+      "ticker": "HINDPETRO",
+      "push": 60,
+      "story": 4,
+      "lastClose": 383.6000061035156,
+      "closeDate": "2026-11-08"
+    },
+    {
+      "name": "Hindalco",
+      "ticker": "HINDALCO",
+      "push": 53,
+      "story": 5,
+      "lastClose": 953.0,
+      "closeDate": "2026-11-08"
+    },
+    {
+      "name": "BPCL",
+      "ticker": "BPCL",
+      "push": 44,
+      "story": 8,
+      "lastClose": 317.6000061035156,
+      "closeDate": "2026-11-08"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9).",
+  "session": "2026-11-09",
+  "marketOpenToday": true,
+  "niftyHistory": "yahoo",
+  "niftyLast": 24986.400390625,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nifty reclaims 25,000 with a seventh straight gain as banks lead and India shrugs off the US chip rout",
+      "short": "Nifty reclaims 25,000 with a seventh straight gain",
+      "source": "5paisa / INDIA IPO (Mint)",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Tata Steel reports September-quarter results on Saturday after record domestic output of 6.21 million tonnes",
+      "short": "Tata Steel reports September-quarter results on Saturday",
+      "source": "Business Today",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Banks power the rally: Nifty Bank jumps 2.3% to 59,086 as ICICI Bank and HDFC Bank lead for a second day",
+      "short": "Banks power the rally: Nifty Bank jumps 2.3% to 59,086",
+      "source": "5paisa / Kotak Neo",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Brent holds near $98 as Gulf tanker attacks keep a floor under oil",
+      "short": "Brent holds near $98",
+      "source": "Reuters (via Global Banking & Finance)",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Hindalco's profit jumps 59% to ₹7,532 crore as revenue rises 39%",
+      "short": "Hindalco's profit jumps 59% to ₹7,532 crore",
+      "source": "Business Today",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Foreign investors buy a record ₹45,960 crore of Indian shares in one week while domestic funds sell ₹24,197 crore",
+      "short": "Foreign investors buy a record ₹45,960 crore of Indian shares in one week",
+      "source": "Tapetide / INDIA IPO",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "US payrolls land after the AI rout pushed the 10-year yield to its lowest since September",
+      "short": "US payrolls land",
+      "source": "Cappnotes / The Closing Print",
+      "block": "chart",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Rupee rallies 52 paise to 93.89, its best day in weeks, as the equity surge draws dollars",
+      "short": "Rupee rallies 52 paise to 93.89, its best day in weeks",
+      "source": "Telangana Today (PTI) / Tapetide / Cappnotes",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "Indian IT lags the rally as Nifty IT rises only 0.4% while money moves into banks",
+      "short": "Indian IT lags the rally",
+      "source": "5paisa / INDIA IPO (Mint) / Cappnotes",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
