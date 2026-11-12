@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Thursday, 12 November 2026",
+  "date": "2026-11-12",
+  "cover": "slide_00.jpg",
+  "letter": "R",
+  "postIndex": 11,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "Tata Power",
+      "ticker": "TATAPOWER",
+      "push": 40,
+      "story": 3,
+      "lastClose": 360.0,
+      "closeDate": "2026-11-11"
+    },
+    {
+      "name": "Infosys",
+      "ticker": "INFY",
+      "push": -43,
+      "story": 5,
+      "lastClose": 1155.0,
+      "closeDate": "2026-11-11"
+    },
+    {
+      "name": "BPCL",
+      "ticker": "BPCL",
+      "push": -33,
+      "story": 6,
+      "lastClose": 315.25,
+      "closeDate": "2026-11-11"
+    },
+    {
+      "name": "Tata Consultancy Services",
+      "ticker": "TCS",
+      "push": -31,
+      "story": 9,
+      "lastClose": 2472.10009765625,
+      "closeDate": "2026-11-11"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "How do you read Tata Power today? Up, down or watch: drop your call below.",
+  "session": "2026-11-12",
+  "marketOpenToday": true,
+  "niftyHistory": "yahoo",
+  "niftyLast": 25255.05078125,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nvidia shares fall about 8% after hours on a report its board is preparing to oust CEO Jensen Huang",
+      "short": "Nvidia shares fall about 8%",
+      "source": "CBS News / Saxo",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "Nifty climbs 0.84% to 25,255 as foreign buying tops $5.6 billion in November, but Gift Nifty points lower after hot US inflation",
+      "short": "Nifty climbs 0.84% to 25,255",
+      "source": "Upstox / Business Standard",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Tata Power's September-quarter profit rises 49% to ₹1,366 crore as revenue climbs 26%",
+      "short": "Tata Power's September-quarter profit rises 49% to ₹1,366 crore",
+      "source": "Upstox / Free Press Journal",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Banks lead for a third session: Nifty Bank rises 1.76% to 60,792 as PSU lenders jump 2.9%",
+      "short": "Banks lead for a third session: Nifty Bank rises 1.76% to 60,792",
+      "source": "Liquide / Upstox",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Rupee firms to 93.69 per dollar, its strongest since April, on foreign equity inflows",
+      "short": "Rupee firms to 93.69 per dollar, its strongest since April",
+      "source": "Business Today",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Brent rebounds to about $93 as tanker attacks near Hormuz continue and Goldman lifts its December forecast to $105",
+      "short": "Brent rebounds to about $93",
+      "source": "Business Recorder / HDFC Sky",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "US 10-year yield returns to 5% after hotter October inflation and Waller's hawkish comments",
+      "short": "US 10-year yield returns to 5%",
+      "source": "CBS News / Saxo",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "CoreWeave's revenue jumps 168% to $3.66bn and it raises 2026 guidance; shares jump 24.7%",
+      "short": "CoreWeave's revenue jumps 168% to $3.66bn and it raises 2026 guidance",
+      "source": "Investing.com / StockTitan",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "IT stocks lag again as Nifty IT slips 0.5% while banks and autos rally",
+      "short": "IT stocks lag again",
+      "source": "Liquide / Yahoo Finance",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
