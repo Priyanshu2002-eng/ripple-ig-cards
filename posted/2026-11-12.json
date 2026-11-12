@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-12",
+  "postedAt": "2026-11-12T02:40:30Z",
+  "mediaId": "18379919899212559",
+  "imageCount": 10,
+  "stories": 9,
+  "letter": "R",
+  "cover": "watchlist",
+  "session": "2026-11-12",
+  "watchlist": [
+    "TATAPOWER",
+    "INFY",
+    "BPCL",
+    "TCS"
+  ],
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#AIStocks",
+    "#Nifty50",
+    "#TataPower"
+  ],
+  "logic": "post-fix",
+  "cut": 20,
+  "fallbacks": {},
+  "caption": "Indian stock market news today · Ripple's top 9 stories · 12 Nov 2026\n\n1. Nvidia shares fall about 8% after hours on a report its board is preparing to oust CEO Jensen Huang — CBS News / Saxo\n2. Nifty climbs 0.84% to 25,255 as foreign buying tops $5.6 billion in November, but Gift Nifty points lower after hot US inflation — Upstox / Business Standard\n3. Tata Power's September-quarter profit rises 49% to ₹1,366 crore as revenue climbs 26% — Upstox / Free Press Journal\n4. Banks lead for a third session: Nifty Bank rises 1.76% to 60,792 as PSU lenders jump 2.9% — Liquide / Upstox\n5. Rupee firms to 93.69 per dollar, its strongest since April, on foreign equity inflows — Business Today\n6. Brent rebounds to about $93 as tanker attacks near Hormuz continue and Goldman lifts its December forecast to $105 — Business Recorder / HDFC Sky\n7. US 10-year yield returns to 5% after hotter October inflation and Waller's hawkish comments — CBS News / Saxo\n8. CoreWeave's revenue jumps 168% to $3.66bn and it raises 2026 guidance; shares jump 24.7% — Investing.com / StockTitan\n9. IT stocks lag again as Nifty IT slips 0.5% while banks and autos rally — Liquide / Yahoo Finance\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for the open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #AIStocks #Nifty50 #TataPower",
+  "story": {
+    "mediaId": "18009239633792028"
+  },
+  "comment": {
+    "id": "17994646176117949",
+    "text": "How do you read Tata Power today? Up, down or watch: drop your call below."
+  },
+  "selfFixes": []
+}
