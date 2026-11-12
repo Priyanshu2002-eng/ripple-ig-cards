@@ -19,6 +19,15 @@ Finance ^NSEI daily; the caller falls back to the Feed's snapshots).
 """
 import datetime as dt, html as H, math, re, os
 
+# Colour cut. Ripple's post-fix v2 engine (approved by Priyanshu 12 Nov 2026) calls Up/Down only at |score| >= 30,
+# and caps market-mood-only stocks just below it. A lower RIPPLE_CUT from an older run prompt must not turn those
+# Watch chips into Up/Down, so the cut never goes below ENGINE_CUT.
+ENGINE_CUT = 30.0
+def ripple_cut():
+    try: c = float(os.environ.get("RIPPLE_CUT", "30"))
+    except ValueError: c = ENGINE_CUT
+    return max(c, ENGINE_CUT)
+
 BG, INK, MUT, DIM, LINE, ACC = "#0F1013", "#E9E9EC", "#A3A6AF", "#6B6E78", "#2A2C33", "#9085e9"
 UP, DOWN, FLAT = "#22AB94", "#F23645", "#A3A6AF"          # TradingView-like green / red
 FONT = ("@import url('https://fonts.googleapis.com/css2?family=Archivo+Black"
@@ -217,7 +226,7 @@ def watch_tile(t, when="today"):
     d1 = pct(c_last, c_prev); s1 = 0 if d1 is None else (1 if d1 > 0 else -1 if d1 < 0 else 0)
     p = t["push"]; ps = 1 if p > 0 else -1 if p < 0 else 0
     lvl = "Strong" if abs(p) >= 15 else "Moderate" if abs(p) >= 6 else "Mild"
-    cut = float(os.environ.get("RIPPLE_CUT", "10"))
+    cut = ripple_cut()
     cc, lab = (UP, f"● Up {when}") if p >= cut else (DOWN, f"● Down {when}") if p <= -cut else (FLAT, "○ Watch")
     return (f"<div class='w'><div class='wh'><p class='wn'>{e(t['name'])}</p><p class='wt'>NSE · {e(t['ticker'])}</p></div>"
             f"<p class='wp'>₹{c_last:,.2f} <span style='color:{col(s1)}'>{arrow(s1)} {'' if d1 is None else f'{abs(d1):.2f}%'}</span></p>"
@@ -288,7 +297,7 @@ li p{{font:500 31px/1.2 'Newsreader',serif;white-space:nowrap;overflow:hidden;te
 # =================================================================================
 def story_watch_html(session_label, title, sub, watch, close_label, n_stories, when="today"):
     e = H.escape
-    cut = float(os.environ.get("RIPPLE_CUT", "10"))
+    cut = ripple_cut()
     def pill(p):
         if p >= cut: return f"<span class='pill' style='color:{UP};border-color:{UP}'>● Up {e(when)}</span>"
         if p <= -cut: return f"<span class='pill' style='color:{DOWN};border-color:{DOWN}'>● Down {e(when)}</span>"

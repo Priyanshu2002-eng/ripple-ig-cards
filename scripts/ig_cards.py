@@ -223,9 +223,10 @@ ol li span{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:
 def page(body): return f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}</style></head><body>{body}</body></html>"
 DSTR = f"{date.day} {date.strftime('%b %Y')}"
 
-CUT = float(os.environ.get("RIPPLE_CUT", "10"))
+CUT = cover.ripple_cut()
 def colour_code(v):
-    # Instagram colour cut: score >= +10 green, <= -10 red, otherwise grey (Watch). Chosen 30 Oct 2026 from a 19-session backtest: ±20 was no more accurate than ±10 and greyed out most chips.
+    # Instagram colour cut = the scoring engine's: score >= +30 green, <= -30 red, otherwise grey (Watch).
+    # Post-fix v2, approved 12 Nov 2026 (replay of all stored sessions: calls right 62% -> 78%). Never below cover.ENGINE_CUT.
     x = cover.num(v) or 0
     return "up" if x >= CUT else "down" if x <= -CUT else "wait"
 LEGEND = ("<div class='legend'><span><i style='background:#22AB94'></i>Up</span>"
