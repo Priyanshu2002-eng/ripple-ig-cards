@@ -1,0 +1,123 @@
+{
+  "feedDate": "Today · Friday, 13 November 2026",
+  "date": "2026-11-13",
+  "cover": "slide_00.jpg",
+  "letter": "E",
+  "postIndex": 12,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "DLF",
+      "ticker": "DLF",
+      "push": -55,
+      "story": 2,
+      "lastClose": 769.2999877929688,
+      "closeDate": "2026-11-12"
+    },
+    {
+      "name": "BPCL",
+      "ticker": "BPCL",
+      "push": -67,
+      "story": 3,
+      "lastClose": 311.5,
+      "closeDate": "2026-11-12"
+    },
+    {
+      "name": "ONGC",
+      "ticker": "ONGC",
+      "push": 69,
+      "story": 5,
+      "lastClose": 224.5,
+      "closeDate": "2026-11-12"
+    },
+    {
+      "name": "Oil India",
+      "ticker": "OIL",
+      "push": 69,
+      "story": 7,
+      "lastClose": 440.0,
+      "closeDate": "2026-11-12"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "Which of today's watchlist are you tracking: DLF, BPCL, ONGC or Oil India? Tell us below.",
+  "session": "2026-11-13",
+  "marketOpenToday": true,
+  "niftyHistory": "yahoo",
+  "niftyLast": 25299.349609375,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nvidia CEO Jensen Huang resigns; shares fall 4.3% as AMD and Broadcom gain more than 5%",
+      "short": "Nvidia CEO Jensen Huang resigns",
+      "source": "WPTF (AP) / TheStreet",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "India's retail inflation rises to 6.09% in October, a 24-month high above the RBI's 6% ceiling",
+      "short": "India's retail inflation rises to 6.09% in October, a 24-month high above the RBI's 6% ceiling",
+      "source": "ThePrint (PTI)",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Rupee falls 34 paise to 94.03 per dollar as the dollar index hits its highest since April 2025",
+      "short": "Rupee falls 34 paise to 94.03 per dollar",
+      "source": "HDFC Sky / Yahoo Finance",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Banks lead for a fourth session as Nifty Bank rises 1.2% and PSU lenders gain 1.4%",
+      "short": "Banks lead for a fourth session",
+      "source": "HDFC Sky / Yahoo Finance",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Brent jumps 3.3% to $95.82 as Houthis strike Saudi energy sites and Trump drops Iran deal talks",
+      "short": "Brent jumps 3.3% to $95.82",
+      "source": "Reuters via Nation Thailand",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Realty jumps 4.5% to lead the market just before the 6% inflation print",
+      "short": "Realty jumps 4.5% to lead the market just before the 6% inflation print",
+      "source": "Yahoo Finance / The Open Press",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Oil reverses higher on Gulf attacks after peace-talk hopes; Reliance edges up",
+      "short": "Oil reverses higher on Gulf attacks after peace-talk hopes",
+      "source": "Reuters via Nation Thailand / Yahoo Finance",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Bajaj Finance jumps 3.4% as NBFCs lead the Nifty",
+      "short": "Bajaj Finance jumps 3.4% as NBFCs lead the Nifty",
+      "source": "Business Standard / HDFC Sky",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "US 10-year jumps back above 5% to 5.10% as Fed officials push for more hikes",
+      "short": "US 10-year jumps back above 5% to 5.10%",
+      "source": "Yahoo Finance / CNBC / TheStreet",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
