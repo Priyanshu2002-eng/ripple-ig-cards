@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-13",
+  "postedAt": "2026-11-13T08:12:16+05:30",
+  "mediaId": "18131973623499333",
+  "imageCount": 10,
+  "stories": 9,
+  "letter": "E",
+  "cover": "watchlist",
+  "session": "2026-11-13",
+  "watchlist": [
+    "DLF",
+    "BPCL",
+    "ONGC",
+    "OIL"
+  ],
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#IndianEconomy",
+    "#CrudeOil",
+    "#DLF"
+  ],
+  "logic": "post-fix",
+  "cut": 20,
+  "fallbacks": {},
+  "caption": "Indian stock market news today · Ripple's top 9 stories · 13 Nov 2026\n\n1. Nvidia CEO Jensen Huang resigns; shares fall 4.3% as AMD and Broadcom gain more than 5% — WPTF (AP) / TheStreet\n2. India's retail inflation rises to 6.09% in October, a 24-month high above the RBI's 6% ceiling — ThePrint (PTI)\n3. Rupee falls 34 paise to 94.03 per dollar as the dollar index hits its highest since April 2025 — HDFC Sky / Yahoo Finance\n4. Banks lead for a fourth session as Nifty Bank rises 1.2% and PSU lenders gain 1.4% — HDFC Sky / Yahoo Finance\n5. Brent jumps 3.3% to $95.82 as Houthis strike Saudi energy sites and Trump drops Iran deal talks — Reuters via Nation Thailand\n6. Realty jumps 4.5% to lead the market just before the 6% inflation print — Yahoo Finance / The Open Press\n7. Oil reverses higher on Gulf attacks after peace-talk hopes; Reliance edges up — Reuters via Nation Thailand / Yahoo Finance\n8. Bajaj Finance jumps 3.4% as NBFCs lead the Nifty — Business Standard / HDFC Sky\n9. US 10-year jumps back above 5% to 5.10% as Fed officials push for more hikes — Yahoo Finance / CNBC / TheStreet\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for the open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #IndianEconomy #CrudeOil #DLF",
+  "story": {
+    "mediaId": "18116574463842683"
+  },
+  "comment": {
+    "id": "18116654804148817",
+    "text": "Which of today's watchlist are you tracking: DLF, BPCL, ONGC or Oil India? Tell us below."
+  },
+  "selfFixes": []
+}
