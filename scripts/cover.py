@@ -260,10 +260,10 @@ html,body{{width:1080px;height:1350px;background:{BG};color:{INK};overflow:hidde
 .eh{{margin-top:44px;display:flex;justify-content:space-between;align-items:baseline}}
 .eh b{{font:28px 'Archivo Black',sans-serif;letter-spacing:.04em;text-transform:uppercase;font-weight:normal}}
 .eh span{{font:400 20px 'JetBrains Mono',monospace;color:{DIM}}}
-.grid{{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}}
-.w{{border:2px solid {LINE};border-radius:24px;padding:18px 20px 16px;background:#14151A}}
+.grid{{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:16px}}
+.w{{min-width:0;border:2px solid {LINE};border-radius:24px;padding:18px 20px 16px;background:#14151A}}
 .wh{{display:flex;justify-content:space-between;align-items:baseline;gap:10px}}
-.wn{{font:700 30px 'Hanken Grotesk',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.wn{{min-width:0;font:700 30px 'Hanken Grotesk',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .wt{{font:500 17px 'JetBrains Mono',monospace;color:{DIM};white-space:nowrap}}
 .wp{{font:600 25px 'Hanken Grotesk',sans-serif;margin:4px 0 6px}}.wp span{{font:500 20px 'JetBrains Mono',monospace;margin-left:6px}}
 .ws{{display:flex;justify-content:space-between;margin-top:8px;font:500 19px 'JetBrains Mono',monospace;color:{DIM}}}
