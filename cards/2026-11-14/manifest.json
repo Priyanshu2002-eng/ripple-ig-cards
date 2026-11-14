@@ -1,0 +1,115 @@
+{
+  "feedDate": "Today · Saturday, 14 November 2026",
+  "date": "2026-11-14",
+  "cover": "slide_00.jpg",
+  "letter": "L",
+  "postIndex": 13,
+  "coverKind": "watchlist",
+  "watchlist": [
+    {
+      "name": "Netweb Technologies",
+      "ticker": "NETWEB",
+      "push": -39,
+      "story": 1,
+      "lastClose": 4196.2001953125,
+      "closeDate": "2026-11-13"
+    },
+    {
+      "name": "Tata Motors Passenger Vehicles",
+      "ticker": "TMPV",
+      "push": -55,
+      "story": 4,
+      "lastClose": 287.3999938964844,
+      "closeDate": "2026-11-13"
+    },
+    {
+      "name": "Eicher Motors",
+      "ticker": "EICHERMOT",
+      "push": -41,
+      "story": 4,
+      "lastClose": 7650.0,
+      "closeDate": "2026-11-13"
+    }
+  ],
+  "story": "story_watchlist.jpg",
+  "comment": "Which of these 9 stories matters most for your portfolio Monday? Reply with its number (1-9).",
+  "session": "2026-11-16",
+  "marketOpenToday": false,
+  "niftyHistory": "yahoo",
+  "niftyLast": 25144.30078125,
+  "warnings": [],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nvidia's Jensen Huang resigns as CEO; Nvidia falls 3.1%, AMD 8.6% and Broadcom 5.2% as the Nasdaq drops 0.9%",
+      "short": "Nvidia's Jensen Huang resigns as CEO",
+      "source": "TheStreet / Eurasia Business News / Yahoo Finance",
+      "block": "who",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "US 10-year climbs to about 5.15% as annual PPI hits 6.5% and a December Fed hike is fully priced",
+      "short": "US 10-year climbs to about 5.15%",
+      "source": "Charles Schwab / Eurasia Business News / Yahoo Finance",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Hot 6.09% inflation snaps the Nifty's run: Nifty falls 0.61% to 25,144 as realty, autos and metals lead losses",
+      "short": "Hot 6.09% inflation snaps the Nifty's run: Nifty falls 0.61% to 25,144",
+      "source": "Upstox market wrap / HDFC Sky",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Tata Motors PV posts a ₹5,531 crore loss on ₹6,738 crore one-time charges; JLR cuts its margin guidance",
+      "short": "Tata Motors PV posts a ₹5,531 crore loss on ₹6,738 crore one-time charges",
+      "source": "Business Standard",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Foreign investors buy ₹5,737 crore on Friday, taking November net buying to about ₹79,300 crore",
+      "short": "Foreign investors buy ₹5,737 crore on Friday, taking November net buying to about ₹79,300 crore",
+      "source": "Tapetide (NSE provisional data) / Liquide weekly review",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Rupee weakens 21 paise to 94.24 per dollar as the dollar index holds near a 19-month high",
+      "short": "Rupee weakens 21 paise to 94.24 per dollar",
+      "source": "HDFC Sky / Yahoo Finance",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Anthropic's IPO is set to price at $70–78 a share, valuing it near $1.3 trillion, with trading expected Thursday",
+      "short": "Anthropic's IPO is set to price at $70–78 a share, valuing it near $1.3 trillion, with trading expected Thursday",
+      "source": "ABC7 / Eurasia Business News",
+      "block": "chart",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "Hitachi Energy India jumps 10.7% to ₹31,595 after results show 64% revenue growth",
+      "short": "Hitachi Energy India jumps 10.7% to ₹31,595",
+      "source": "Yahoo Finance / Upstox results blog",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "Brent settles flat at $95.84 after Thursday's jump, a second weekly fall; WTI ends at $88.56",
+      "short": "Brent settles flat at $95.84",
+      "source": "Eurasia Business News / TheStreet",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
