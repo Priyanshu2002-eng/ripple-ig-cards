@@ -1,0 +1,39 @@
+{
+ "date": "2026-11-14",
+ "postedAt": "2026-11-14T08:11:00+05:30",
+ "mediaId": "18140656765672189",
+ "imageCount": 10,
+ "stories": 9,
+ "letter": "L",
+ "cover": "watchlist",
+ "session": "2026-11-16",
+ "watchlist": [
+  "NETWEB",
+  "TMPV",
+  "EICHERMOT"
+ ],
+ "hashtags": [
+  "#StockMarketIndia",
+  "#StockMarketNews",
+  "#AIStocks",
+  "#Rupee",
+  "#NetwebTechnologies"
+ ],
+ "logic": "post-fix",
+ "cut": 20,
+ "fallbacks": {
+  "7": "chart"
+ },
+ "caption": "Indian stock market news today · Ripple's top 9 stories · 14 Nov 2026\nIndian markets are shut today; the watchlist and colour codes are for the next session, Monday 16 Nov.\n\n1. Nvidia's Jensen Huang resigns as CEO; Nvidia falls 3.1%, AMD 8.6% and Broadcom 5.2% as the Nasdaq drops 0.9% — TheStreet / Eurasia Business News / Yahoo Finance\n2. US 10-year climbs to about 5.15% as annual PPI hits 6.5% and a December Fed hike is fully priced — Charles Schwab / Eurasia Business News / Yahoo Finance\n3. Hot 6.09% inflation snaps the Nifty's run: Nifty falls 0.61% to 25,144 as realty, autos and metals lead losses — Upstox market wrap / HDFC Sky\n4. Tata Motors PV posts a ₹5,531 crore loss on ₹6,738 crore one-time charges; JLR cuts its margin guidance — Business Standard\n5. Foreign investors buy ₹5,737 crore on Friday, taking November net buying to about ₹79,300 crore — Tapetide (NSE provisional data) / Liquide weekly review\n6. Rupee weakens 21 paise to 94.24 per dollar as the dollar index holds near a 19-month high — HDFC Sky / Yahoo Finance\n7. Anthropic's IPO is set to price at $70–78 a share, valuing it near $1.3 trillion, with trading expected Thursday — ABC7 / Eurasia Business News\n8. Hitachi Energy India jumps 10.7% to ₹31,595 after results show 64% revenue growth — Yahoo Finance / Upstox results blog\n9. Brent settles flat at $95.84 after Thursday's jump, a second weekly fall; WTI ends at $88.56 — Eurasia Business News / TheStreet\n\nSwipe for each story's numbers, tone and who moves Monday: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for Monday's open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #AIStocks #Rupee #NetwebTechnologies",
+ "story": {
+  "mediaId": "17921547612457995"
+ },
+ "comment": {
+  "id": "18123319583066896",
+  "text": "Which of these 9 stories matters most for your portfolio Monday? Reply with its number (1-9)."
+ },
+ "selfFixes": [
+  "cover.py: watchlist tile grid minmax(0,1fr) so the long name 'Tata Motors Passenger Vehicles' ellipsizes instead of pushing its tile off the cover (commit ddaf621)"
+ ],
+ "note": "scripts/cover.py ripple_cut() (commit 3529199, 12 Nov) floors RIPPLE_CUT at 30, so the effective colour cut was ±30"
+}
