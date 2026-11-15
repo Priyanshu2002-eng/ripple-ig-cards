@@ -16,7 +16,7 @@
   "#IPO"
  ],
  "logic": "post-fix",
- "cut": 20,
+ "cut": 30,
  "fallbacks": {
   "1": "chart"
  },
