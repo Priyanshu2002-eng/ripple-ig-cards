@@ -1,0 +1,92 @@
+{
+  "feedDate": "Today · Sunday, 15 November 2026",
+  "date": "2026-11-15",
+  "cover": "slide_00.jpg",
+  "letter": "P",
+  "postIndex": 14,
+  "coverKind": "nifty",
+  "watchlist": [],
+  "story": null,
+  "comment": "Which of these 9 stories matters most for your portfolio Monday? Reply with its number (1-9).",
+  "session": "2026-11-16",
+  "marketOpenToday": false,
+  "niftyHistory": "cache",
+  "niftyLast": 25144.3,
+  "warnings": [
+    "only 0 watchlist stocks with prices: used the Nifty chart cover"
+  ],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Anthropic's IPO is about six times oversubscribed ahead of pricing on 18 Nov; it seeks up to $64.4bn",
+      "short": "Anthropic's IPO is about six times oversubscribed ahead of pricing on 18 Nov",
+      "source": "Bloomberg / TradingView",
+      "block": "chart",
+      "file": "slide_01.jpg"
+    },
+    {
+      "n": 2,
+      "title": "SBI Research now expects the RBI to hike by 25 bp on 4 Dec, not 50 bp, even with inflation at 6.09%",
+      "short": "SBI Research now expects the RBI to hike by 25 bp on 4 Dec, not 50 bp, even with inflation at 6.09%",
+      "source": "Business Today / ANI",
+      "block": "who",
+      "file": "slide_02.jpg"
+    },
+    {
+      "n": 3,
+      "title": "Nvidia reports on 17 Nov without Jensen Huang: guidance is $108bn revenue and options price a ±10.6% move",
+      "short": "Nvidia reports on 17 Nov without Jensen Huang: guidance is $108bn revenue and options price a ±10.6% move",
+      "source": "FourWeekMBA / Morningstar / Nvidia",
+      "block": "who",
+      "file": "slide_03.jpg"
+    },
+    {
+      "n": 4,
+      "title": "Markets price an 88.5% chance of a 25 bp Fed hike in December, with 11.5% on a half-point move",
+      "short": "Markets price an 88.5% chance of a 25 bp Fed hike in December, with 11.5% on a half-point move",
+      "source": "Bitcoin.com via CryptoTicker / CNN",
+      "block": "who",
+      "file": "slide_04.jpg"
+    },
+    {
+      "n": 5,
+      "title": "Foreign investors pour about ₹66,300 crore into Indian stocks in November after two months of selling",
+      "short": "Foreign investors pour about ₹66,300 crore into Indian stocks in November",
+      "source": "Millennium Post (PTI) / Multibagg",
+      "block": "who",
+      "file": "slide_05.jpg"
+    },
+    {
+      "n": 6,
+      "title": "Banks power the week: Nifty Bank jumps 3.71% as the Nifty gains 0.63% to 25,144 and the Sensex 0.73% to 81,592",
+      "short": "Banks power the week: Nifty Bank jumps 3.71%",
+      "source": "TradingView (Moody's/Mint) / Upstox",
+      "block": "who",
+      "file": "slide_06.jpg"
+    },
+    {
+      "n": 7,
+      "title": "Brent ends a second losing week at $95.84 as OPEC+ output rises and the dollar index climbs to 103.17",
+      "short": "Brent ends a second losing week at $95.84",
+      "source": "EnergyNow / FinanceFeeds",
+      "block": "who",
+      "file": "slide_07.jpg"
+    },
+    {
+      "n": 8,
+      "title": "India beat Asia-Pacific by 7 points in October as funds pulled $31.8bn from Taiwan and $14.6bn from Korea",
+      "short": "India beat Asia-Pacific by 7 points in October",
+      "source": "Multibagg / 5paisa",
+      "block": "who",
+      "file": "slide_08.jpg"
+    },
+    {
+      "n": 9,
+      "title": "India's September-quarter growth is seen at 7.35–7.8% ahead of GDP data at the end of November",
+      "short": "India's September-quarter growth is seen at 7.35–7.8% ahead of GDP data at the end of November",
+      "source": "Deccan Herald / Devdiscourse",
+      "block": "who",
+      "file": "slide_09.jpg"
+    }
+  ]
+}
