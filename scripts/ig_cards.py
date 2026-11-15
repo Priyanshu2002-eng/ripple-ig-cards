@@ -302,7 +302,21 @@ def story_html(n, N, s, nsent, with_cal=True, tight=False):
 # ---- cover data -------------------------------------------------------------------
 WARN = []
 YNAME = {}
+# RIPPLE_PRICE_CSV=<csv with date,yahoo,close>: read daily closes from a local cache (e.g. Ripple's market/ohlc_2026.csv)
+# instead of Yahoo, for runs where Yahoo is unreachable; such a cache also comes before the Feed snapshots for In focus.
+PRICE_CSV = os.environ.get("RIPPLE_PRICE_CSV")
+def cache_history(before, symbol, rng):
+    import csv, urllib.parse
+    sym, rows = urllib.parse.unquote(symbol), {}
+    for r in csv.DictReader(open(PRICE_CSV)):
+        if r.get("yahoo") == sym and r.get("close"):
+            rows[datetime.date.fromisoformat(r["date"])] = float(r["close"])
+    if not rows: raise RuntimeError(f"{sym} not in price cache")
+    days = {"3mo": 92, "2y": 731}.get(rng, 731)
+    return [(d, c) for d, c in sorted(rows.items()) if before - datetime.timedelta(days=days) <= d < before]
+
 def yahoo_history(before, symbol="%5ENSEI", rng="2y"):
+    if PRICE_CSV: return cache_history(before, symbol, rng)
     with tempfile.TemporaryDirectory() as td:
         f = os.path.join(td, "y.json")
         r = subprocess.run(["curl", "-s", "-m", "25", "-A", "Mozilla/5.0", "-o", f,
@@ -328,7 +342,7 @@ try:
     hist = yahoo_history(date)
     if len(hist) < 60 or (date - hist[-1][0]).days > 6: raise RuntimeError("Yahoo history too short or stale")
     if feed_nifty and abs(hist[-1][1] / feed_nifty - 1) > .01: raise RuntimeError(f"Yahoo {hist[-1][1]:.2f} vs Feed {feed_nifty:.2f}")
-    hist_src = "yahoo"
+    hist_src = "cache" if PRICE_CSV else "yahoo"
 except Exception as ex:
     WARN.append(f"Nifty history from Feed snapshots ({ex})")
     hist, hist_src = cover.feed_history([d for d in day_docs if d.get("date", "") <= dd["date"]]), "feed"
@@ -409,7 +423,11 @@ for n, s_ in enumerate(stories, 1):
     macro_story = it.get("category") in ("Macro", "Commodities", "Policy") or any(k in (it.get("type") or "") for k in ("Currency", "Oil", "Macro"))
     order = ([macro] if macro and macro_story else []) + [(sym + ".NS", None, "NSE · " + sym, "₹{:,.2f}", None) for sym in syms[:2]] + ([macro] if macro else []) + [NIFTY]
     for sym, name, tag, fmt, feed_label in order:
-        h = feed_series(feed_label) if feed_label else []
+        cached = False
+        if PRICE_CSV:
+            try: cached = len(cache_history(date, sym, "3mo")) >= 10
+            except Exception: pass
+        h = feed_series(feed_label) if feed_label and not cached else []
         src = "feed"
         if len(h) < 8:
             try:
