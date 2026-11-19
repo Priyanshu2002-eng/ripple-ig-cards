@@ -1,0 +1,154 @@
+{
+  "date": "2026-11-19",
+  "feedDate": "Today · 19 Nov 2026",
+  "session": "2026-11-19",
+  "marketOpenToday": true,
+  "letter": "P",
+  "postIndex": 15,
+  "coverKind": "watchlist",
+  "cut": 30.0,
+  "story": "story_watchlist.jpg",
+  "comment": "Which of today's watchlist are you tracking: Infosys, Prestige Estates Projects, Dalmia Bharat or Jio Financial Services? Tell us below.",
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#Nifty50",
+    "#BankNifty",
+    "#Infosys"
+  ],
+  "watchlist": [
+    {
+      "name": "Infosys",
+      "ticker": "INFY",
+      "label": "Watch",
+      "story": 5,
+      "lastClose": 1108.8,
+      "closeDate": "2026-11-18"
+    },
+    {
+      "name": "Prestige Estates Projects",
+      "ticker": "PRESTIGE",
+      "label": "Watch",
+      "story": 6,
+      "lastClose": 1657.4,
+      "closeDate": "2026-11-18"
+    },
+    {
+      "name": "Dalmia Bharat",
+      "ticker": "DALBHARAT",
+      "label": "Watch",
+      "story": 7,
+      "lastClose": 1524.3,
+      "closeDate": "2026-11-17"
+    },
+    {
+      "name": "Jio Financial Services",
+      "ticker": "JIOFIN",
+      "label": "Watch",
+      "story": 8,
+      "lastClose": 224.5,
+      "closeDate": "2026-11-18"
+    }
+  ],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Sensex falls 500 points to 82,032, Nifty down 159 at 25,228 on profit booking",
+      "short": "Sensex falls 500 points to 82,032, Nifty down 159 at 25,228 on profit booking",
+      "source": "CNBC-TV18",
+      "block": "chart",
+      "file": "slide_01.jpg",
+      "movers": []
+    },
+    {
+      "n": 2,
+      "title": "Public sector banks' business crosses ₹300 lakh crore for first time; H1 profit up 16.9%",
+      "short": "Public sector banks' business crosses ₹300 lakh crore for first time",
+      "source": "CNBC-TV18",
+      "block": "chart",
+      "file": "slide_02.jpg",
+      "movers": []
+    },
+    {
+      "n": 3,
+      "title": "India imposes duty on bulk Scotch imports, above the 150% that applied before the UK FTA",
+      "short": "India imposes duty on bulk Scotch imports, above the 150% that applied before the UK FTA",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_03.jpg",
+      "movers": [
+        "UNITDSPR:Watch",
+        "RADICO:Watch"
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Gold rises 0.6% from a 14-month low as markets weigh a 90% chance of a Fed hike",
+      "short": "Gold rises 0.6% from a 14-month low",
+      "source": "Economic Times",
+      "block": "who",
+      "file": "slide_04.jpg",
+      "movers": [
+        "MUTHOOTFIN:Watch",
+        "MANAPPURAM:Watch",
+        "IIFL:Watch"
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Infosys to invest JPY 1.59 billion for 10.1% stake in NTT Docomo Playspace",
+      "short": "Infosys to invest JPY 1.59 billion for 10.1% stake in NTT Docomo Playspace",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_05.jpg",
+      "movers": [
+        "INFY:Watch"
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Prestige buys 50% stake in Advent Convention and Hotels for Rs 500 crore",
+      "short": "Prestige buys 50% stake in Advent Convention and Hotels for Rs 500 crore",
+      "source": "Economic Times",
+      "block": "who",
+      "file": "slide_06.jpg",
+      "movers": [
+        "PRESTIGE:Watch"
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Dalmia Bharat to consider share buyback at November 23 board meeting",
+      "short": "Dalmia Bharat to consider share buyback at November 23 board meeting",
+      "source": "Economic Times",
+      "block": "who",
+      "file": "slide_07.jpg",
+      "movers": [
+        "DALBHARAT:Watch"
+      ]
+    },
+    {
+      "n": 8,
+      "title": "Jio Financial and BlackRock invest ₹123 crore each in Jio BlackRock Asset Management",
+      "short": "Jio Financial and BlackRock invest ₹123 crore each in Jio BlackRock Asset Management",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_08.jpg",
+      "movers": [
+        "JIOFIN:Watch"
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Bharat Forge puts ₹291 crore into Kalyani Strategic Systems via rights issue",
+      "short": "Bharat Forge puts ₹291 crore into Kalyani Strategic Systems via rights issue",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_09.jpg",
+      "movers": [
+        "BHARATFORG:Watch"
+      ]
+    }
+  ],
+  "warnings": []
+}
