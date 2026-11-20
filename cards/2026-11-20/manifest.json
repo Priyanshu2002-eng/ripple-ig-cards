@@ -1,0 +1,157 @@
+{
+  "date": "2026-11-20",
+  "feedDate": "Today · 20 Nov 2026",
+  "session": "2026-11-20",
+  "marketOpenToday": true,
+  "letter": "I",
+  "postIndex": 16,
+  "coverKind": "watchlist",
+  "cut": 30.0,
+  "story": "story_watchlist.jpg",
+  "comment": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9).",
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#Nifty50",
+    "#RBI",
+    "#ManappuramFinance"
+  ],
+  "watchlist": [
+    {
+      "name": "Manappuram Finance",
+      "ticker": "MANAPPURAM",
+      "label": "Down",
+      "story": 4,
+      "lastClose": 282.85,
+      "closeDate": "2026-11-19"
+    },
+    {
+      "name": "One 97 Communications",
+      "ticker": "PAYTM",
+      "label": "Watch",
+      "story": 5,
+      "lastClose": 1725.9,
+      "closeDate": "2026-11-19"
+    },
+    {
+      "name": "Ashoka Buildcon",
+      "ticker": "ASHOKA",
+      "label": "Down",
+      "story": 8,
+      "lastClose": 115.2,
+      "closeDate": "2026-11-18"
+    },
+    {
+      "name": "Urban Company",
+      "ticker": "URBANCO",
+      "label": "Watch",
+      "story": 9,
+      "lastClose": 176.05,
+      "closeDate": "2026-11-19"
+    }
+  ],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Dow Jones tanks 1,100 points, nears technical correction as S&P 500 and Nasdaq fall over 2%",
+      "short": "Dow Jones tanks 1,100 points, nears technical correction",
+      "source": "CNBC-TV18",
+      "block": "chart",
+      "file": "slide_01.jpg",
+      "movers": []
+    },
+    {
+      "n": 2,
+      "title": "India's retail inflation hits a two-year high of 6.1%; Elara sees two quarter-point RBI hikes",
+      "short": "India's retail inflation hits a two-year high of 6.1%",
+      "source": "Mint",
+      "block": "chart",
+      "file": "slide_02.jpg",
+      "movers": []
+    },
+    {
+      "n": 3,
+      "title": "Anthropic shares soar 21% in Nasdaq debut at a valuation near $1.8 trillion",
+      "short": "Anthropic shares soar 21% in Nasdaq debut at a valuation near $1.8 trillion",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_03.jpg",
+      "movers": [
+        "TECHM:Watch",
+        "INFY:Watch",
+        "HCLTECH:Watch",
+        "TCS:Watch"
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Gold drops over 1% to a 14-month low of $3,588.20 an ounce on Fed hike worries",
+      "short": "Gold drops over 1% to a 14-month low of $3,588.20 an ounce on Fed hike worries",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_04.jpg",
+      "movers": [
+        "MANAPPURAM:Down",
+        "IIFL:Down",
+        "MUTHOOTFIN:Down"
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Paytm, Pine Labs and MobiKwik tumble up to 9% on UPI MDR delay concerns",
+      "short": "Paytm, Pine Labs and MobiKwik tumble up to 9% on UPI MDR delay concerns",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_05.jpg",
+      "movers": [
+        "PAYTM:Watch",
+        "PINELABS:Watch"
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Diamond Power bags ₹708 crore Adani Energy Solutions order for 9,059 km of conductors",
+      "short": "Diamond Power bags ₹708 crore Adani Energy Solutions order for 9,059 km of conductors",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_06.jpg",
+      "movers": [
+        "DIACABS:Watch"
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Banks hit a record 26% of Nifty 50 market value as Bank Nifty crosses 63,000",
+      "short": "Banks hit a record 26% of Nifty 50 market value",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_07.jpg",
+      "movers": [
+        "ICICIBANK:Watch"
+      ]
+    },
+    {
+      "n": 8,
+      "title": "Ashoka Buildcon loses ₹850 crore Saudi Arabia project as the client cancels it",
+      "short": "Ashoka Buildcon loses ₹850 crore Saudi Arabia project",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_08.jpg",
+      "movers": [
+        "ASHOKA:Down"
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Urban Company raises ₹2,500 crore through QIP at ₹156 per share",
+      "short": "Urban Company raises ₹2,500 crore through QIP at ₹156 per share",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_09.jpg",
+      "movers": [
+        "URBANCO:Watch"
+      ]
+    }
+  ],
+  "warnings": []
+}
