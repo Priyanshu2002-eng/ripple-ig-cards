@@ -1,0 +1,75 @@
+{
+ "date": "2026-11-20",
+ "postedAt": "2026-11-20T02:38:00Z",
+ "mediaId": "18078137255749882",
+ "reelId": "17990262972105255",
+ "storyId": "17946288660367831",
+ "commentId": "17954857542302992",
+ "replies": [
+  {
+   "commentId": "17950532343357562",
+   "replyId": "17925366582449322"
+  }
+ ],
+ "imageCount": 10,
+ "stories": [
+  "Dow Jones tanks 1,100 points, nears technical correction as S&P 500 and Nasdaq fall over 2%",
+  "India's retail inflation hits a two-year high of 6.1%; Elara sees two quarter-point RBI hikes",
+  "Anthropic shares soar 21% in Nasdaq debut at a valuation near $1.8 trillion",
+  "Gold drops over 1% to a 14-month low of $3,588.20 an ounce on Fed hike worries",
+  "Paytm, Pine Labs and MobiKwik tumble up to 9% on UPI MDR delay concerns",
+  "Diamond Power bags ₹708 crore Adani Energy Solutions order for 9,059 km of conductors",
+  "Banks hit a record 26% of Nifty 50 market value as Bank Nifty crosses 63,000",
+  "Ashoka Buildcon loses ₹850 crore Saudi Arabia project as the client cancels it",
+  "Urban Company raises ₹2,500 crore through QIP at ₹156 per share"
+ ],
+ "letter": "I",
+ "cover": "watchlist",
+ "session": "2026-11-20",
+ "watchlist": [
+  {
+   "name": "Manappuram Finance",
+   "ticker": "MANAPPURAM",
+   "label": "Down",
+   "story": 4,
+   "lastClose": 282.85,
+   "closeDate": "2026-11-19"
+  },
+  {
+   "name": "One 97 Communications",
+   "ticker": "PAYTM",
+   "label": "Watch",
+   "story": 5,
+   "lastClose": 1725.9,
+   "closeDate": "2026-11-19"
+  },
+  {
+   "name": "Ashoka Buildcon",
+   "ticker": "ASHOKA",
+   "label": "Down",
+   "story": 8,
+   "lastClose": 115.2,
+   "closeDate": "2026-11-18"
+  },
+  {
+   "name": "Urban Company",
+   "ticker": "URBANCO",
+   "label": "Watch",
+   "story": 9,
+   "lastClose": 176.05,
+   "closeDate": "2026-11-19"
+  }
+ ],
+ "hashtags": [
+  "#StockMarketIndia",
+  "#StockMarketNews",
+  "#Nifty50",
+  "#RBI",
+  "#ManappuramFinance"
+ ],
+ "logic": "post-fix v2 lean",
+ "cut": 30,
+ "caption": "Dow crashes 1,100 points as India CPI hits 6.1%, a two-year high\nIndian stock market news today · Ripple's top 9 stories · 20 Nov 2026\n\n1. Dow Jones tanks 1,100 points, nears technical correction as S&P 500 and Nasdaq fall over 2% — CNBC-TV18\n2. India's retail inflation hits a two-year high of 6.1%; Elara sees two quarter-point RBI hikes — Mint\n3. Anthropic shares soar 21% in Nasdaq debut at a valuation near $1.8 trillion — Mint\n4. Gold drops over 1% to a 14-month low of $3,588.20 an ounce on Fed hike worries — CNBC-TV18\n5. Paytm, Pine Labs and MobiKwik tumble up to 9% on UPI MDR delay concerns — Mint\n6. Diamond Power bags ₹708 crore Adani Energy Solutions order for 9,059 km of conductors — CNBC-TV18\n7. Banks hit a record 26% of Nifty 50 market value as Bank Nifty crosses 63,000 — CNBC-TV18\n8. Ashoka Buildcon loses ₹850 crore Saudi Arabia project as the client cancels it — CNBC-TV18\n9. Urban Company raises ₹2,500 crore through QIP at ₹156 per share — CNBC-TV18\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for the open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #Nifty50 #RBI #ManappuramFinance",
+ "story": "story_watchlist.jpg",
+ "comment": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9)."
+}
