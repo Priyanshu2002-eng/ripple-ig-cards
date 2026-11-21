@@ -1,0 +1,113 @@
+{
+ "date": "2026-11-21",
+ "postedAt": "2026-11-21T08:10:38+05:30",
+ "mediaId": "18488056438116509",
+ "imageCount": 10,
+ "stories": [
+  {
+   "n": 1,
+   "title": "Nasdaq 100 sinks 5.6% in its worst week since Covid; S&P 500 slips 3.7% into correction",
+   "source": "Mint"
+  },
+  {
+   "n": 2,
+   "title": "Nifty posts its biggest 4-week rally in 6 years, up over 14% in a month; Bank Nifty hits record",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 3,
+   "title": "IndusInd Bank posts its biggest single-day gain in over five years, crossing ₹1,000",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 4,
+   "title": "Ashoka Buildcon, with SAM India JV, is lowest bidder for ₹2,758 crore Jaipur Metro packages",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 5,
+   "title": "HDFC Bank shares recover 22% in November, adding ₹2.38 lakh crore in market value",
+   "source": "Mint"
+  },
+  {
+   "n": 6,
+   "title": "Canara Bank sees limited stress in its ₹2.8 lakh crore gold loans despite price fall",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 7,
+   "title": "Rupee climbs past 93 per dollar for the first time since April as shorts unwind",
+   "source": "Economic Times"
+  },
+  {
+   "n": 8,
+   "title": "Gold logs worst week since March as hawkish Fed signals more rate hikes",
+   "source": "Mint"
+  },
+  {
+   "n": 9,
+   "title": "FIIs pump in nearly ₹32,700 crore this week, extending buying streak to 15 sessions",
+   "source": "CNBC-TV18"
+  }
+ ],
+ "letter": "R",
+ "cover": "watchlist",
+ "session": "2026-11-23",
+ "watchlist": [
+  {
+   "name": "Anant Raj",
+   "ticker": "ANANTRAJ",
+   "label": "Down",
+   "story": 1,
+   "lastClose": 451.05,
+   "closeDate": "2026-11-20"
+  },
+  {
+   "name": "IndusInd Bank",
+   "ticker": "INDUSINDBK",
+   "label": "Watch",
+   "story": 3,
+   "lastClose": 1003.0,
+   "closeDate": "2026-11-20"
+  },
+  {
+   "name": "HDFC Bank",
+   "ticker": "HDFCBANK",
+   "label": "Watch",
+   "story": 5,
+   "lastClose": 846.0,
+   "closeDate": "2026-11-20"
+  },
+  {
+   "name": "Muthoot Finance",
+   "ticker": "MUTHOOTFIN",
+   "label": "Down",
+   "story": 8,
+   "lastClose": 2550.5,
+   "closeDate": "2026-11-20"
+  }
+ ],
+ "hashtags": [
+  "#StockMarketIndia",
+  "#StockMarketNews",
+  "#AIStocks",
+  "#Nifty50",
+  "#AnantRaj"
+ ],
+ "logic": "post-fix v2 lean",
+ "cut": 30,
+ "caption": "Nasdaq 100 sank 5.6% in its worst week since Covid, yet Nifty just rallied over 14% in a month\nIndian stock market news today · Ripple's top 9 stories · 21 Nov 2026\nIndian markets are shut today; the watchlist and colour codes are for the next session, Monday 23 Nov.\n\n1. Nasdaq 100 sinks 5.6% in its worst week since Covid; S&P 500 slips 3.7% into correction — Mint\n2. Nifty posts its biggest 4-week rally in 6 years, up over 14% in a month; Bank Nifty hits record — CNBC-TV18\n3. IndusInd Bank posts its biggest single-day gain in over five years, crossing ₹1,000 — CNBC-TV18\n4. Ashoka Buildcon, with SAM India JV, is lowest bidder for ₹2,758 crore Jaipur Metro packages — CNBC-TV18\n5. HDFC Bank shares recover 22% in November, adding ₹2.38 lakh crore in market value — Mint\n6. Canara Bank sees limited stress in its ₹2.8 lakh crore gold loans despite price fall — CNBC-TV18\n7. Rupee climbs past 93 per dollar for the first time since April as shorts unwind — Economic Times\n8. Gold logs worst week since March as hawkish Fed signals more rate hikes — Mint\n9. FIIs pump in nearly ₹32,700 crore this week, extending buying streak to 15 sessions — CNBC-TV18\n\nSwipe for each story's numbers, tone and who moves Monday: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for Monday's open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #AIStocks #Nifty50 #AnantRaj",
+ "story": {
+  "file": "story_watchlist.jpg",
+  "mediaId": "17884464804630191"
+ },
+ "comment": {
+  "text": "How do you read Anant Raj for Monday? Up, down or watch: drop your call below.",
+  "id": "18110900057568780"
+ },
+ "reel": {
+  "mediaId": "18138806326644850",
+  "builder": "reel_v4"
+ },
+ "replies": []
+}
