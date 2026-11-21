@@ -1,0 +1,154 @@
+{
+  "date": "2026-11-21",
+  "feedDate": "Today · 21 Nov 2026",
+  "session": "2026-11-23",
+  "marketOpenToday": false,
+  "letter": "R",
+  "postIndex": 17,
+  "coverKind": "watchlist",
+  "cut": 30.0,
+  "story": "story_watchlist.jpg",
+  "comment": "How do you read Anant Raj for Monday? Up, down or watch: drop your call below.",
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#AIStocks",
+    "#Nifty50",
+    "#AnantRaj"
+  ],
+  "watchlist": [
+    {
+      "name": "Anant Raj",
+      "ticker": "ANANTRAJ",
+      "label": "Down",
+      "story": 1,
+      "lastClose": 451.05,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "IndusInd Bank",
+      "ticker": "INDUSINDBK",
+      "label": "Watch",
+      "story": 3,
+      "lastClose": 1003.0,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "HDFC Bank",
+      "ticker": "HDFCBANK",
+      "label": "Watch",
+      "story": 5,
+      "lastClose": 846.0,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "Muthoot Finance",
+      "ticker": "MUTHOOTFIN",
+      "label": "Down",
+      "story": 8,
+      "lastClose": 2550.5,
+      "closeDate": "2026-11-20"
+    }
+  ],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nasdaq 100 sinks 5.6% in its worst week since Covid; S&P 500 slips 3.7% into correction",
+      "short": "Nasdaq 100 sinks 5.6% in its worst week since Covid",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_01.jpg",
+      "movers": [
+        "ANANTRAJ:Down",
+        "KAYNES:Down",
+        "SIEMENS:Down",
+        "ABB:Down"
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Nifty posts its biggest 4-week rally in 6 years, up over 14% in a month; Bank Nifty hits record",
+      "short": "Nifty posts its biggest 4-week rally in 6 years, up over 14% in a month",
+      "source": "CNBC-TV18",
+      "block": "chart",
+      "file": "slide_02.jpg",
+      "movers": []
+    },
+    {
+      "n": 3,
+      "title": "IndusInd Bank posts its biggest single-day gain in over five years, crossing ₹1,000",
+      "short": "IndusInd Bank posts its biggest single-day gain in over five years, crossing ₹1,000",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_03.jpg",
+      "movers": [
+        "INDUSINDBK:Watch"
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Ashoka Buildcon, with SAM India JV, is lowest bidder for ₹2,758 crore Jaipur Metro packages",
+      "short": "Ashoka Buildcon, with SAM India JV, is lowest bidder for ₹2,758 crore Jaipur Metro packages",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_04.jpg",
+      "movers": [
+        "ASHOKA:Watch"
+      ]
+    },
+    {
+      "n": 5,
+      "title": "HDFC Bank shares recover 22% in November, adding ₹2.38 lakh crore in market value",
+      "short": "HDFC Bank shares recover 22% in November, adding ₹2.38 lakh crore in market value",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_05.jpg",
+      "movers": [
+        "HDFCBANK:Watch"
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Canara Bank sees limited stress in its ₹2.8 lakh crore gold loans despite price fall",
+      "short": "Canara Bank sees limited stress in its ₹2.8 lakh crore gold loans despite price fall",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_06.jpg",
+      "movers": [
+        "CANBK:Watch"
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Rupee climbs past 93 per dollar for the first time since April as shorts unwind",
+      "short": "Rupee climbs past 93 per dollar for the first time since April",
+      "source": "Economic Times",
+      "block": "chart",
+      "file": "slide_07.jpg",
+      "movers": []
+    },
+    {
+      "n": 8,
+      "title": "Gold logs worst week since March as hawkish Fed signals more rate hikes",
+      "short": "Gold logs worst week since March",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_08.jpg",
+      "movers": [
+        "MUTHOOTFIN:Down",
+        "MANAPPURAM:Down",
+        "IIFL:Down"
+      ]
+    },
+    {
+      "n": 9,
+      "title": "FIIs pump in nearly ₹32,700 crore this week, extending buying streak to 15 sessions",
+      "short": "FIIs pump in nearly ₹32,700 crore this week, extending buying streak to 15 sessions",
+      "source": "CNBC-TV18",
+      "block": "chart",
+      "file": "slide_09.jpg",
+      "movers": []
+    }
+  ],
+  "warnings": []
+}
