@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-22",
+  "feedDate": "Today · 22 Nov 2026",
+  "session": "2026-11-23",
+  "marketOpenToday": false,
+  "letter": "E",
+  "postIndex": 18,
+  "coverKind": "watchlist",
+  "cut": 30.0,
+  "story": "story_watchlist.jpg",
+  "comment": "Which of Monday's watchlist are you tracking: Muthoot Finance, Fortis Healthcare, Texmaco Rail & Engineering or Anant Raj? Tell us below.",
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#Nifty50",
+    "#Gold",
+    "#MuthootFinance"
+  ],
+  "watchlist": [
+    {
+      "name": "Muthoot Finance",
+      "ticker": "MUTHOOTFIN",
+      "label": "Down",
+      "story": 2,
+      "lastClose": 2550.5,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "Fortis Healthcare",
+      "ticker": "FORTIS",
+      "label": "Watch",
+      "story": 3,
+      "lastClose": 825.0,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "Texmaco Rail & Engineering",
+      "ticker": "TEXRAIL",
+      "label": "Watch",
+      "story": 5,
+      "lastClose": 111.37,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "Anant Raj",
+      "ticker": "ANANTRAJ",
+      "label": "Down",
+      "story": 7,
+      "lastClose": 451.05,
+      "closeDate": "2026-11-20"
+    }
+  ],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Nifty surges 2.61% last week, gaining 656 points on strong FII inflows",
+      "short": "Nifty surges 2.61% last week, gaining 656 points on strong FII inflows",
+      "source": "Economic Times",
+      "block": "chart",
+      "file": "slide_01.jpg",
+      "movers": []
+    },
+    {
+      "n": 2,
+      "title": "Gold hits a 14-month low on MCX at ₹1,21,949 per 10 gm",
+      "short": "Gold hits a 14-month low on MCX at ₹1,21,949 per 10 gm",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_02.jpg",
+      "movers": [
+        "MUTHOOTFIN:Down",
+        "MANAPPURAM:Down",
+        "IIFL:Down"
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Hospital stocks rally up to 14% over five sessions",
+      "short": "Hospital stocks rally up to 14% over five sessions",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_03.jpg",
+      "movers": [
+        "FORTIS:Watch",
+        "MAXHEALTH:Watch",
+        "APOLLOHOSP:Watch",
+        "ASTERDM:Watch"
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Adani Energy Solutions gets order for 1,750 MW renewable power supply to West Bengal",
+      "short": "Adani Energy Solutions gets order for 1,750 MW renewable power supply to West Bengal",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_04.jpg",
+      "movers": [
+        "ADANIENSOL:Watch"
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Texmaco Rail gets ₹230 crore orders from JSW entities for 553 wagons",
+      "short": "Texmaco Rail gets ₹230 crore orders from JSW entities for 553 wagons",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_05.jpg",
+      "movers": [
+        "TEXRAIL:Watch"
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Premier Explosives gets ₹311-crore export order for defence explosives",
+      "short": "Premier Explosives gets ₹311-crore export order for defence explosives",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_06.jpg",
+      "movers": [
+        "PREMEXPLN:Watch"
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Taiwan widens short-sale curbs after its worst weekly fall in 35 years",
+      "short": "Taiwan widens short-sale curbs",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_07.jpg",
+      "movers": [
+        "ANANTRAJ:Down",
+        "KAYNES:Down",
+        "SIEMENS:Down",
+        "ABB:Down"
+      ]
+    },
+    {
+      "n": 8,
+      "title": "Mahanadi Coalfields ₹8,981 crore IPO stays undersubscribed after two days",
+      "short": "Mahanadi Coalfields ₹8,981 crore IPO stays undersubscribed",
+      "source": "Mint",
+      "block": "chart",
+      "file": "slide_08.jpg",
+      "movers": []
+    },
+    {
+      "n": 9,
+      "title": "Hero MotoCorp gets ITAT relief on ₹27 crore tax demand for six assessment years",
+      "short": "Hero MotoCorp gets ITAT relief on ₹27 crore tax demand for six assessment years",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_09.jpg",
+      "movers": [
+        "HEROMOTOCO:Watch"
+      ]
+    }
+  ],
+  "warnings": []
+}
