@@ -1,0 +1,113 @@
+{
+ "date": "2026-11-22",
+ "postedAt": "2026-11-22T08:10:07+05:30",
+ "mediaId": "17979464409137720",
+ "imageCount": 10,
+ "stories": [
+  {
+   "n": 1,
+   "title": "Nifty surges 2.61% last week, gaining 656 points on strong FII inflows",
+   "source": "Economic Times"
+  },
+  {
+   "n": 2,
+   "title": "Gold hits a 14-month low on MCX at ₹1,21,949 per 10 gm",
+   "source": "Mint"
+  },
+  {
+   "n": 3,
+   "title": "Hospital stocks rally up to 14% over five sessions",
+   "source": "Mint"
+  },
+  {
+   "n": 4,
+   "title": "Adani Energy Solutions gets order for 1,750 MW renewable power supply to West Bengal",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 5,
+   "title": "Texmaco Rail gets ₹230 crore orders from JSW entities for 553 wagons",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 6,
+   "title": "Premier Explosives gets ₹311-crore export order for defence explosives",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 7,
+   "title": "Taiwan widens short-sale curbs after its worst weekly fall in 35 years",
+   "source": "Mint"
+  },
+  {
+   "n": 8,
+   "title": "Mahanadi Coalfields ₹8,981 crore IPO stays undersubscribed after two days",
+   "source": "Mint"
+  },
+  {
+   "n": 9,
+   "title": "Hero MotoCorp gets ITAT relief on ₹27 crore tax demand for six assessment years",
+   "source": "CNBC-TV18"
+  }
+ ],
+ "letter": "E",
+ "cover": "watchlist",
+ "session": "2026-11-23",
+ "watchlist": [
+  {
+   "name": "Muthoot Finance",
+   "ticker": "MUTHOOTFIN",
+   "label": "Down",
+   "story": 2,
+   "lastClose": 2550.5,
+   "closeDate": "2026-11-20"
+  },
+  {
+   "name": "Fortis Healthcare",
+   "ticker": "FORTIS",
+   "label": "Watch",
+   "story": 3,
+   "lastClose": 825.0,
+   "closeDate": "2026-11-20"
+  },
+  {
+   "name": "Texmaco Rail & Engineering",
+   "ticker": "TEXRAIL",
+   "label": "Watch",
+   "story": 5,
+   "lastClose": 111.37,
+   "closeDate": "2026-11-20"
+  },
+  {
+   "name": "Anant Raj",
+   "ticker": "ANANTRAJ",
+   "label": "Down",
+   "story": 7,
+   "lastClose": 451.05,
+   "closeDate": "2026-11-20"
+  }
+ ],
+ "hashtags": [
+  "#StockMarketIndia",
+  "#StockMarketNews",
+  "#Nifty50",
+  "#Gold",
+  "#MuthootFinance"
+ ],
+ "logic": "post-fix v2 lean",
+ "cut": 30,
+ "caption": "Nifty added 656 points in a week, but gold just hit a 14-month low at ₹1,21,949 per 10 gm\nIndian stock market news today · Ripple's top 9 stories · 22 Nov 2026\nIndian markets are shut today; the watchlist and colour codes are for the next session, Monday 23 Nov.\n\n1. Nifty surges 2.61% last week, gaining 656 points on strong FII inflows — Economic Times\n2. Gold hits a 14-month low on MCX at ₹1,21,949 per 10 gm — Mint\n3. Hospital stocks rally up to 14% over five sessions — Mint\n4. Adani Energy Solutions gets order for 1,750 MW renewable power supply to West Bengal — CNBC-TV18\n5. Texmaco Rail gets ₹230 crore orders from JSW entities for 553 wagons — CNBC-TV18\n6. Premier Explosives gets ₹311-crore export order for defence explosives — CNBC-TV18\n7. Taiwan widens short-sale curbs after its worst weekly fall in 35 years — Mint\n8. Mahanadi Coalfields ₹8,981 crore IPO stays undersubscribed after two days — Mint\n9. Hero MotoCorp gets ITAT relief on ₹27 crore tax demand for six assessment years — CNBC-TV18\n\nSwipe for each story's numbers, tone and who moves Monday: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for Monday's open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #Nifty50 #Gold #MuthootFinance",
+ "story": {
+  "file": "story_watchlist.jpg",
+  "mediaId": "18114578915233176"
+ },
+ "comment": {
+  "text": "Which of Monday's watchlist are you tracking: Muthoot Finance, Fortis Healthcare, Texmaco Rail & Engineering or Anant Raj? Tell us below.",
+  "id": "18422137498083306"
+ },
+ "reel": {
+  "mediaId": "18064169792799670",
+  "builder": "reel_v4"
+ },
+ "replies": []
+}
