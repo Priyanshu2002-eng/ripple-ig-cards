@@ -1,0 +1,154 @@
+{
+  "date": "2026-11-23",
+  "feedDate": "Today · 23 Nov 2026",
+  "session": "2026-11-23",
+  "marketOpenToday": true,
+  "letter": "L",
+  "postIndex": 19,
+  "coverKind": "watchlist",
+  "cut": 30.0,
+  "story": "story_watchlist.jpg",
+  "comment": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9).",
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#AIStocks",
+    "#Nifty50",
+    "#AnantRaj"
+  ],
+  "watchlist": [
+    {
+      "name": "Anant Raj",
+      "ticker": "ANANTRAJ",
+      "label": "Down",
+      "story": 1,
+      "lastClose": 451.05,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "APL Apollo Tubes",
+      "ticker": "APLAPOLLO",
+      "label": "Watch",
+      "story": 2,
+      "lastClose": 2121.6001,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "Hindustan Copper",
+      "ticker": "HINDCOPPER",
+      "label": "Watch",
+      "story": 5,
+      "lastClose": 419.05,
+      "closeDate": "2026-11-20"
+    },
+    {
+      "name": "Railtel Corporation Of India",
+      "ticker": "RAILTEL",
+      "label": "Watch",
+      "story": 8,
+      "lastClose": 249.32,
+      "closeDate": "2026-11-20"
+    }
+  ],
+  "cards": [
+    {
+      "n": 1,
+      "title": "Kospi drops 3.74% as Wall Street's worst week since March 2020 reaches Asia",
+      "short": "Kospi drops 3.74%",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_01.jpg",
+      "movers": [
+        "ANANTRAJ:Down",
+        "KAYNES:Down",
+        "SIEMENS:Down",
+        "ABB:Down"
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Tata Steel and APL Apollo Tubes announce ₹32,266 crore deal, with an open offer for 26%",
+      "short": "Tata Steel and APL Apollo Tubes announce ₹32,266 crore deal, with an open offer for 26%",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_02.jpg",
+      "movers": [
+        "APLAPOLLO:Watch",
+        "TATASTEEL:Watch"
+      ]
+    },
+    {
+      "n": 3,
+      "title": "India-EU trade deal likely to be signed on December 16",
+      "short": "India-EU trade deal likely to be signed on December 16",
+      "source": "Economic Times",
+      "block": "chart",
+      "file": "slide_03.jpg",
+      "movers": []
+    },
+    {
+      "n": 4,
+      "title": "Welspun Living, up 100% in 2026, is in focus after ₹3,200 crore capex plan",
+      "short": "Welspun Living, up 100% in 2026, is in focus",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_04.jpg",
+      "movers": [
+        "WELSPUNLIV:Watch"
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Gold near a 14-month low and silver at its lowest since September 2025 as metals slide",
+      "short": "Gold near a 14-month low and silver at its lowest since September 2025",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_05.jpg",
+      "movers": [
+        "HINDCOPPER:Watch",
+        "TATASTEEL:Watch",
+        "NMDC:Watch",
+        "JINDALSTEL:Watch"
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Rupee rally may extend, but foreign inflows and global sentiment pose risks",
+      "short": "Rupee rally may extend",
+      "source": "Mint",
+      "block": "chart",
+      "file": "slide_06.jpg",
+      "movers": []
+    },
+    {
+      "n": 7,
+      "title": "Fed almost certain to raise rates next month, but the size of the hike is unclear",
+      "short": "Fed almost certain to raise rates next month",
+      "source": "Mint",
+      "block": "chart",
+      "file": "slide_07.jpg",
+      "movers": []
+    },
+    {
+      "n": 8,
+      "title": "RailTel wins ₹27 crore order to build a Legal AI platform for Andhra Pradesh",
+      "short": "RailTel wins ₹27 crore order to build a Legal AI platform for Andhra Pradesh",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_08.jpg",
+      "movers": [
+        "RAILTEL:Watch"
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Indian IT's growth revival remains elusive despite better Q2",
+      "short": "Indian IT's growth revival remains elusive despite better Q2",
+      "source": "Mint",
+      "block": "chart",
+      "file": "slide_09.jpg",
+      "movers": []
+    }
+  ],
+  "warnings": []
+}
