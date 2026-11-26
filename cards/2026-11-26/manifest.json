@@ -1,0 +1,155 @@
+{
+  "date": "2026-11-26",
+  "feedDate": "Today · 26 Nov 2026",
+  "session": "2026-11-26",
+  "marketOpenToday": true,
+  "letter": "L",
+  "postIndex": 19,
+  "coverKind": "watchlist",
+  "cut": 30.0,
+  "story": "story_watchlist.jpg",
+  "comment": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9).",
+  "hashtags": [
+    "#StockMarketIndia",
+    "#StockMarketNews",
+    "#IndianEconomy",
+    "#Nifty50",
+    "#MuthootFinance"
+  ],
+  "watchlist": [
+    {
+      "name": "Muthoot Finance",
+      "ticker": "MUTHOOTFIN",
+      "label": "Up",
+      "story": 4,
+      "lastClose": 2549.6001,
+      "closeDate": "2026-11-25"
+    },
+    {
+      "name": "Schaeffler India",
+      "ticker": "SCHAEFFLER",
+      "label": "Down",
+      "story": 6,
+      "lastClose": 3607.8999,
+      "closeDate": "2026-11-23"
+    },
+    {
+      "name": "Diamond Power Infrastructure",
+      "ticker": "DIACABS",
+      "label": "Up",
+      "story": 8,
+      "lastClose": 347.9,
+      "closeDate": "2026-11-25"
+    },
+    {
+      "name": "LG Electronics India",
+      "ticker": "LGEINDIA",
+      "label": "Watch",
+      "story": 9,
+      "lastClose": 1818.4,
+      "closeDate": "2026-11-25"
+    }
+  ],
+  "cards": [
+    {
+      "n": 1,
+      "title": "US proposes up to 25% tariffs on Indian goods under Section 301",
+      "short": "US proposes up to 25% tariffs on Indian goods under Section 301",
+      "source": "CNBC-TV18",
+      "block": "chart",
+      "file": "slide_01.jpg",
+      "movers": []
+    },
+    {
+      "n": 2,
+      "title": "FIIs net inflow of ₹4,479 crore extends streak to 17 sessions",
+      "short": "FIIs net inflow of ₹4,479 crore extends streak to 17 sessions",
+      "source": "CNBC-TV18",
+      "block": "chart",
+      "file": "slide_02.jpg",
+      "movers": []
+    },
+    {
+      "n": 3,
+      "title": "Net FDI turns negative at USD 4.95 billion in September: RBI",
+      "short": "Net FDI turns negative at USD 4.95 billion in September: RBI",
+      "source": "Economic Times",
+      "block": "chart",
+      "file": "slide_03.jpg",
+      "movers": []
+    },
+    {
+      "n": 4,
+      "title": "Gold extends losses, falls below $3,500 as hot US inflation cements Fed hike bets",
+      "short": "Gold extends losses, falls below $3,500",
+      "source": "Economic Times",
+      "block": "who",
+      "file": "slide_04.jpg",
+      "movers": [
+        "MUTHOOTFIN:Up",
+        "MANAPPURAM:Up",
+        "IIFL:Up"
+      ]
+    },
+    {
+      "n": 5,
+      "title": "S&P puts Nvidia on downgrade watch over board oversight weaknesses",
+      "short": "S&P puts Nvidia on downgrade watch over board oversight weaknesses",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_05.jpg",
+      "movers": [
+        "PERSISTENT:Watch",
+        "CGPOWER:Watch",
+        "SIEMENS:Watch",
+        "ANANTRAJ:Watch"
+      ]
+    },
+    {
+      "n": 6,
+      "title": "Schaeffler AG likely to sell 6% of Schaeffler India for ₹3,188 crore",
+      "short": "Schaeffler AG likely to sell 6% of Schaeffler India for ₹3,188 crore",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_06.jpg",
+      "movers": [
+        "SCHAEFFLER:Down"
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Carlyle cuts Piramal Pharma stake from 17.93% to 10.52% for over ₹2,211 crore",
+      "short": "Carlyle cuts Piramal Pharma stake from 17.93% to 10.52% for over ₹2,211 crore",
+      "source": "Economic Times",
+      "block": "who",
+      "file": "slide_07.jpg",
+      "movers": [
+        "PPLPHARMA:Watch"
+      ]
+    },
+    {
+      "n": 8,
+      "title": "Diamond Power bags fresh ₹488 crore orders for Adani's Bhadla-Fatehpur HVDC project",
+      "short": "Diamond Power bags fresh ₹488 crore orders for Adani's Bhadla-Fatehpur HVDC project",
+      "source": "CNBC-TV18",
+      "block": "who",
+      "file": "slide_08.jpg",
+      "movers": [
+        "DIACABS:Up",
+        "ADANIENSOL:Watch"
+      ]
+    },
+    {
+      "n": 9,
+      "title": "LG Electronics India promoter to sell up to 2% at ₹1,709.30 floor price",
+      "short": "LG Electronics India promoter to sell up to 2% at ₹1,709.30 floor price",
+      "source": "Mint",
+      "block": "who",
+      "file": "slide_09.jpg",
+      "movers": [
+        "LGEINDIA:Watch"
+      ]
+    }
+  ],
+  "warnings": []
+}
