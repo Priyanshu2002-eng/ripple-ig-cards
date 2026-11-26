@@ -1,0 +1,103 @@
+{
+ "date": "2026-11-26",
+ "postedAt": null,
+ "mediaId": null,
+ "publishNote": "not published: Windsor instagram connector has no accounts configured",
+ "imageCount": 10,
+ "stories": [
+  {
+   "n": 1,
+   "title": "US proposes up to 25% tariffs on Indian goods under Section 301",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 2,
+   "title": "FIIs net inflow of ₹4,479 crore extends streak to 17 sessions",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 3,
+   "title": "Net FDI turns negative at USD 4.95 billion in September: RBI",
+   "source": "Economic Times"
+  },
+  {
+   "n": 4,
+   "title": "Gold extends losses, falls below $3,500 as hot US inflation cements Fed hike bets",
+   "source": "Economic Times"
+  },
+  {
+   "n": 5,
+   "title": "S&P puts Nvidia on downgrade watch over board oversight weaknesses",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 6,
+   "title": "Schaeffler AG likely to sell 6% of Schaeffler India for ₹3,188 crore",
+   "source": "Mint"
+  },
+  {
+   "n": 7,
+   "title": "Carlyle cuts Piramal Pharma stake from 17.93% to 10.52% for over ₹2,211 crore",
+   "source": "Economic Times"
+  },
+  {
+   "n": 8,
+   "title": "Diamond Power bags fresh ₹488 crore orders for Adani's Bhadla-Fatehpur HVDC project",
+   "source": "CNBC-TV18"
+  },
+  {
+   "n": 9,
+   "title": "LG Electronics India promoter to sell up to 2% at ₹1,709.30 floor price",
+   "source": "Mint"
+  }
+ ],
+ "letter": "L",
+ "cover": "watchlist",
+ "session": "2026-11-26",
+ "watchlist": [
+  {
+   "name": "Muthoot Finance",
+   "ticker": "MUTHOOTFIN",
+   "label": "Up",
+   "story": 4,
+   "lastClose": 2549.6001,
+   "closeDate": "2026-11-25"
+  },
+  {
+   "name": "Schaeffler India",
+   "ticker": "SCHAEFFLER",
+   "label": "Down",
+   "story": 6,
+   "lastClose": 3607.8999,
+   "closeDate": "2026-11-23"
+  },
+  {
+   "name": "Diamond Power Infrastructure",
+   "ticker": "DIACABS",
+   "label": "Up",
+   "story": 8,
+   "lastClose": 347.9,
+   "closeDate": "2026-11-25"
+  },
+  {
+   "name": "LG Electronics India",
+   "ticker": "LGEINDIA",
+   "label": "Watch",
+   "story": 9,
+   "lastClose": 1818.4,
+   "closeDate": "2026-11-25"
+  }
+ ],
+ "hashtags": [
+  "#StockMarketIndia",
+  "#StockMarketNews",
+  "#IndianEconomy",
+  "#Nifty50",
+  "#MuthootFinance"
+ ],
+ "logic": "post-fix v2 lean",
+ "cut": 30,
+ "caption": "FIIs pour in ₹4,479 crore for a 17th session, while the US eyes 25% tariffs on Indian goods\nIndian stock market news today · Ripple's top 9 stories · 26 Nov 2026\n\n1. US proposes up to 25% tariffs on Indian goods under Section 301 — CNBC-TV18\n2. FIIs net inflow of ₹4,479 crore extends streak to 17 sessions — CNBC-TV18\n3. Net FDI turns negative at USD 4.95 billion in September: RBI — Economic Times\n4. Gold extends losses, falls below $3,500 as hot US inflation cements Fed hike bets — Economic Times\n5. S&P puts Nvidia on downgrade watch over board oversight weaknesses — CNBC-TV18\n6. Schaeffler AG likely to sell 6% of Schaeffler India for ₹3,188 crore — Mint\n7. Carlyle cuts Piramal Pharma stake from 17.93% to 10.52% for over ₹2,211 crore — Economic Times\n8. Diamond Power bags fresh ₹488 crore orders for Adani's Bhadla-Fatehpur HVDC project — CNBC-TV18\n9. LG Electronics India promoter to sell up to 2% at ₹1,709.30 floor price — Mint\n\nSwipe for each story's numbers, tone and who moves today: green = the news points up, red = the news points down, grey = watch. Summaries of published reports; sources named on each card. Not investment advice.\n\nSave this for the open, send it to a friend who tracks the market, and follow @ripple__stories for the brief every morning.\n\n#StockMarketIndia #StockMarketNews #IndianEconomy #Nifty50 #MuthootFinance",
+ "story": "story_watchlist.jpg",
+ "comment": "Which of these 9 stories matters most for your portfolio today? Reply with its number (1-9)."
+}
